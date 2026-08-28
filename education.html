@@ -3,331 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ประวัติการศึกษาของนักเรียน">
-    <title>My Portfolio | การศึกษา</title>
-
+    <title>การศึกษา | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="bg-shape shape-3"></div><div class="bg-shape shape-2"></div>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html" class="active">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
+    <main class="container">
+        <div class="section-header hidden-on-scroll">
+            <h2 class="animated-text">ประวัติการศึกษา (Education)</h2>
+            <p>เส้นทางการเรียนรู้ของฉัน</p>
+        </div>
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html" class="active">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- Page Hero -->
-        <section class="page-hero education-hero">
-
-            <div class="container">
-
-                <span class="section-label">
-                    EDUCATION
-                </span>
-
-                <h1>เส้นทางการศึกษา</h1>
-
-                <p>
-                    ทุกช่วงเวลาของการเรียนรู้
-                    ล้วนเป็นส่วนหนึ่งของการเติบโต
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- Timeline -->
-        <section class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="section-label">MY JOURNEY</span>
-                    <h2>เส้นทางการเรียนรู้</h2>
-                </div>
-
-
+        <div class="education-layout grid-2-col">
+            <div class="timeline-section">
                 <div class="timeline">
-
-                    <!-- Item 1 -->
-                    <div class="timeline-item">
-
-                        <div class="timeline-marker">
-                            01
-                        </div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-year">
-                                ระดับประถมศึกษา
-                            </span>
-
-                            <h3>ประถมศึกษา</h3>
-
-                            <p>
-                                ศึกษาระดับประถมศึกษาที่
-                                [กรอกชื่อโรงเรียนประถม]
-                            </p>
-
-                            <div class="timeline-tag">
-                                📚 เริ่มต้นการเรียนรู้
-                            </div>
-
-                        </div>
-
+                    <div class="timeline-item card hidden-on-scroll">
+                        <div class="timeline-dot pulse-anim"></div>
+                        <h4>มัธยมศึกษาตอนต้น (ปัจจุบัน)</h4>
+                        <p>โรงเรียน: [กรอกชื่อโรงเรียน]</p>
+                        <p>ระดับชั้น: ม.3/[กรอกห้อง]</p>
                     </div>
-
-
-                    <!-- Item 2 -->
-                    <div class="timeline-item">
-
-                        <div class="timeline-marker">
-                            02
-                        </div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-year">
-                                ระดับมัธยมศึกษาตอนต้น
-                            </span>
-
-                            <h3>มัธยมศึกษาตอนต้น</h3>
-
-                            <p>
-                                ศึกษาต่อที่
-                                [กรอกชื่อโรงเรียน]
-                                ในระดับชั้นมัธยมศึกษาตอนต้น
-                            </p>
-
-                            <div class="timeline-tag">
-                                🎯 เริ่มค้นหาความสนใจ
-                            </div>
-
-                        </div>
-
+                    <div class="timeline-item card hidden-on-scroll" style="transition-delay: 200ms;">
+                        <div class="timeline-dot"></div>
+                        <h4>ประถมศึกษา</h4>
+                        <p>โรงเรียน: [กรอกชื่อโรงเรียนประถม]</p>
+                        <p>สำเร็จการศึกษาปี: [กรอกปี พ.ศ.]</p>
                     </div>
-
-
-                    <!-- Item 3 -->
-                    <div class="timeline-item current">
-
-                        <div class="timeline-marker">
-                            03
-                        </div>
-
-                        <div class="timeline-content">
-
-                            <span class="timeline-year">
-                                ปัจจุบัน
-                            </span>
-
-                            <h3>มัธยมศึกษาปีที่ 3</h3>
-
-                            <p>
-                                ปัจจุบันกำลังศึกษาอยู่ที่
-                                [กรอกชื่อโรงเรียน]
-                                ชั้น ม.3/[กรอกห้อง]
-                            </p>
-
-                            <div class="timeline-tag">
-                                ✦ กำลังพัฒนาตัวเอง
-                            </div>
-
-                        </div>
-
-                    </div>
-
                 </div>
-
             </div>
 
-        </section>
-
-
-        <!-- Education Highlight -->
-        <section class="section soft-section">
-
-            <div class="container">
-
-                <div class="section-heading centered">
-
-                    <span class="section-label">
-                        EDUCATION HIGHLIGHTS
-                    </span>
-
-                    <h2>ข้อมูลการศึกษาปัจจุบัน</h2>
-
-                </div>
-
-
-                <div class="education-highlight">
-
-                    <div class="education-highlight-main">
-
-                        <span class="big-school-icon">🏫</span>
-
-                        <div>
-                            <span>โรงเรียน</span>
-                            <h3>[กรอกชื่อโรงเรียน]</h3>
-                        </div>
-
-                    </div>
-
-
-                    <div class="education-detail">
-                        <span>ระดับชั้น</span>
-                        <strong>ม.3/[กรอกห้อง]</strong>
-                    </div>
-
-                    <div class="education-detail">
-                        <span>จังหวัด</span>
-                        <strong>[กรอกจังหวัด]</strong>
-                    </div>
-
-                    <div class="education-detail">
-                        <span>วิชาที่ชอบ</span>
-                        <strong>[กรอกวิชาที่ชอบ]</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Table -->
-        <section class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="section-label">
-                        EDUCATION RECORD
-                    </span>
-
-                    <h2>ตารางประวัติการศึกษา</h2>
-                </div>
-
-
-                <div class="table-wrapper">
-
-                    <table class="education-table">
-
-                        <thead>
-                            <tr>
-                                <th>ช่วงการศึกษา</th>
-                                <th>ระดับ</th>
-                                <th>สถานศึกษา</th>
-                                <th>สถานะ</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-
-                            <tr>
-                                <td>ประถมศึกษา</td>
-                                <td>ป.1 - ป.6</td>
-                                <td>[โรงเรียนประถม]</td>
-                                <td>
-                                    <span class="status completed">
-                                        สำเร็จ
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>มัธยมศึกษาตอนต้น</td>
-                                <td>ม.1 - ม.2</td>
-                                <td>[กรอกชื่อโรงเรียน]</td>
-                                <td>
-                                    <span class="status completed">
-                                        สำเร็จ
-                                    </span>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>ปัจจุบัน</td>
-                                <td>ม.3</td>
-                                <td>[กรอกชื่อโรงเรียน]</td>
-                                <td>
-                                    <span class="status current-status">
-                                        กำลังศึกษา
-                                    </span>
-                                </td>
-                            </tr>
-
-                        </tbody>
-
+            <div class="highlight-section">
+                <div class="card highlight-card hidden-on-scroll" style="transition-delay: 300ms;">
+                    <h3>🎯 ข้อมูลเด่น</h3>
+                    <table class="highlight-table">
+                        <tr><th>วิชาที่ชอบ</th><td>[กรอกวิชาที่ชอบ]</td></tr>
+                        <tr><th>ความถนัด</th><td>[กรอกความถนัด]</td></tr>
+                        <tr><th>ผลงาน</th><td>[กรอกผลงานเด่นๆ]</td></tr>
                     </table>
-
                 </div>
-
             </div>
-
-        </section>
-
+        </div>
     </main>
 
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p>
-                    เว็บไซต์ Portfolio สำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-info">
-                <strong>[กรอกชื่อ]</strong>
-                <span>นักเรียนชั้น ม.3/[กรอกห้อง]</span>
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติ</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </div>
-
-        <div class="container copyright">
-            <p>
-                © 2026 [กรอกชื่อ] | Student Portfolio Project
-            </p>
-        </div>
-
+    <footer class="footer">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <div class="cursor-glow"></div>
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
