@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Shapes ลอยไปมา -->
+    <!-- Background Shapes & Floating Emojis เติมไม่ให้เว็บโล่ง -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
     <div class="bg-shape shape-3"></div>
+    <div class="floating-deco cloud-1">☁️</div>
+    <div class="floating-deco star-1">✨</div>
+    <div class="floating-deco cloud-2">☁️</div>
+    <div class="floating-deco star-2">🌟</div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -26,10 +30,12 @@
     </nav>
 
     <main class="container">
+        <!-- สนูปปี้นั่งอยู่บนกล่องข้อความ -->
+        <img src="https://assets.stickpng.com/images/585966eea4fa116215a92440.png" alt="Snoopy Sleeping" class="snoopy-deco snoopy-hero float-anim hidden-on-scroll">
+        
         <section class="hero-section grid-2-col hidden-on-scroll">
             <div class="hero-content">
                 <span class="badge float-anim">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
-                <!-- Animated Text สำหรับชื่อ -->
                 <h1>ฉันชื่อ <br><span class="animated-text">[กรอกชื่อ-นามสกุล]</span></h1>
                 <p class="subtitle">นักเรียนชั้นมัธยมศึกษาปีที่ 3 ที่มีความสนใจใน [กรอกความสนใจ] และรักในการสร้างสรรค์สิ่งใหม่ๆ</p>
                 <div class="button-group">
@@ -39,7 +45,6 @@
             </div>
             <div class="hero-image-wrapper hidden-on-scroll">
                 <div class="image-circle-bg"></div>
-                <!-- เปลี่ยนลิงก์รูปเป็นรูปของคุณได้เลย -->
                 <img src="https://placehold.co/400x400/a78bfa/ffffff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
             </div>
         </section>
@@ -47,28 +52,11 @@
 
     <footer class="footer">
         <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
+        <!-- สนูปปี้แอบโผล่ตรง Footer -->
+        <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer">
     </footer>
 
-    <!-- เอฟเฟกต์เมาส์และ Scroll -->
     <div class="cursor-glow"></div>
-    <script>
-        // แสงตามเมาส์
-        const glow = document.querySelector('.cursor-glow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-
-        // เอฟเฟกต์โผล่เมื่อ Scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show-on-scroll');
-                }
-            });
-        });
-        const hiddenElements = document.querySelectorAll('.hidden-on-scroll');
-        hiddenElements.forEach((el) => observer.observe(el));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
