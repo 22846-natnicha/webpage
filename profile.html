@@ -3,280 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ประวัติส่วนตัวของนักเรียน">
-    <title>My Portfolio | ประวัติส่วนตัว</title>
-
+    <title>ประวัติส่วนตัว | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="bg-shape shape-1"></div><div class="bg-shape shape-2"></div>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="profile.html" class="active">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html" class="active">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
+    <main class="container">
+        <div class="section-header hidden-on-scroll">
+            <h2 class="animated-text">ประวัติส่วนตัว (Profile)</h2>
+            <p>เรื่องราวและตัวตนของฉัน</p>
+        </div>
+        
+        <section class="profile-section grid-2-col">
+            <div class="profile-card card hidden-on-scroll">
+                <img src="https://placehold.co/300x300/f472b6/ffffff?text=Profile" alt="รูปโปรไฟล์" class="profile-avatar float-anim">
+                <h3>[กรอกชื่อเล่น]</h3>
+                <p class="tagline">นักเรียนชั้น ม.3</p>
             </div>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- Page Hero -->
-        <section class="page-hero">
-
-            <div class="container">
-
-                <span class="section-label">
-                    PROFILE
-                </span>
-
-                <h1>ประวัติส่วนตัว</h1>
-
-                <p>
-                    ทำความรู้จักฉันให้มากขึ้น
-                    ผ่านเรื่องราวและข้อมูลส่วนตัว
-                </p>
-
+            
+            <div class="info-container">
+                <div class="card info-card hidden-on-scroll" style="transition-delay: 100ms;">
+                    <h3>📝 ข้อมูลส่วนตัว</h3>
+                    <ul class="info-list">
+                        <li><strong>ชื่อ-นามสกุล:</strong> [กรอกชื่อ-นามสกุล]</li>
+                        <li><strong>อายุ:</strong> [กรอกอายุ] ปี</li>
+                        <li><strong>วันเกิด:</strong> [กรอกวันเกิด]</li>
+                        <li><strong>จังหวัด:</strong> [กรอกจังหวัด]</li>
+                    </ul>
+                </div>
+                
+                <div class="card info-card mt-4 hidden-on-scroll" style="transition-delay: 200ms;">
+                    <h3>💡 เกี่ยวกับฉัน</h3>
+                    <p>ฉันเป็นคนร่าเริงและชอบเรียนรู้สิ่งใหม่ๆ ในเวลาว่างฉันมักจะ [กรอกสิ่งที่ชอบทำ] เป้าหมายของฉันคือการพัฒนาตัวเองในด้าน [กรอกความสนใจ] เพื่อนำไปต่อยอดในอนาคต</p>
+                </div>
             </div>
-
         </section>
-
-
-        <!-- Profile Main -->
-        <section class="section">
-
-            <div class="container profile-layout">
-
-                <!-- Image -->
-                <div class="profile-large">
-
-                    <div class="profile-large-bg"></div>
-
-                    <img
-                        src="images/images (1).jpg"
-                        alt="รูปภาพส่วนตัวของฉัน"
-                    >
-
-                    <div class="profile-badge">
-                        <span>★</span>
-                        <div>
-                            <strong>Student</strong>
-                            <small>Grade 9 / ม.3</small>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <!-- Information -->
-                <div class="profile-information">
-
-                    <span class="section-label">
-                        HELLO THERE
-                    </span>
-
-                    <h2>
-                        สวัสดีครับ/ค่ะ
-                        <span>[ใบเตย]</span>
-                    </h2>
-
-                    <p class="large-text">
-                        ฉันเป็นนักเรียนชั้นมัธยมศึกษาปีที่ 3
-                        ที่มีความสนใจในการเรียนรู้สิ่งใหม่ ๆ
-                        และชอบใช้เวลาว่างในการทำกิจกรรมที่ช่วยพัฒนาตัวเอง
-                    </p>
-
-
-                    <div class="information-grid">
-
-                        <div class="info-box">
-                            <span>ชื่อ-นามสกุล</span>
-                            <strong>[นางสาว ณัฐนิชา เทพวงศ์]</strong>
-                        </div>
-
-                        <div class="info-box">
-                            <span>ชื่อเล่น</span>
-                            <strong>[ใบเตย]</strong>
-                        </div>
-
-                        <div class="info-box">
-                            <span>อายุ</span>
-                            <strong>[15] ปี</strong>
-                        </div>
-
-                        <div class="info-box">
-                            <span>วันเกิด</span>
-                            <strong>[25 พฤษภาคม 2554]</strong>
-                        </div>
-
-                        <div class="info-box">
-                            <span>โรงเรียน</span>
-                            <strong>[โรงเรียนจอมทอง]</strong>
-                        </div>
-
-                        <div class="info-box">
-                            <span>จังหวัด</span>
-                            <strong>[เชียงใหม่]</strong>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- About Me -->
-        <section class="section soft-section">
-
-            <div class="container about-grid">
-
-                <div>
-
-                    <span class="section-label">
-                        ABOUT ME
-                    </span>
-
-                    <h2>เกี่ยวกับฉัน</h2>
-
-                </div>
-
-                <div class="about-content">
-
-                    <p>
-                        ฉันเป็นคนที่สนใจการเรียนรู้และการพัฒนาตัวเอง
-                        โดยเฉพาะเรื่องที่เกี่ยวข้องกับเทคโนโลยี
-                        การออกแบบ และสิ่งต่าง ๆ ที่สามารถนำมาสร้างสรรค์เป็นผลงานได้
-                    </p>
-
-                    <p>
-                        ในอนาคตฉันอยากพัฒนาความสามารถของตัวเอง
-                        ให้สามารถสร้างผลงานที่มีประโยชน์
-                        และนำความรู้จากการเรียนไปประยุกต์ใช้ในชีวิตจริง
-                    </p>
-
-
-                    <div class="quote-box">
-                        <span class="quote-mark">“</span>
-
-                        <p>
-                            การพัฒนาตัวเองทีละเล็กทีละน้อย
-                            จะทำให้เราเก่งขึ้นในทุก ๆ วัน
-                        </p>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- Personal Highlight -->
-        <section class="section">
-
-            <div class="container">
-
-                <div class="section-heading">
-                    <span class="section-label">MY HIGHLIGHTS</span>
-                    <h2>สิ่งที่บอกความเป็นตัวฉัน</h2>
-                </div>
-
-
-                <div class="highlight-grid">
-
-                    <article class="highlight-card">
-                        <span class="highlight-number">01</span>
-                        <span class="highlight-icon">🧐</span>
-                        <h3>เล่นโรบอค</h3>
-                        <p>
-                            เล่นโรบอคเพื่อเรียนรู้การสื่อสารภาษาใหม่ๆกับชาวต่างชาติ
-                        </p>
-                    </article>
-
-
-                    <article class="highlight-card highlight-card-blue">
-                        <span class="highlight-number">02</span>
-                        <span class="highlight-icon">🌟</span>
-                        <h3>สนใจดาราศาสตร์</h3>
-                        <p>
-                            สนใจดาราศาสตร์ เรื่องดาวต่าง ๆ
-                        </p>
-                    </article>
-
-
-                    <article class="highlight-card">
-                        <span class="highlight-number">03</span>
-                        <span class="highlight-icon">🎨</span>
-                        <h3>ชอบสร้างสรรค์</h3>
-                        <p>
-                            สนุกกับการออกแบบและสร้างผลงานในรูปแบบของตัวเอง
-                        </p>
-                    </article>
-
-                </div>
-
-            </div>
-
-        </section>
-
     </main>
 
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p>
-                    เว็บไซต์ Portfolio สำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-info">
-                <strong>[นางสาว ณัฐนิชา เทพวงศ์]</strong>
-                <span>นักเรียนชั้น ม.3/[2]</span>
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติ</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </div>
-
-        <div class="container copyright">
-            <p>
-                © 2026 [นางสาว ณัฐนิชา เทพวงศ์] | Student Portfolio Project
-            </p>
-        </div>
-
+    <footer class="footer">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <div class="cursor-glow"></div>
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
