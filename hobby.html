@@ -3,325 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="งานอดิเรกและความสนใจของนักเรียน">
-    <title>My Portfolio | งานอดิเรก</title>
-
+    <title>งานอดิเรก | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="bg-shape shape-1"></div><div class="bg-shape shape-3"></div>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html" class="active">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
+    <main class="container">
+        <div class="section-header hidden-on-scroll">
+            <h2 class="animated-text">งานอดิเรก (Hobbies)</h2>
+            <p>สิ่งที่สร้างแรงบันดาลใจให้ฉันในทุกๆ วัน</p>
+        </div>
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html" class="active">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
+        <div class="hobby-grid">
+            <div class="card hobby-card hidden-on-scroll" style="transition-delay: 100ms;">
+                <div class="hobby-icon float-anim">🎮</div>
+                <h3>เกม</h3>
+                <p>ชอบเล่นเกมแนว [กรอกแนวเกม] เพื่อฝึกไหวพริบและการวางแผน</p>
+            </div>
+            
+            <div class="card hobby-card hidden-on-scroll" style="transition-delay: 200ms;">
+                <div class="hobby-icon float-anim">🎵</div>
+                <h3>ฟังเพลง</h3>
+                <p>แนวเพลงโปรดคือ [กรอกแนวเพลง] ช่วยให้มีสมาธิเวลาทำการบ้าน</p>
             </div>
 
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- Hero -->
-        <section class="page-hero hobby-hero">
-
-            <div class="container">
-
-                <span class="section-label">
-                    HOBBIES & INTERESTS
-                </span>
-
-                <h1>สิ่งที่ฉันชอบ</h1>
-
-                <p>
-                    งานอดิเรกคือพื้นที่ที่ทำให้ฉันได้พักผ่อน
-                    และเรียนรู้สิ่งใหม่ในแบบของตัวเอง
-                </p>
-
+            <div class="card hobby-card hidden-on-scroll" style="transition-delay: 300ms;">
+                <div class="hobby-icon float-anim">⚽</div>
+                <h3>กีฬา</h3>
+                <p>เล่น [กรอกชื่อกีฬา] เพื่อสุขภาพที่แข็งแรง</p>
             </div>
 
-        </section>
-
-
-        <!-- Hobby Cards -->
-        <section class="section">
-
-            <div class="container">
-
-                <div class="section-heading centered">
-
-                    <span class="section-label">
-                        MY FAVORITES
-                    </span>
-
-                    <h2>งานอดิเรกและความสนใจ</h2>
-
-                    <p>
-                        กิจกรรมที่ฉันชอบทำในเวลาว่าง
-                    </p>
-
-                </div>
-
-
-                <div class="hobby-grid">
-
-                    <!-- Hobby 1 -->
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon blue">
-                            🎮
-                        </div>
-
-                        <span class="hobby-number">
-                            01
-                        </span>
-
-                        <h3>เกม</h3>
-
-                        <p>
-                            ชอบเล่นเกมเพื่อความสนุก
-                            และบางครั้งก็ได้ฝึกการวางแผน
-                            การแก้ปัญหา และการทำงานเป็นทีม
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Entertainment
-                        </span>
-
-                    </article>
-
-
-                    <!-- Hobby 2 -->
-                    <article class="hobby-card featured-hobby">
-
-                        <div class="hobby-icon light-blue">
-                            ⚽
-                        </div>
-
-                        <span class="hobby-number">
-                            02
-                        </span>
-
-                        <h3>กีฬา</h3>
-
-                        <p>
-                            ชอบเล่นกีฬาเพื่อออกกำลังกาย
-                            และใช้เวลาร่วมกับเพื่อน ๆ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Sport & Health
-                        </span>
-
-                    </article>
-
-
-                    <!-- Hobby 3 -->
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon blue">
-                            🎵
-                        </div>
-
-                        <span class="hobby-number">
-                            03
-                        </span>
-
-                        <h3>เพลง</h3>
-
-                        <p>
-                            ฟังเพลงในเวลาว่าง
-                            เพื่อผ่อนคลายและสร้างแรงบันดาลใจ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Music
-                        </span>
-
-                    </article>
-
-
-                    <!-- Hobby 4 -->
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon light-blue">
-                            🎬
-                        </div>
-
-                        <span class="hobby-number">
-                            04
-                        </span>
-
-                        <h3>ภาพยนตร์</h3>
-
-                        <p>
-                            ชอบดูภาพยนตร์และซีรีส์
-                            เพื่อความบันเทิงและเรียนรู้เรื่องราวใหม่ ๆ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Movies
-                        </span>
-
-                    </article>
-
-
-                    <!-- Hobby 5 -->
-                    <article class="hobby-card featured-hobby">
-
-                        <div class="hobby-icon blue">
-                            💻
-                        </div>
-
-                        <span class="hobby-number">
-                            05
-                        </span>
-
-                        <h3>เทคโนโลยี</h3>
-
-                        <p>
-                            สนใจคอมพิวเตอร์ เว็บไซต์
-                            และเทคโนโลยีใหม่ ๆ ที่เกิดขึ้น
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Technology
-                        </span>
-
-                    </article>
-
-
-                    <!-- Hobby 6 -->
-                    <article class="hobby-card">
-
-                        <div class="hobby-icon light-blue">
-                            📷
-                        </div>
-
-                        <span class="hobby-number">
-                            06
-                        </span>
-
-                        <h3>การถ่ายภาพ</h3>
-
-                        <p>
-                            สนใจการถ่ายภาพและการเก็บช่วงเวลาที่น่าสนใจ
-                        </p>
-
-                        <div class="hobby-line"></div>
-
-                        <span class="hobby-tag">
-                            Creative
-                        </span>
-
-                    </article>
-
-                </div>
-
+            <div class="card hobby-card hidden-on-scroll" style="transition-delay: 400ms;">
+                <div class="hobby-icon float-anim">🎨</div>
+                <h3>ศิลปะ</h3>
+                <p>ชอบ [วาดรูป/ถ่ายภาพ] เพื่อบันทึกความทรงจำและจินตนาการ</p>
             </div>
-
-        </section>
-
-
-        <!-- Interest Banner -->
-        <section class="interest-banner">
-
-            <div class="container interest-grid">
-
-                <div>
-                    <span class="section-label light-label">
-                        MY INTEREST
-                    </span>
-
-                    <h2>
-                        [กรอกความสนใจ]
-                    </h2>
-
-                    <p>
-                        สิ่งที่ฉันกำลังสนใจและอยากเรียนรู้เพิ่มเติม
-                        ในช่วงเวลานี้
-                    </p>
-                </div>
-
-                <div class="interest-orbit">
-
-                    <span class="orbit-item orbit-one">💻</span>
-                    <span class="orbit-item orbit-two">💡</span>
-                    <span class="orbit-item orbit-three">🎨</span>
-
-                    <div class="orbit-center">
-                        ✦
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
+        </div>
     </main>
 
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p>
-                    เว็บไซต์ Portfolio สำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-info">
-                <strong>[กรอกชื่อ]</strong>
-                <span>นักเรียนชั้น ม.3/[กรอกห้อง]</span>
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติ</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </div>
-
-        <div class="container copyright">
-            <p>
-                © 2026 [กรอกชื่อ] | Student Portfolio Project
-            </p>
-        </div>
-
+    <footer class="footer">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <div class="cursor-glow"></div>
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
