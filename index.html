@@ -3,289 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="เว็บไซต์ Portfolio ของนักเรียนชั้นมัธยมศึกษาปีที่ 3">
-    <title>My Portfolio | หน้าแรก</title>
-
+    <title>หน้าแรก | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <!-- Background Shapes ลอยไปมา -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
 
-    <!-- =========================
-         Navigation
-    ========================== -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">หน้าแรก</a></li>
+                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
-
-            <div class="nav-links">
-                <a href="index.html" class="active">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
+    <main class="container">
+        <section class="hero-section grid-2-col hidden-on-scroll">
+            <div class="hero-content">
+                <span class="badge float-anim">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
+                <!-- Animated Text สำหรับชื่อ -->
+                <h1>ฉันชื่อ <br><span class="animated-text">[กรอกชื่อ-นามสกุล]</span></h1>
+                <p class="subtitle">นักเรียนชั้นมัธยมศึกษาปีที่ 3 ที่มีความสนใจใน [กรอกความสนใจ] และรักในการสร้างสรรค์สิ่งใหม่ๆ</p>
+                <div class="button-group">
+                    <a href="profile.html" class="btn btn-primary shiny-btn">รู้จักฉันมากขึ้น</a>
+                    <a href="hobby.html" class="btn btn-outline">ดูงานอดิเรกของฉัน</a>
+                </div>
             </div>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- =========================
-             Hero Section
-        ========================== -->
-        <section class="hero-section">
-            <div class="hero-shape shape-one"></div>
-            <div class="hero-shape shape-two"></div>
-
-            <div class="container hero-grid">
-
-                <div class="hero-content fade-up">
-
-                    <span class="eyebrow">
-                        ✦ STUDENT PORTFOLIO
-                    </span>
-
-                    <h1>
-                        สวัสดีครับ/ค่ะ
-                        <span>ฉันคือ [นาวสาว ณัฐนิชา เทพวงศ์]</span>
-                    </h1>
-
-                    <p class="hero-lead">
-                        นักเรียนชั้นมัธยมศึกษาปีที่ 3
-                        ที่ชื่นชอบการเรียนรู้สิ่งใหม่ ๆ
-                        สนใจดาราศาสตร์ และกำลังพัฒนาตัวเอง
-                        ผ่านการเรียนและกิจกรรมต่าง ๆ
-                    </p>
-
-                    <div class="hero-buttons">
-                        <a href="profile.html" class="btn btn-primary">
-                            รู้จักฉันมากขึ้น
-                            <span>→</span>
-                        </a>
-
-                        <a href="hobby.html" class="btn btn-outline">
-                            ดูงานอดิเรกของฉัน
-                        </a>
-                    </div>
-
-                    <div class="hero-stats">
-
-                        <div class="stat-item">
-                            <strong>ม.3</strong>
-                            <span>ระดับชั้น</span>
-                        </div>
-
-                        <div class="stat-divider"></div>
-
-                        <div class="stat-item">
-                            <strong>[จอมทอง]</strong>
-                            <span>สถานศึกษา</span>
-                        </div>
-
-                        <div class="stat-divider"></div>
-
-                        <div class="stat-item">
-                            <strong>[เชียงใหม่]</strong>
-                            <span>จังหวัด</span>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Profile Visual -->
-                <div class="hero-visual">
-
-                    <div class="visual-glow"></div>
-
-                    <div class="profile-frame">
-
-                        <div class="profile-ring"></div>
-
-                        <img
-                            src="https://placehold.co/560x700/e3f2fd/0d47a1?text=Profile+Photo"
-                            alt="รูปโปรไฟล์ของฉัน"
-                        >
-
-                        <div class="floating-card floating-card-top">
-                            <span class="floating-icon">✦</span>
-                            <div>
-                                <strong>Creative</strong>
-                                <small>นักเรียนสายสร้างสรรค์</small>
-                            </div>
-                        </div>
-
-                        <div class="floating-card floating-card-bottom">
-                            <span class="floating-icon">✓</span>
-                            <div>
-                                <strong>Always Learn</strong>
-                                <small>เรียนรู้สิ่งใหม่เสมอ</small>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div class="hero-image-wrapper hidden-on-scroll">
+                <div class="image-circle-bg"></div>
+                <!-- เปลี่ยนลิงก์รูปเป็นรูปของคุณได้เลย -->
+                <img src="https://placehold.co/400x400/a78bfa/ffffff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
             </div>
         </section>
-
-
-        <!-- =========================
-             Introduction
-        ========================== -->
-        <section class="section intro-section">
-
-            <div class="container">
-
-                <div class="section-heading centered">
-                    <span class="section-label">ABOUT ME</span>
-                    <h2>มาทำความรู้จักกัน</h2>
-                    <p>
-                        เว็บไซต์นี้เป็น Portfolio ที่รวบรวมข้อมูล
-                        การศึกษา ความสนใจ งานอดิเรก และเรื่องราวของฉัน
-                    </p>
-                </div>
-
-
-                <div class="intro-grid">
-
-                    <div class="intro-main card">
-
-                        <div class="card-icon blue-icon">01</div>
-
-                        <h3>นักเรียนที่ชอบเรียนรู้</h3>
-
-                        <p>
-                            ฉันเชื่อว่าการเรียนรู้ไม่ได้เกิดขึ้นเฉพาะในห้องเรียน
-                            แต่ยังเกิดจากการทดลอง การทำกิจกรรม
-                            การพบเจอผู้คน และการลงมือทำสิ่งใหม่ ๆ
-                        </p>
-
-                        <a href="profile.html" class="text-link">
-                            อ่านประวัติของฉัน →
-                        </a>
-
-                    </div>
-
-
-                    <div class="intro-side">
-
-                        <div class="mini-card">
-                            <span class="mini-icon">💡</span>
-                            <div>
-                                <h4>ความสนใจ</h4>
-                                <p>[สนใจในวิทยาศาสตร์]</p>
-                            </div>
-                        </div>
-
-                        <div class="mini-card">
-                            <span class="mini-icon">📚</span>
-                            <div>
-                                <h4>วิชาที่ชอบ</h4>
-                                <p>[วิชาวิทยาสาศตร์]</p>
-                            </div>
-                        </div>
-
-                        <div class="mini-card">
-                            <span class="mini-icon">🎯</span>
-                            <div>
-                                <h4>เป้าหมาย</h4>
-                                <p>พัฒนาตัวเองให้ดีกว่าเดิม</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CTA
-        ========================== -->
-        <section class="cta-section">
-
-            <div class="container">
-
-                <div class="cta-box">
-
-                    <div>
-                        <span class="section-label light-label">
-                            LET'S CONNECT
-                        </span>
-
-                        <h2>อยากรู้จักฉันมากขึ้นไหม?</h2>
-
-                        <p>
-                            สามารถดูข้อมูลการศึกษา งานอดิเรก
-                            และช่องทางติดต่อของฉันได้ที่นี่
-                        </p>
-                    </div>
-
-                    <a href="contact.html" class="btn btn-white">
-                        ติดต่อฉัน →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
     </main>
 
-
-    <!-- =========================
-         Footer
-    ========================== -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p>
-                    เว็บไซต์ Portfolio สำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-info">
-                <strong>[นางสาว ณัฐนิชา เทพวงศ์]</strong>
-                <span>นักเรียนชั้น ม.3/[2]</span>
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติ</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </div>
-
-        <div class="container copyright">
-            <p>
-                © 2026 [กรอกชื่อ] | Student Portfolio Project
-            </p>
-        </div>
-
+    <footer class="footer">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <!-- เอฟเฟกต์เมาส์และ Scroll -->
+    <div class="cursor-glow"></div>
+    <script>
+        // แสงตามเมาส์
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // เอฟเฟกต์โผล่เมื่อ Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-on-scroll');
+                }
+            });
+        });
+        const hiddenElements = document.querySelectorAll('.hidden-on-scroll');
+        hiddenElements.forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
