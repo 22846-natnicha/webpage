@@ -3,240 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ช่องทางการติดต่อของนักเรียน">
-    <title>My Portfolio | ติดต่อ</title>
-
+    <title>ติดต่อฉัน | My Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <div class="bg-shape shape-2"></div>
 
-    <!-- Navigation -->
-    <header class="site-header">
-        <nav class="navbar container">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">MyPortfolio.</a>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html" class="active">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <a href="index.html" class="logo">
-                <span class="logo-mark">P</span>
-                <span>My<span>Portfolio</span></span>
-            </a>
+    <main class="container">
+        <div class="section-header hidden-on-scroll">
+            <h2 class="animated-text">ติดต่อฉัน (Contact)</h2>
+            <p>ยินดีที่ได้รู้จัก! สามารถทักทายกันได้ตามช่องทางด้านล่าง</p>
+        </div>
 
-            <div class="nav-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติส่วนตัว</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html" class="active">ติดต่อ</a>
-            </div>
-
-        </nav>
-    </header>
-
-
-    <main>
-
-        <!-- Hero -->
-        <section class="page-hero contact-hero">
-
-            <div class="container">
-
-                <span class="section-label">
-                    CONTACT
-                </span>
-
-                <h1>ติดต่อฉัน</h1>
-
-                <p>
-                    หากต้องการพูดคุยหรือรู้จักฉันมากขึ้น
-                    สามารถติดต่อผ่านช่องทางด้านล่างได้
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- Contact Main -->
-        <section class="section">
-
-            <div class="container contact-layout">
-
-                <!-- Contact Intro -->
-                <div class="contact-intro">
-
-                    <span class="section-label">
-                        LET'S CONNECT
-                    </span>
-
-                    <h2>
-                        สามารถติดต่อ
-                        <span>ฉันได้ที่</span>
-                    </h2>
-
-                    <p>
-                        ยินดีต้อนรับทุกคนที่ต้องการพูดคุย
-                        แลกเปลี่ยนความคิดเห็น หรือสอบถามข้อมูลเกี่ยวกับ Portfolio
-                    </p>
-
-
-                    <div class="contact-note">
-
-                        <span class="contact-note-icon">✦</span>
-
-                        <div>
-                            <strong>เปิดรับการพูดคุย</strong>
-                            <p>
-                                สามารถติดต่อผ่านช่องทางที่ระบุไว้
-                            </p>
-                        </div>
-
-                    </div>
-
+        <section class="contact-section">
+            <div class="contact-grid">
+                <div class="card contact-card hidden-on-scroll" style="transition-delay: 100ms;">
+                    <div class="contact-icon pulse-anim">📧</div>
+                    <h3>Email</h3>
+                    <p>[กรอกอีเมล@gmail.com]</p>
+                    <a href="mailto:yourmail@example.com" class="btn btn-outline small-btn">ส่งอีเมลเลย</a>
                 </div>
 
-
-                <!-- Contact Cards -->
-                <div class="contact-cards">
-
-                    <a
-                        href="mailto:example@email.com"
-                        class="contact-card"
-                    >
-
-                        <div class="contact-card-icon">
-                            ✉
-                        </div>
-
-                        <div>
-                            <span>Email</span>
-                            <strong>example@email.com</strong>
-                            <small>ส่งอีเมลถึงฉัน →</small>
-                        </div>
-
-                    </a>
-
-
-                    <a
-                        href="https://example.com"
-                        class="contact-card"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-
-                        <div class="contact-card-icon">
-                            🌐
-                        </div>
-
-                        <div>
-                            <span>Website</span>
-                            <strong>example.com</strong>
-                            <small>เยี่ยมชมเว็บไซต์ →</small>
-                        </div>
-
-                    </a>
-
-
-                    <div class="contact-card">
-
-                        <div class="contact-card-icon">
-                            📱
-                        </div>
-
-                        <div>
-                            <span>Social / Contact</span>
-                            <strong>[กรอกช่องทางติดต่อ]</strong>
-                            <small>[เช่น Instagram / Facebook]</small>
-                        </div>
-
-                    </div>
-
+                <div class="card contact-card hidden-on-scroll" style="transition-delay: 200ms;">
+                    <div class="contact-icon float-anim">📱</div>
+                    <h3>Facebook</h3>
+                    <p>[กรอกชื่อ Facebook]</p>
+                    <a href="#" class="btn btn-outline small-btn">เยี่ยมชมโปรไฟล์</a>
                 </div>
 
-            </div>
-
-        </section>
-
-
-        <!-- Contact CTA -->
-        <section class="section contact-cta-section">
-
-            <div class="container">
-
-                <div class="contact-cta">
-
-                    <div class="cta-decoration">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <div class="contact-cta-content">
-
-                        <span class="section-label light-label">
-                            THANK YOU
-                        </span>
-
-                        <h2>
-                            ขอบคุณที่เข้ามาเยี่ยมชม Portfolio
-                        </h2>
-
-                        <p>
-                            หวังว่าคุณจะได้รู้จักฉันมากขึ้น
-                            และสนุกกับการเยี่ยมชมเว็บไซต์นี้
-                        </p>
-
-                        <a href="index.html" class="btn btn-white">
-                            กลับไปหน้าแรก →
-                        </a>
-
-                    </div>
-
+                <div class="card contact-card hidden-on-scroll" style="transition-delay: 300ms;">
+                    <div class="contact-icon">🌐</div>
+                    <h3>Website</h3>
+                    <p>พอร์ตโฟลิโอโครงงาน ม.3</p>
+                    <a href="index.html" class="btn btn-primary shiny-btn small-btn">กลับหน้าแรก</a>
                 </div>
-
             </div>
 
+            <div class="cta-section card mt-4 text-center hidden-on-scroll" style="transition-delay: 400ms;">
+                <h3 class="animated-text">ขอบคุณที่เข้ามารับชมครับ/ค่ะ! ✨</h3>
+                <p>หวังว่าเว็บไซต์นี้จะทำให้รู้จักตัวตนของฉันมากขึ้น</p>
+            </div>
         </section>
-
     </main>
 
-
-    <!-- Footer -->
-    <footer class="site-footer">
-
-        <div class="container footer-grid">
-
-            <div class="footer-brand">
-                <a href="index.html" class="logo footer-logo">
-                    <span class="logo-mark">P</span>
-                    <span>My<span>Portfolio</span></span>
-                </a>
-
-                <p>
-                    เว็บไซต์ Portfolio สำหรับโครงงานวิชาคอมพิวเตอร์
-                </p>
-            </div>
-
-            <div class="footer-info">
-                <strong>[กรอกชื่อ]</strong>
-                <span>นักเรียนชั้น ม.3/[กรอกห้อง]</span>
-            </div>
-
-            <div class="footer-links">
-                <a href="index.html">หน้าแรก</a>
-                <a href="profile.html">ประวัติ</a>
-                <a href="education.html">การศึกษา</a>
-                <a href="hobby.html">งานอดิเรก</a>
-                <a href="contact.html">ติดต่อ</a>
-            </div>
-
-        </div>
-
-        <div class="container copyright">
-            <p>
-                © 2026 [กรอกชื่อ] | Student Portfolio Project
-            </p>
-        </div>
-
+    <footer class="footer">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <div class="cursor-glow"></div>
+    <script>
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
