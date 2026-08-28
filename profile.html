@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="bg-shape shape-1"></div><div class="bg-shape shape-2"></div>
+    <div class="floating-deco star-1">✨</div><div class="floating-deco cloud-2">☁️</div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -35,7 +36,10 @@
                 <p class="tagline">นักเรียนชั้น ม.3</p>
             </div>
             
-            <div class="info-container">
+            <div class="info-container relative">
+                <!-- สนูปปี้แอบดูหลังการ์ดข้อมูล -->
+                <img src="https://assets.stickpng.com/thumbs/585966a3a4fa116215a9243a.png" alt="Snoopy" class="snoopy-deco snoopy-card float-anim">
+                
                 <div class="card info-card hidden-on-scroll" style="transition-delay: 100ms;">
                     <h3>📝 ข้อมูลส่วนตัว</h3>
                     <ul class="info-list">
@@ -55,20 +59,10 @@
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3</p>
     </footer>
 
     <div class="cursor-glow"></div>
-    <script>
-        const glow = document.querySelector('.cursor-glow');
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
-        });
-        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
