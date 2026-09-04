@@ -315,10 +315,13 @@
 </head>
 <body>
 
+    <!-- พื้นหลังดวงดาว -->
     <canvas id="spaceCanvas"></canvas>
     
+    <!-- เมาส์เรืองแสง -->
     <div class="cursor-glow"></div>
 
+    <!-- ของตกแต่งลอยตัว (ธีมอวกาศ) -->
     <div class="floating-deco planet-1">🪐</div>
     <div class="floating-deco ufo-1">🛸</div>
     <div class="floating-deco star-1">✨</div>
@@ -339,7 +342,9 @@
 
     <main class="container">
         <section class="hero-section grid-2-col">
+            <!-- คอลัมน์ซ้าย: ข้อความ -->
             <div class="hero-content hidden-on-scroll">
+                <!-- สนูปปี้นั่งอยู่บนกล่องข้อความ -->
                 <img src="https://assets.stickpng.com/images/585966eea4fa116215a92440.png" alt="Snoopy Sleeping" class="snoopy-deco snoopy-hero">
                 
                 <span class="badge">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
@@ -351,6 +356,7 @@
                 </div>
             </div>
             
+            <!-- คอลัมน์ขวา: รูปโปรไฟล์ -->
             <div class="hero-image-wrapper hidden-on-scroll" style="transition-delay: 200ms;">
                 <img src="https://placehold.co/400x400/0B0B2A/0ff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
             </div>
@@ -358,10 +364,12 @@
     </main>
 
     <footer class="footer">
+        <!-- สนูปปี้แอบโผล่ตรง Footer -->
         <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer">
         <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
+    <!-- JavaScript สำหรับระบบดาราศาสตร์แบบใหม่ -->
     <script>
         /* === เมาส์เรืองแสง (Cursor Glow) === */
         const glow = document.querySelector('.cursor-glow');
@@ -448,4 +456,97 @@
                 this.outerRadius = Math.random() * 6 + 4; // ขนาดแฉกด้านนอก
                 this.innerRadius = this.outerRadius / 3;  // ขนาดแฉกด้านใน
                 
-                //
+                // ชุดสีธีมอวกาศ (ฟ้าพาสเทล, ม่วง, ชมพู, ขาว)
+                const colors = ['#00ffff', '#b3e0ff', '#ff00ff', '#ffffff', '#e0b0ff'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = 1;
+                this.decay = Math.random() * 0.015 + 0.01; // ความเร็วในการจางหาย
+                this.rotation = Math.random() * Math.PI; // การหมุนเริ่มต้น
+                this.spin = (Math.random() - 0.5) * 0.2; // ความเร็วการหมุน
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                // เรียกใช้ฟังก์ชันวาดดาว 4 แฉก
+                drawStarShape(ctx, 0, 0, 4, this.outerRadius, this.innerRadius, this.color, this.alpha);
+                ctx.restore();
+            }
+            
+            update() {
+                // อัปเดตตำแหน่งและการหมุน
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                // แรงหน่วง (Friction) ให้ดาวช้าลงเรื่อยๆ
+                this.velocity.x *= 0.95;
+                this.velocity.y *= 0.95;
+                
+                this.rotation += this.spin;
+                this.alpha -= this.decay;
+            }
+        }
+
+        // 3. ปล่อยดาวฤกษ์เมื่อคลิกเมาส์
+        window.addEventListener('click', (e) => {
+            // ป้องกันไม่ให้เกิดดาวกระจายถัากดโดนปุ่มหรือลิงก์
+            if(e.target.closest('a') || e.target.closest('button')) return; 
+            
+            // สร้างดาวฤกษ์ 20 ดวงต่อการคลิก 1 ครั้ง
+            for (let i = 0; i < 20; i++) {
+                particles.push(new StarParticle(e.clientX, e.clientY));
+            }
+        });
+
+        // 4. แอนิเมชันลูป (Animation Loop)
+        function animateSpace() {
+            requestAnimationFrame(animateSpace);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+            // วาดและอัปเดตดาวพื้นหลัง
+            stars.forEach(star => {
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // กะพริบ (Twinkle)
+                star.alpha += star.fadeSpeed;
+                if(star.alpha <= 0.1 || star.alpha >= 1) {
+                    star.fadeSpeed = -star.fadeSpeed;
+                }
+                
+                // ลอยขึ้นช้าๆ (Parallax drift)
+                star.y -= star.driftSpeed;
+                if(star.y < 0) {
+                    star.y = canvas.height;
+                    star.x = Math.random() * canvas.width;
+                }
+            });
+
+            // วาดและอัปเดตดาวฤกษ์ (เอฟเฟกต์คลิก)
+            particles.forEach((particle, index) => {
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1);
+                } else { 
+                    particle.update(); 
+                    particle.draw(); 
+                }
+            });
+        }
+        
+        // เริ่มต้นแอนิเมชัน
+        animateSpace();
+
+        /* === ระบบ Scroll Animation === */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-on-scroll'); 
+                }
+            });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
