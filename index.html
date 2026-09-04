@@ -6,14 +6,18 @@
     <title>หน้าแรก | My Portfolio</title>
     <style>
         /* =========================================
-           1. ตั้งค่าพื้นฐานและพื้นหลังอวกาศ
+           1. ตั้งค่าพื้นฐานและพื้นหลังอวกาศมิติใหม่
            ========================================= */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             min-height: 100vh;
-            background: radial-gradient(circle at center, #0B0B2A 0%, #000000 100%);
+            /* เพิ่มแสงเนบิวลา (Nebula) ในอวกาศ */
+            background-color: #030312;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(0, 255, 255, 0.1) 0%, transparent 40%);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: white;
             overflow-x: hidden;
@@ -28,26 +32,28 @@
             z-index: -1;
         }
 
-        /* เมาส์เรืองแสงตามการเคลื่อนที่ (Cursor Glow) */
+        /* เมาส์เรืองแสงตามการเคลื่อนที่ */
         .cursor-glow {
             position: fixed;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, rgba(138, 43, 226, 0.05) 40%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
             z-index: 0;
             transition: 0.1s ease-out;
+            mix-blend-mode: screen;
         }
 
         /* =========================================
            2. Navbar โปร่งแสง (Glassmorphism)
            ========================================= */
         .navbar {
-            background: rgba(11, 11, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            background: rgba(3, 3, 18, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.15);
             padding: 15px 50px;
             position: sticky;
             top: 0;
@@ -67,13 +73,14 @@
             text-decoration: none;
             font-size: 1.5rem;
             font-weight: bold;
-            text-shadow: 0 0 10px #0ff;
+            text-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            letter-spacing: 1px;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin: 0;
             padding: 0;
         }
@@ -82,11 +89,12 @@
             color: #b3e0ff;
             text-decoration: none;
             transition: 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover, .nav-links a.active {
             color: #0ff;
-            text-shadow: 0 0 10px #0ff;
+            text-shadow: 0 0 15px #0ff;
         }
 
         /* =========================================
@@ -115,46 +123,50 @@
             }
         }
 
-        /* กล่องข้อความแบบกระจก */
+        /* กล่องข้อความแบบกระจกที่สวยขึ้น */
         .hero-content {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 24px;
             padding: 40px;
             position: relative;
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 0 30px rgba(0, 255, 255, 0.1);
         }
 
         .badge {
             display: inline-block;
-            background: rgba(0, 255, 255, 0.1);
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), rgba(138, 43, 226, 0.2));
             color: #0ff;
-            padding: 8px 15px;
+            padding: 8px 18px;
             border-radius: 20px;
-            border: 1px solid #0ff;
+            border: 1px solid rgba(0, 255, 255, 0.5);
             font-size: 0.9rem;
             margin-bottom: 20px;
-            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+            letter-spacing: 0.5px;
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin: 0 0 15px 0;
             line-height: 1.3;
         }
 
         .animated-text {
-            color: #fff;
-            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #8a2be2;
-            font-size: 3rem;
+            background: linear-gradient(90deg, #00ffff, #ff00ff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            font-size: 3.2rem;
+            font-weight: 800;
         }
 
         .subtitle {
-            color: #e0e0e0;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
+            color: #d1d5db;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 35px;
         }
 
         /* ปุ่ม Buttons */
@@ -170,35 +182,37 @@
 
         .btn {
             display: inline-block;
-            padding: 12px 25px;
+            padding: 12px 28px;
             border-radius: 30px;
             text-decoration: none;
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 1rem;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .btn-primary {
-            background: #8a2be2;
+            background: linear-gradient(45deg, #8a2be2, #4a00e0);
             color: #fff;
-            border: 1px solid #8a2be2;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+            border: none;
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
         }
 
         .btn-primary:hover {
-            background: #9932cc;
-            box-shadow: 0 0 25px #8a2be2, 0 0 10px #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6), 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
         .btn-outline {
-            border: 1px solid #0ff;
+            border: 2px solid #0ff;
             color: #0ff;
+            background: rgba(0, 255, 255, 0.05);
         }
 
         .btn-outline:hover {
             background: #0ff;
             color: #000;
-            box-shadow: 0 0 15px #0ff;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 255, 0.4);
         }
 
         /* รูปโปรไฟล์เรืองแสง */
@@ -212,9 +226,9 @@
             height: 320px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(0, 255, 255, 0.5);
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(138, 43, 226, 0.5);
-            animation: float 4s ease-in-out infinite;
+            border: 4px solid rgba(0, 255, 255, 0.8);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.5), inset 0 0 30px rgba(138, 43, 226, 0.6);
+            animation: float 5s ease-in-out infinite;
         }
 
         /* =========================================
@@ -223,27 +237,28 @@
         .floating-deco {
             position: absolute;
             font-size: 2.5rem;
-            opacity: 0.8;
+            opacity: 0.9;
             pointer-events: none;
             z-index: 0;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
         }
 
-        .planet-1 { top: 15%; left: 5%; animation: float 5s ease-in-out infinite; }
-        .ufo-1 { top: 10%; right: 10%; font-size: 3rem; animation: float 4s ease-in-out infinite 1s; }
-        .star-1 { bottom: 20%; left: 10%; font-size: 2rem; animation: pulse-dot 2s infinite alternate; }
-        .comet-1 { top: 40%; right: 5%; font-size: 2.5rem; transform: rotate(-45deg); animation: float 3s ease-in-out infinite; }
+        .planet-1 { top: 15%; left: 5%; animation: float 6s ease-in-out infinite; }
+        .ufo-1 { top: 10%; right: 10%; font-size: 3.5rem; animation: float 5s ease-in-out infinite 1s; }
+        .star-1 { bottom: 20%; left: 10%; font-size: 2.5rem; animation: pulse-dot 2s infinite alternate; }
+        .comet-1 { top: 40%; right: 5%; font-size: 3rem; transform: rotate(-45deg); animation: float 4s ease-in-out infinite; }
 
         .snoopy-deco {
             position: absolute;
-            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.6)); /* ให้สนูปปี้เรืองแสง */
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.8));
             z-index: 10;
         }
 
         .snoopy-hero {
             top: -65px;
             left: 30px;
-            width: 100px;
+            width: 110px;
+            animation: float-tilt 4s ease-in-out infinite;
         }
 
         .snoopy-footer {
@@ -253,12 +268,24 @@
             display: block;
             margin-left: auto;
             margin-right: auto;
+            animation: float 4s ease-in-out infinite;
         }
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
             100% { transform: translateY(0px); }
+        }
+
+        @keyframes float-tilt {
+            0% { transform: translateY(0px) rotate(-5deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(-5deg); }
+        }
+
+        @keyframes pulse-dot {
+            0% { transform: scale(0.9); opacity: 0.7; }
+            100% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 30px #fff; }
         }
 
         /* =========================================
@@ -268,15 +295,16 @@
             text-align: center;
             padding: 40px 20px 20px;
             margin-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
             color: #888;
             position: relative;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
         }
 
         .hidden-on-scroll {
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .show-on-scroll {
@@ -287,13 +315,10 @@
 </head>
 <body>
 
-    <!-- พื้นหลังดวงดาว -->
     <canvas id="spaceCanvas"></canvas>
     
-    <!-- เมาส์เรืองแสง -->
     <div class="cursor-glow"></div>
 
-    <!-- ของตกแต่งลอยตัว (ธีมอวกาศ) -->
     <div class="floating-deco planet-1">🪐</div>
     <div class="floating-deco ufo-1">🛸</div>
     <div class="floating-deco star-1">✨</div>
@@ -314,9 +339,7 @@
 
     <main class="container">
         <section class="hero-section grid-2-col">
-            <!-- คอลัมน์ซ้าย: ข้อความ -->
             <div class="hero-content hidden-on-scroll">
-                <!-- สนูปปี้นั่งอยู่บนกล่องข้อความ -->
                 <img src="https://assets.stickpng.com/images/585966eea4fa116215a92440.png" alt="Snoopy Sleeping" class="snoopy-deco snoopy-hero">
                 
                 <span class="badge">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
@@ -328,7 +351,6 @@
                 </div>
             </div>
             
-            <!-- คอลัมน์ขวา: รูปโปรไฟล์ -->
             <div class="hero-image-wrapper hidden-on-scroll" style="transition-delay: 200ms;">
                 <img src="https://placehold.co/400x400/0B0B2A/0ff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
             </div>
@@ -336,21 +358,22 @@
     </main>
 
     <footer class="footer">
-        <!-- สนูปปี้แอบโผล่ตรง Footer -->
-        <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer float-anim">
+        <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer">
         <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
-    <!-- JavaScript สำหรับระบบดาราศาสตร์ และ Scroll Animation -->
     <script>
         /* === เมาส์เรืองแสง (Cursor Glow) === */
         const glow = document.querySelector('.cursor-glow');
         document.addEventListener('mousemove', (e) => { 
-            glow.style.left = e.clientX + 'px'; 
-            glow.style.top = e.clientY + 'px'; 
+            // ทำให้แสงตามเมาส์มีความสมูทขึ้น
+            requestAnimationFrame(() => {
+                glow.style.left = e.clientX + 'px'; 
+                glow.style.top = e.clientY + 'px'; 
+            });
         });
 
-        /* === ระบบดาราศาสตร์ (Space Effect) === */
+        /* === ระบบดาราศาสตร์ขั้นสูง (Advanced Space Canvas) === */
         const canvas = document.getElementById('spaceCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -364,82 +387,65 @@
         let particles = [];
         let stars = [];
 
-        // สร้างดาวพื้นหลัง
-        for(let i = 0; i < 200; i++) {
+        // 1. สร้างดาวพื้นหลังจำนวนมาก (400 ดวง)
+        for(let i = 0; i < 400; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 1.5,
-                alpha: Math.random()
+                radius: Math.random() * 1.5 + 0.2,
+                alpha: Math.random(),
+                fadeSpeed: (Math.random() * 0.02) + 0.005,
+                driftSpeed: (Math.random() * 0.5) + 0.1 // ให้ดาวค่อยๆ ลอย
             });
         }
 
-        class Particle {
+        // ฟังก์ชันวาดรูปดาว 4 แฉก (ดาวฤกษ์)
+        function drawStarShape(ctx, x, y, spikes, outerRadius, innerRadius, color, alpha) {
+            let rot = Math.PI / 2 * 3;
+            let x_pos = x;
+            let y_pos = y;
+            let step = Math.PI / spikes;
+
+            ctx.save();
+            ctx.globalAlpha = alpha;
+            ctx.beginPath();
+            ctx.translate(x, y);
+            ctx.moveTo(0, -outerRadius);
+            for (let i = 0; i < spikes; i++) {
+                x_pos = Math.cos(rot) * outerRadius;
+                y_pos = Math.sin(rot) * outerRadius;
+                ctx.lineTo(x_pos, y_pos);
+                rot += step;
+
+                x_pos = Math.cos(rot) * innerRadius;
+                y_pos = Math.sin(rot) * innerRadius;
+                ctx.lineTo(x_pos, y_pos);
+                rot += step;
+            }
+            ctx.lineTo(0, -outerRadius);
+            ctx.closePath();
+            
+            // เอฟเฟกต์เรืองแสง
+            ctx.fillStyle = color;
+            ctx.shadowBlur = 20;
+            ctx.shadowColor = color;
+            ctx.fill();
+            ctx.restore();
+        }
+
+        // 2. คลาสสำหรับดาวฤกษ์ตอนคลิกเมาส์
+        class StarParticle {
             constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.velocity = { x: (Math.random() - 0.5) * 8, y: (Math.random() - 0.5) * 8 };
-                this.radius = Math.random() * 3 + 1;
-                const colors = ['#00ffff', '#8a2be2', '#ff00ff', '#ffffff', '#4169e1'];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = 1;
-                this.decay = Math.random() * 0.02 + 0.01;
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.restore();
-            }
-            update() {
-                this.x += this.velocity.x;
-                this.y += this.velocity.y;
-                this.alpha -= this.decay;
-            }
-        }
-
-        // เอฟเฟกต์ซูเปอร์โนวาตอนคลิก
-        window.addEventListener('click', (e) => {
-            // ป้องกันไม่ให้เกิดดาวกระจายถัากดโดนปุ่มหรือลิงก์
-            if(e.target.closest('a') || e.target.closest('button')) return; 
-            for (let i = 0; i < 30; i++) particles.push(new Particle(e.clientX, e.clientY));
-        });
-
-        function animateSpace() {
-            requestAnimationFrame(animateSpace);
-            ctx.clearRect(0, 0, canvas.width, canvas.height); 
-
-            stars.forEach(star => {
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fill();
-                star.alpha += (Math.random() - 0.5) * 0.05;
-                if(star.alpha < 0) star.alpha = 0;
-                if(star.alpha > 1) star.alpha = 1;
-            });
-
-            particles.forEach((particle, index) => {
-                if (particle.alpha <= 0) particles.splice(index, 1);
-                else { particle.update(); particle.draw(); }
-            });
-        }
-        animateSpace();
-
-        /* === ระบบ Scroll Animation === */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show-on-scroll'); 
-                }
-            });
-        });
-        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
-    </script>
-</body>
-</html>
+                // กระจายตัวออกรอบทิศทาง
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 5 + 2;
+                this.velocity = { 
+                    x: Math.cos(angle) * speed, 
+                    y: Math.sin(angle) * speed 
+                };
+                this.outerRadius = Math.random() * 6 + 4; // ขนาดแฉกด้านนอก
+                this.innerRadius = this.outerRadius / 3;  // ขนาดแฉกด้านใน
+                
+                //
