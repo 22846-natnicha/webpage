@@ -4,10 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ติดต่อฉัน | My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* =========================================
+           1. ตั้งค่าพื้นฐานและพื้นหลังอวกาศ
+           ========================================= */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #0B0B2A 0%, #000000 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        #spaceCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* ให้อยู่หลังสุด */
+        }
+
+        /* =========================================
+           2. Navbar โปร่งแสง (Glassmorphism)
+           ========================================= */
+        .navbar {
+            background: rgba(11, 11, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #b3e0ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        /* =========================================
+           3. โครงสร้างเนื้อหาหลัก
+           ========================================= */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .animated-text {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
+            margin-bottom: 10px;
+        }
+
+        /* =========================================
+           4. Card (กล่องเนื้อหาแบบอวกาศ)
+           ========================================= */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+            border-color: rgba(0, 255, 255, 0.6);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        /* =========================================
+           5. ปุ่มต่างๆ (Buttons)
+           ========================================= */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            border: 1px solid #0ff;
+            color: #0ff;
+        }
+
+        .btn-outline:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 15px #0ff;
+        }
+
+        .btn-primary {
+            background: #8a2be2;
+            color: #fff;
+            border: 1px solid #8a2be2;
+        }
+
+        .btn-primary:hover {
+            background: #9932cc;
+            box-shadow: 0 0 15px #8a2be2;
+        }
+
+        /* =========================================
+           6. Footer และ Animation ปรากฏตัว
+           ========================================= */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+        }
+
+        .mt-4 { margin-top: 40px; }
+
+        /* Scroll Animation Classes */
+        .hidden-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .show-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <div class="bg-shape shape-2"></div>
+
+    <canvas id="spaceCanvas"></canvas>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -25,7 +210,7 @@
     <main class="container">
         <div class="section-header hidden-on-scroll">
             <h2 class="animated-text">ติดต่อฉัน (Contact)</h2>
-            <p>ยินดีที่ได้รู้จัก! สามารถทักทายกันได้ตามช่องทางด้านล่าง</p>
+            <p>ยินดีที่ได้รู้จัก! สามารถทักทายกันได้ตามช่องทางด้านล่าง 🌌</p>
         </div>
 
         <section class="contact-section">
@@ -52,9 +237,9 @@
                 </div>
             </div>
 
-            <div class="cta-section card mt-4 text-center hidden-on-scroll" style="transition-delay: 400ms;">
-                <h3 class="animated-text">ขอบคุณที่เข้ามารับชมครับ/ค่ะ! ✨</h3>
-                <p>หวังว่าเว็บไซต์นี้จะทำให้รู้จักตัวตนของฉันมากขึ้น</p>
+            <div class="card mt-4 text-center hidden-on-scroll" style="transition-delay: 400ms;">
+                <h3 class="animated-text" style="font-size: 1.8rem;">ขอบคุณที่เข้ามารับชมครับ/ค่ะ! ✨</h3>
+                <p>หวังว่าเว็บไซต์นี้จะทำให้รู้จักตัวตนของฉันมากขึ้น (ลองคลิกที่ว่างๆ ดูสิ!)</p>
             </div>
         </section>
     </main>
@@ -63,14 +248,38 @@
         <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
-    <div class="cursor-glow"></div>
     <script>
-        const glow = document.querySelector('.cursor-glow');
-        document.addEventListener('mousemove', (e) => { glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px'; });
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('show-on-scroll'); });
-        });
-        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
-    </script>
-</body>
-</html>
+        /* === ระบบดาราศาสตร์ (Space Effect) === */
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particles = [];
+        let stars = [];
+
+        // สร้างดาวพื้นหลัง
+        for(let i = 0; i < 200; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random()
+            });
+        }
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.velocity = { x: (Math.random() - 0.5) * 8, y: (Math.random() - 0.5) * 8 };
+                this.radius = Math.random() * 3 + 1;
+                const colors = ['#00ffff', '#8a2be2', '#ff00ff', '#ffffff', '#4169e1'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = 1;
+                this.decay
