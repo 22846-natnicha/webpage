@@ -4,17 +4,300 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>หน้าแรก | My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* =========================================
+           1. ตั้งค่าพื้นฐานและพื้นหลังอวกาศ
+           ========================================= */
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #0B0B2A 0%, #000000 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        #spaceCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* เมาส์เรืองแสงตามการเคลื่อนที่ (Cursor Glow) */
+        .cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: 0.1s ease-out;
+        }
+
+        /* =========================================
+           2. Navbar โปร่งแสง (Glassmorphism)
+           ========================================= */
+        .navbar {
+            background: rgba(11, 11, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #b3e0ff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #0ff;
+            text-shadow: 0 0 10px #0ff;
+        }
+
+        /* =========================================
+           3. โครงสร้างเนื้อหาหลัก (Hero Section)
+           ========================================= */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            min-height: 65vh;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2-col {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* กล่องข้อความแบบกระจก */
+        .hero-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(0, 255, 255, 0.1);
+            color: #0ff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid #0ff;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin: 0 0 15px 0;
+            line-height: 1.3;
+        }
+
+        .animated-text {
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #8a2be2;
+            font-size: 3rem;
+        }
+
+        .subtitle {
+            color: #e0e0e0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* ปุ่ม Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .button-group { justify-content: center; }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: #8a2be2;
+            color: #fff;
+            border: 1px solid #8a2be2;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.6);
+        }
+
+        .btn-primary:hover {
+            background: #9932cc;
+            box-shadow: 0 0 25px #8a2be2, 0 0 10px #fff;
+        }
+
+        .btn-outline {
+            border: 1px solid #0ff;
+            color: #0ff;
+        }
+
+        .btn-outline:hover {
+            background: #0ff;
+            color: #000;
+            box-shadow: 0 0 15px #0ff;
+        }
+
+        /* รูปโปรไฟล์เรืองแสง */
+        .hero-image-wrapper {
+            position: relative;
+            text-align: center;
+        }
+
+        .profile-img-main {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4), inset 0 0 20px rgba(138, 43, 226, 0.5);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* =========================================
+           4. ของตกแต่ง (Snoopy & Emojis)
+           ========================================= */
+        .floating-deco {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.8;
+            pointer-events: none;
+            z-index: 0;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .planet-1 { top: 15%; left: 5%; animation: float 5s ease-in-out infinite; }
+        .ufo-1 { top: 10%; right: 10%; font-size: 3rem; animation: float 4s ease-in-out infinite 1s; }
+        .star-1 { bottom: 20%; left: 10%; font-size: 2rem; animation: pulse-dot 2s infinite alternate; }
+        .comet-1 { top: 40%; right: 5%; font-size: 2.5rem; transform: rotate(-45deg); animation: float 3s ease-in-out infinite; }
+
+        .snoopy-deco {
+            position: absolute;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.6)); /* ให้สนูปปี้เรืองแสง */
+            z-index: 10;
+        }
+
+        .snoopy-hero {
+            top: -65px;
+            left: 30px;
+            width: 100px;
+        }
+
+        .snoopy-footer {
+            position: relative;
+            width: 80px;
+            margin-top: -40px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* =========================================
+           5. Footer และ Animation ปรากฏตัว
+           ========================================= */
+        .footer {
+            text-align: center;
+            padding: 40px 20px 20px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            position: relative;
+        }
+
+        .hidden-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .show-on-scroll {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-    <!-- Background Shapes & Floating Emojis เติมไม่ให้เว็บโล่ง -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
-    <div class="floating-deco cloud-1">☁️</div>
+
+    <!-- พื้นหลังดวงดาว -->
+    <canvas id="spaceCanvas"></canvas>
+    
+    <!-- เมาส์เรืองแสง -->
+    <div class="cursor-glow"></div>
+
+    <!-- ของตกแต่งลอยตัว (ธีมอวกาศ) -->
+    <div class="floating-deco planet-1">🪐</div>
+    <div class="floating-deco ufo-1">🛸</div>
     <div class="floating-deco star-1">✨</div>
-    <div class="floating-deco cloud-2">☁️</div>
-    <div class="floating-deco star-2">🌟</div>
+    <div class="floating-deco comet-1">☄️</div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -30,33 +313,133 @@
     </nav>
 
     <main class="container">
-        <!-- สนูปปี้นั่งอยู่บนกล่องข้อความ -->
-        <img src="https://assets.stickpng.com/images/585966eea4fa116215a92440.png" alt="Snoopy Sleeping" class="snoopy-deco snoopy-hero float-anim hidden-on-scroll">
-        
-        <section class="hero-section grid-2-col hidden-on-scroll">
-            <div class="hero-content">
-                <span class="badge float-anim">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
+        <section class="hero-section grid-2-col">
+            <!-- คอลัมน์ซ้าย: ข้อความ -->
+            <div class="hero-content hidden-on-scroll">
+                <!-- สนูปปี้นั่งอยู่บนกล่องข้อความ -->
+                <img src="https://assets.stickpng.com/images/585966eea4fa116215a92440.png" alt="Snoopy Sleeping" class="snoopy-deco snoopy-hero">
+                
+                <span class="badge">สวัสดี! ยินดีต้อนรับสู่พื้นที่ของฉัน 🚀</span>
                 <h1>ฉันชื่อ <br><span class="animated-text">[กรอกชื่อ-นามสกุล]</span></h1>
-                <p class="subtitle">นักเรียนชั้นมัธยมศึกษาปีที่ 3 ที่มีความสนใจใน [กรอกความสนใจ] และรักในการสร้างสรรค์สิ่งใหม่ๆ</p>
+                <p class="subtitle">นักเรียนชั้นมัธยมศึกษาปีที่ 3 ที่มีความสนใจใน [กรอกความสนใจ] และรักในการสร้างสรรค์สิ่งใหม่ๆ ให้โลกอินเทอร์เน็ต</p>
                 <div class="button-group">
-                    <a href="profile.html" class="btn btn-primary shiny-btn">รู้จักฉันมากขึ้น</a>
+                    <a href="profile.html" class="btn btn-primary">รู้จักฉันมากขึ้น</a>
                     <a href="hobby.html" class="btn btn-outline">ดูงานอดิเรกของฉัน</a>
                 </div>
             </div>
-            <div class="hero-image-wrapper hidden-on-scroll">
-                <div class="image-circle-bg"></div>
-                <img src="https://placehold.co/400x400/a78bfa/ffffff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
+            
+            <!-- คอลัมน์ขวา: รูปโปรไฟล์ -->
+            <div class="hero-image-wrapper hidden-on-scroll" style="transition-delay: 200ms;">
+                <img src="https://placehold.co/400x400/0B0B2A/0ff?text=My+Profile" alt="รูปโปรไฟล์ของฉัน" class="profile-img-main">
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
         <!-- สนูปปี้แอบโผล่ตรง Footer -->
-        <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer">
+        <img src="https://assets.stickpng.com/images/58596720a4fa116215a92443.png" alt="Snoopy Peek" class="snoopy-deco snoopy-footer float-anim">
+        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
     </footer>
 
-    <div class="cursor-glow"></div>
-    <script src="script.js"></script>
+    <!-- JavaScript สำหรับระบบดาราศาสตร์ และ Scroll Animation -->
+    <script>
+        /* === เมาส์เรืองแสง (Cursor Glow) === */
+        const glow = document.querySelector('.cursor-glow');
+        document.addEventListener('mousemove', (e) => { 
+            glow.style.left = e.clientX + 'px'; 
+            glow.style.top = e.clientY + 'px'; 
+        });
+
+        /* === ระบบดาราศาสตร์ (Space Effect) === */
+        const canvas = document.getElementById('spaceCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        let particles = [];
+        let stars = [];
+
+        // สร้างดาวพื้นหลัง
+        for(let i = 0; i < 200; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5,
+                alpha: Math.random()
+            });
+        }
+
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.velocity = { x: (Math.random() - 0.5) * 8, y: (Math.random() - 0.5) * 8 };
+                this.radius = Math.random() * 3 + 1;
+                const colors = ['#00ffff', '#8a2be2', '#ff00ff', '#ffffff', '#4169e1'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                this.alpha = 1;
+                this.decay = Math.random() * 0.02 + 0.01;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.restore();
+            }
+            update() {
+                this.x += this.velocity.x;
+                this.y += this.velocity.y;
+                this.alpha -= this.decay;
+            }
+        }
+
+        // เอฟเฟกต์ซูเปอร์โนวาตอนคลิก
+        window.addEventListener('click', (e) => {
+            // ป้องกันไม่ให้เกิดดาวกระจายถัากดโดนปุ่มหรือลิงก์
+            if(e.target.closest('a') || e.target.closest('button')) return; 
+            for (let i = 0; i < 30; i++) particles.push(new Particle(e.clientX, e.clientY));
+        });
+
+        function animateSpace() {
+            requestAnimationFrame(animateSpace);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+            stars.forEach(star => {
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+                star.alpha += (Math.random() - 0.5) * 0.05;
+                if(star.alpha < 0) star.alpha = 0;
+                if(star.alpha > 1) star.alpha = 1;
+            });
+
+            particles.forEach((particle, index) => {
+                if (particle.alpha <= 0) particles.splice(index, 1);
+                else { particle.update(); particle.draw(); }
+            });
+        }
+        animateSpace();
+
+        /* === ระบบ Scroll Animation === */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-on-scroll'); 
+                }
+            });
+        });
+        document.querySelectorAll('.hidden-on-scroll').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
