@@ -1,19 +1,21 @@
 /* ========================================
-   Snoopy Decorations (เพิ่มความน่ารัก ไม่โล่ง)
+   Snoopy Decorations (Space Theme Glow)
    ======================================== */
 .snoopy-deco {
     position: absolute;
     z-index: 5;
     pointer-events: none; /* เพื่อไม่ให้เผลอคลิกโดนรูป */
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+    /* เปลี่ยนจากเงาดำธรรมดา เป็นแสงเรืองแสงนีออนสีฟ้าให้เข้ากับอวกาศ */
+    filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.8));
 }
 
 /* สนูปปี้นอนบน Hero Section */
 .snoopy-hero {
-    top: -50px;
+    top: -55px;
     left: 10%;
-    width: 120px;
-    transform: rotate(-10deg);
+    width: 110px;
+    /* รวมการหมุนและการลอยตัวไว้ด้วยกัน */
+    animation: float-tilt 4s ease-in-out infinite; 
 }
 
 /* สนูปปี้เกาะการ์ด */
@@ -22,6 +24,7 @@
     right: -20px;
     width: 90px;
     z-index: 20;
+    animation: float-normal 4s ease-in-out infinite 1s;
 }
 
 /* สนูปปี้โผล่จาก Footer */
@@ -29,39 +32,70 @@
     bottom: 0;
     right: 5%;
     width: 100px;
+    animation: float-normal 4s ease-in-out infinite 0.5s;
 }
 
 /* ========================================
-   Floating Emojis (ก้อนเมฆ ดวงดาว อวกาศ)
+   Floating Space Elements (ดาว, ยานอวกาศ)
    ======================================== */
 .floating-deco {
     position: fixed;
     z-index: 0;
-    opacity: 0.6;
+    opacity: 0.8;
     pointer-events: none;
     user-select: none;
     font-size: 2.5rem;
-    animation: drift 15s linear infinite alternate;
+    /* เพิ่มแสงเรืองแสงให้อีโมจิ */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
-.cloud-1 { top: 15%; left: 5%; font-size: 4rem; animation-duration: 20s; }
-.cloud-2 { bottom: 30%; right: 10%; font-size: 3rem; animation-duration: 25s; animation-direction: alternate-reverse; }
-.star-1 { top: 25%; right: 15%; animation: twinkle 3s ease-in-out infinite; }
-.star-2 { bottom: 15%; left: 15%; font-size: 2rem; animation: twinkle 4s ease-in-out infinite 1s; }
+/* ปรับคลาสให้ตรงกับ HTML ธีมอวกาศ */
+.planet-1 { top: 15%; left: 5%; font-size: 3.5rem; animation: drift 20s linear infinite alternate; }
+.ufo-1 { top: 10%; right: 10%; font-size: 3rem; animation: drift 15s linear infinite alternate-reverse; }
+.star-1 { bottom: 25%; left: 15%; font-size: 2rem; animation: twinkle 3s ease-in-out infinite; }
+.comet-1 { top: 40%; right: 5%; font-size: 2.5rem; animation: shoot 6s linear infinite; }
 
+/* ========================================
+   Animations สำหรับธีมอวกาศ
+   ======================================== */
+/* แอนิเมชันลอยตัวแบบเอียงๆ (สำหรับสนูปปี้นอน) */
+@keyframes float-tilt {
+    0% { transform: translateY(0px) rotate(-10deg); }
+    50% { transform: translateY(-15px) rotate(-15deg); }
+    100% { transform: translateY(0px) rotate(-10deg); }
+}
+
+/* แอนิเมชันลอยตัวขึ้นลงธรรมดา */
+@keyframes float-normal {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* แอนิเมชันลอยเคว้งในอวกาศ */
 @keyframes drift {
     0% { transform: translateX(0) translateY(0); }
     100% { transform: translateX(50px) translateY(20px); }
 }
 
+/* แอนิเมชันดาวกะพริบเรืองแสง */
 @keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); }
-    50% { opacity: 0.8; transform: scale(1.2); }
+    0%, 100% { opacity: 0.3; transform: scale(0.8); text-shadow: 0 0 5px #fff; }
+    50% { opacity: 1; transform: scale(1.2); text-shadow: 0 0 20px #0ff, 0 0 30px #8a2be2; }
+}
+
+/* แอนิเมชันดาวตกวิ่งพาดผ่านจอ */
+@keyframes shoot {
+    0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
+    10% { opacity: 1; }
+    20% { transform: translate(-150px, 150px) rotate(-45deg); opacity: 0; }
+    100% { opacity: 0; }
 }
 
 /* จัดการมือถือเพื่อไม่ให้รกเกินไป */
 @media screen and (max-width: 768px) {
     .snoopy-hero { top: -40px; left: 0; width: 90px; }
-    .floating-deco { opacity: 0.3; font-size: 2rem; }
-    .cloud-1 { top: 10%; }
+    .floating-deco { opacity: 0.4; font-size: 2rem; }
+    .planet-1 { top: 10%; }
+    .ufo-1 { display: none; /* ซ่อน UFO บนมือถือกันรก */ }
 }
