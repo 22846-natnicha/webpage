@@ -1,65 +1,46 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximalist Journal - Education</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - การศึกษา</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="scrapbook-bg">
+<body>
 
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
-    <div id="sparkle-container"></div>
+  <nav class="navbar-container">
+    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+      <li><a href="education.html" class="active">การศึกษา</a></li>
+      <li><a href="hobby.html">งานอดิเรก</a></li>
+      <li><a href="contact.html">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <div class="bg-sticker s1">📚</div>
-    <div class="bg-sticker s4">🎓</div>
-
-    <nav class="journal-nav">
-        <a href="index.html" class="nav-item">🏠 Home</a>
-        <a href="profile.html" class="nav-item">📖 Profile</a>
-        <a href="education.html" class="nav-item active">🎓 Education</a>
-        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
-        <a href="contact.html" class="nav-item">💌 Contact</a>
-    </nav>
-
-    <main class="page-container" id="education">
-        <div class="scrapbook-card">
-            <div class="tape top-tape"></div>
-            <h2 class="page-heading">🎓 Educational Timeline 🎓</h2>
-
-            <div class="timeline-container">
-                <!-- ประถมศึกษา -->
-                <div class="timeline-item tilt-card paper-note">
-                    <div class="badge">🎒 ประถมศึกษา</div>
-                    <p><strong>1. โรงเรียน:</strong> โรงเรียนอนุบาลและประถมสร้างสรรค์</p>
-                    <p><strong>2. ระดับชั้น:</strong> ป.1 - ป.6</p>
-                    <p><strong>3. ห้องเรียน:</strong> ห้อง 1 (Gifted Math)</p>
-                    <p><strong>4. วิชาที่ชอบ:</strong> ศิลปะ และ คอมพิวเตอร์พื้นฐาน</p>
-                </div>
-
-                <!-- มัธยมศึกษาตอนต้น -->
-                <div class="timeline-item tilt-card paper-note">
-                    <div class="badge">🏫 มัธยมศึกษาตอนต้น</div>
-                    <p><strong>1. โรงเรียน:</strong> โรงเรียนมัธยมวิทยาคม</p>
-                    <p><strong>2. ระดับชั้น:</strong> ม.1 - ม.3</p>
-                    <p><strong>3. ห้องเรียน:</strong> ห้อง 3 (Sci-Math Program)</p>
-                    <p><strong>4. วิชาที่ชอบ:</strong> คณิตศาสตร์ และ วิทยาศาสตร์</p>
-                </div>
-
-                <!-- ปัจจุบัน -->
-                <div class="timeline-item tilt-card highlight-edu paper-note">
-                    <div class="badge">🚀 ปัจจุบัน (Higher Education)</div>
-                    <p><strong>1. โรงเรียน/มหาวิทยาลัย:</strong> มหาวิทยาลัยเทคโนโลยีและนวัตกรรม</p>
-                    <p><strong>2. ระดับชั้น:</strong> ปริญญาตรี ปีที่ 3</p>
-                    <p><strong>3. ห้องเรียน:</strong> สาขาเทคโนโลยีสารสนเทศและดิจิทัลมีเดีย</p>
-                    <p><strong>4. วิชาที่ชอบ:</strong> Web Development & UI/UX Design</p>
-                </div>
-            </div>
+  <div class="main-container">
+    <div class="scrapbook-card reveal">
+      <div class="washi-tape"></div>
+      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 20px;">🎓 ประวัติการศึกษา (Education Timeline)</h2>
+      
+      <div style="border-left: 3px dashed var(--soft-brown); padding-left: 20px; margin-left: 10px;">
+        <div style="margin-bottom: 25px;" class="reveal">
+          <span class="handwritten" style="font-size: 1.4rem; color: var(--sage-green);">📚 กำลังศึกษาอยู่ (ม.3)</span>
+          <h3 style="font-size: 1.3rem;">โรงเรียน... (ระดับชั้นมัธยมศึกษาตอนต้น)</h3>
+          <p style="color: #666;">เน้นวิชาการคอมพิวเตอร์และเทคโนโลยี เกรดเฉลี่ยสะสม 3.XX</p>
         </div>
-    </main>
 
-    <script src="script.js"></script>
+        <div style="margin-bottom: 25px;" class="reveal">
+          <span class="handwritten" style="font-size: 1.4rem; color: var(--sky-blue);">🎒 จบการศึกษา (ประถมศึกษา)</span>
+          <h3 style="font-size: 1.3rem;">โรงเรียน... (ระดับประถมศึกษา)</h3>
+          <p style="color: #666;">ผ่านประสบการณ์ทำกิจกรรมโรงเรียนและประกวดวาดภาพ</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
