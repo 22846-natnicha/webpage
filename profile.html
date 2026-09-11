@@ -1,50 +1,51 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>My Profile - Scrapbook</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - ประวัติส่วนตัว</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="scrapbook-bg">
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
-    <div id="sparkle-container"></div>
-    <div class="bg-sticker s1">📌</div><div class="bg-sticker s2">💖</div><div class="bg-sticker s3">🍀</div><div class="bg-sticker s4">☕</div>
+<body>
 
-    <nav class="journal-nav">
-        <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
-        <a href="profile.html" class="nav-item active">👤 ประวัติ</a>
-        <a href="education.html" class="nav-item">📚 การศึกษา</a>
-        <a href="hobbies.html" class="nav-item">🎨 งานอดิเรก</a>
-        <a href="gallery.html" class="nav-item">📸 แกลเลอรี</a>
-        <a href="contact.html" class="nav-item">💌 ติดต่อ</a>
-    </nav>
+  <nav class="navbar-container">
+    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="profile.html" class="active">ประวัติส่วนตัว</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="hobby.html">งานอดิเรก</a></li>
+      <li><a href="contact.html">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <div class="page-container">
-        <div class="scrapbook-card tilt-card">
-            <div class="tape corner-tape-1"></div>
-            <div class="tape corner-tape-2"></div>
-            <h2 class="page-heading">👤 ประวัติส่วนตัว (Profile)</h2>
-            
-            <div class="profile-grid">
-                <div class="profile-info-box paper-note">
-                    <p><b>ชื่อ-นามสกุล:</b> เด็กหญิง/เด็กชาย ความสุข สดใส</p>
-                    <p><b>ชื่อเล่น:</b> แฮปปี้</p>
-                    <p><b>วันเกิด:</b> 1 มกราคม 2000</p>
-                    <p><b>คติประจำใจ:</b> ยิ้มเข้าไว้ โลกสดใสแน่นอน! ✨</p>
-                </div>
-                <div class="profile-info-box paper-note" style="background:#fff0f3;">
-                    <p><b>อาหารโปรด:</b> ชาไข่มุก, เค้กช็อกโกแลต 🍰</p>
-                    <p><b>สีที่ชอบ:</b> สีเหลืองพาสเทล และชมพูฟรุ้งฟริ้ง</p>
-                    <p><b>สัตว์เลี้ยง:</b> น้องแมวส้มจอมกวน 🐈</p>
-                </div>
-            </div>
-            <div style="text-align: center;">
-                <a href="education.html" class="cta-button">ไปหน้าการศึกษาต่อ ➔</a>
-            </div>
+  <div class="main-container">
+    <div class="scrapbook-card reveal">
+      <div class="washi-tape"></div>
+      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 15px;">📌 ประวัติส่วนตัว (About Me)</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: center;">
+        <div>
+          <div class="polaroid">
+            <img src="images/profile.jpg" alt="My Photo">
+            <p>Me, Myself & I 🌸</p>
+          </div>
         </div>
+        <div>
+          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">ชื่อ-นามสกุล:</h3>
+          <p style="font-size: 1.2rem; margin-bottom: 10px;">เด็กชาย/เด็กหญิง ชื่อจริง นามสกุล (ชื่อเล่น)</p>
+          
+          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">วันเดือนปีเกิด:</h3>
+          <p style="font-size: 1.2rem; margin-bottom: 10px;">1 มกราคม พ.ศ. 2554 (อายุ 15 ปี)</p>
+
+          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">คติประจำใจ:</h3>
+          <p style="font-size: 1.2rem; color: #777;">"ทำวันนี้ให้ดีที่สุด เหมือนพรุ่งนี้ไม่มีจริง ฮ่าๆๆ"</p>
+        </div>
+      </div>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
