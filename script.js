@@ -1,10 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Dual Custom Cursor & Smooth Follower
+    // 1. Custom Cursor & Smooth Follower
     const cursor = document.querySelector('.custom-cursor');
     const follower = document.querySelector('.cursor-follower');
-    
-    let mouseX = 0, mouseY = 0;
-    let followerX = 0, followerY = 0;
+    let mouseX = 0, mouseY = 0, followerX = 0, followerY = 0;
 
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
@@ -30,121 +28,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createSparkles(x, y) {
         const container = document.getElementById('sparkle-container');
-        for (let i = 0; i < 7; i++) {
+        if (!container) return;
+        for (let i = 0; i < 6; i++) {
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
-            
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 55 + 12;
-            const targetX = x + Math.cos(angle) * distance;
-            const targetY = y + Math.sin(angle) * distance;
-
+            const distance = Math.random() * 50 + 10;
             sparkle.style.left = x + 'px';
             sparkle.style.top = y + 'px';
-            
             container.appendChild(sparkle);
 
             sparkle.animate([
                 { transform: 'translate(0, 0) scale(0.4)', opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.6)`, opacity: 0 }
-            ], {
-                duration: 650,
-                easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
-            }).onfinish = () => sparkle.remove();
+                { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) scale(1.5)`, opacity: 0 }
+            ], { duration: 600, easing: 'cubic-bezier(0.25, 1, 0.5, 1)' }).onfinish = () => sparkle.remove();
         }
     }
 
     function createCuteArrows(x, y) {
         const container = document.getElementById('sparkle-container');
-        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖', '⭐', '🍀'];
-        
+        if (!container) return;
+        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖', '⭐'];
         for (let i = 0; i < 3; i++) {
             const arrow = document.createElement('div');
             arrow.textContent = arrowSymbols[Math.floor(Math.random() * arrowSymbols.length)];
-            
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 75 + 25;
-            const targetX = x + Math.cos(angle) * distance;
-            const targetY = y + Math.sin(angle) * distance;
-            const randomRotate = Math.random() * 360;
-
-            arrow.style.left = x + 'px';
-            arrow.style.top = y + 'px';
-            arrow.style.position = 'absolute';
-            arrow.style.fontSize = '1.2rem';
-            arrow.style.pointerEvents = 'none';
-            arrow.style.zIndex = '9999';
-            
+            const distance = Math.random() * 70 + 20;
+            arrow.style.cssText = `left: ${x}px; top: ${y}px; position: absolute; font-size: 1.2rem; pointer-events: none; z-index: 9999;`;
             container.appendChild(arrow);
 
             arrow.animate([
                 { transform: `translate(0, 0) scale(0.5) rotate(0deg)`, opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.2) rotate(${randomRotate}deg)`, opacity: 0 }
-            ], {
-                duration: 750,
-                easing: 'cubic-bezier(0.1, 1, 0.3, 1)'
-            }).onfinish = () => arrow.remove();
+                { transform: `translate(${Math.cos(angle)*distance}px, ${Math.sin(angle)*distance}px) scale(1.2) rotate(${Math.random()*360}deg)`, opacity: 0 }
+            ], { duration: 700, easing: 'cubic-bezier(0.1, 1, 0.3, 1)' }).onfinish = () => arrow.remove();
         }
     }
 
-    // 3. 3D Tilt Effect on Cards
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    tiltCards.forEach(card => {
+    // 3. 3D Tilt Effect
+    document.querySelectorAll('.tilt-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = -((y - centerY) / 18);
-            const rotateY = (x - centerX) / 18;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
+            const x = e.clientX - rect.left, y = e.clientY - rect.top;
+            card.style.transform = `perspective(1000px) rotateX(${-(y - rect.height/2) / 18}deg) rotateY(${(x - rect.width/2) / 18}deg) scale(1.01)`;
         });
-
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
         });
     });
 
-    // 4. Gimmick: Sticker Spawner Button (กดแล้วเสกสติ๊กเกอร์พุ่งขึ้นจอ)
+    // 4. Sticker Spawner Gimmick
     const spawnBtn = document.getElementById('spawnStickerBtn');
     if (spawnBtn) {
-        spawnBtn.addEventListener('click', (e) => {
+        spawnBtn.addEventListener('click', () => {
             const rect = spawnBtn.getBoundingClientRect();
             const stickers = ['🦄', '🌈', '🍩', '🎨', '🚀', '💖', '🍕', '⚡', '🧸'];
-            const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
-
             const spawned = document.createElement('div');
             spawned.classList.add('floating-spawned-sticker');
-            spawned.textContent = randomSticker;
+            spawned.textContent = stickers[Math.floor(Math.random() * stickers.length)];
             spawned.style.left = (rect.left + rect.width / 2) + 'px';
             spawned.style.top = rect.top + 'px';
-
             document.body.appendChild(spawned);
             setTimeout(() => spawned.remove(), 1000);
         });
     }
 
-    // 5. Stamp Badge Interactive Gimmick
+    // 5. Interactive Stamp Badge
     const stampBadge = document.querySelector('.stamp-badge');
     if (stampBadge) {
         const stamps = ['⭐ VIP EDT.', '🔥 HOT PICK', '💖 APPROVED', '✨ RARE ITEM'];
         stampBadge.addEventListener('click', () => {
-            const currentText = stampBadge.textContent;
-            let nextIndex = (stamps.indexOf(currentText) + 1) % stamps.length;
-            stampBadge.textContent = stamps[nextIndex];
-        });
-    }
-
-    // 6. Secret Journal Note Toggle
-    const secretToggle = document.getElementById('secretToggle');
-    if (secretToggle) {
-        secretToggle.addEventListener('click', () => {
-            const content = secretToggle.querySelector('.secret-content');
-            content.classList.toggle('hidden');
+            stampBadge.textContent = stamps[(stamps.indexOf(stampBadge.textContent) + 1) % stamps.length];
         });
     }
 });
