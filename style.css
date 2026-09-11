@@ -18,7 +18,6 @@ body.scrapbook-bg {
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
-    /* ตัดแอนิเมชันสั่นหน้าจอออก เพื่อความนิ่งสบายตา */
 }
 
 /* Advanced Custom Cursors */
@@ -32,7 +31,7 @@ body.scrapbook-bg {
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: 10000;
-    box-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+    box-shadow: 0 0 12px rgba(255, 51, 102, 0.9);
     transition: transform 0.05s ease;
 }
 
@@ -48,13 +47,14 @@ body.scrapbook-bg {
     transition: all 0.1s ease-out;
 }
 
-/* Background Floating Stickers - นิ่งขึ้น ไม่กวนสายตา */
+/* Background Floating Stickers */
 .bg-sticker {
     position: fixed;
     font-size: 2.5rem;
     z-index: 1;
-    opacity: 0.6;
+    opacity: 0.65;
     pointer-events: none;
+    transition: transform 0.3s ease;
 }
 .s1 { top: 15%; left: 5%; transform: rotate(-15deg); }
 .s2 { top: 25%; right: 7%; transform: rotate(20deg); }
@@ -100,7 +100,8 @@ body.scrapbook-bg {
 
 .nav-item {
     text-decoration: none;
-    font-weight: 700;
+    font-family: 'Sriracha', cursive;
+    font-size: 1.1rem;
     color: #333;
     background: #fff;
     padding: 8px 20px;
@@ -113,7 +114,7 @@ body.scrapbook-bg {
 .nav-item:hover, .nav-item.active {
     background: #ff3366;
     color: #fff;
-    transform: translateY(-4px);
+    transform: translateY(-4px) rotate(-2deg);
     box-shadow: 5px 5px 0px #2b2b2b;
 }
 
@@ -126,7 +127,7 @@ body.scrapbook-bg {
     min-height: calc(100vh - 80px);
 }
 
-/* Scrapbook Maximalist Cards - รองรับ 3D Tilt เอียงตามเมาส์นุ่มๆ */
+/* Scrapbook Maximalist Cards */
 .scrapbook-card, .journal-cover {
     background: #ffffff;
     border: 4px solid #2b2b2b;
@@ -147,6 +148,7 @@ body.scrapbook-bg {
     border: 2px dashed #2b2b2b;
     box-shadow: 4px 4px 0px rgba(0,0,0,0.05);
     border-radius: 8px;
+    font-family: 'Prompt', sans-serif;
 }
 
 .tape {
@@ -162,9 +164,37 @@ body.scrapbook-bg {
 .left-tape { top: 40px; left: -25px; transform: rotate(-85deg); }
 .corner-tape-1 { top: -16px; left: -20px; transform: rotate(-25deg); }
 .corner-tape-2 { top: -16px; right: -20px; transform: rotate(25deg); }
-.polaroid-tape { top: -14px; left: calc(50% - 60px); transform: rotate(2deg); }
 
-/* Cover Style */
+/* Typography Overhaul - สไตล์ข้อความสวยงามมีเอกลักษณ์ */
+.journal-title {
+    font-family: 'Special Elite', cursive;
+    font-size: 3.8rem;
+    color: #d90429;
+    text-shadow: 4px 4px 0px #ffb703, 7px 7px 0px #2b2b2b;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.journal-subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 2.2rem;
+    color: #4a4a4a;
+    text-shadow: 1px 1px 0px #ffccd5;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.page-heading {
+    font-family: 'Special Elite', cursive;
+    font-size: 2.6rem;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #3a86ff;
+    text-shadow: 3px 3px 0px #2b2b2b;
+    letter-spacing: 1px;
+}
+
+/* Polaroid & Frames */
 .journal-cover {
     text-align: center;
     background: #fff5f7;
@@ -177,25 +207,17 @@ body.scrapbook-bg {
     color: white;
     padding: 6px 14px;
     border: 2px solid #2b2b2b;
-    font-weight: 800;
+    font-family: 'Sriracha', cursive;
+    font-size: 0.95rem;
     border-radius: 20px;
     transform: rotate(8deg);
     box-shadow: 3px 3px 0px #2b2b2b;
+    cursor: pointer !important;
+    transition: transform 0.2s;
 }
-
-.journal-title {
-    font-family: 'Special Elite', cursive;
-    font-size: 3.8rem;
-    color: #d90429;
-    text-shadow: 3px 3px 0px #ffb703;
-    margin-bottom: 12px;
-}
-
-.journal-subtitle {
-    font-family: 'Caveat', cursive;
-    font-size: 1.9rem;
-    color: #666;
-    margin-bottom: 30px;
+.stamp-badge:hover {
+    transform: scale(1.1) rotate(0deg);
+    background: #7209b7;
 }
 
 .polaroid-frame {
@@ -219,20 +241,17 @@ body.scrapbook-bg {
 
 .polaroid-caption {
     font-family: 'Caveat', cursive;
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     margin-top: 12px;
     color: #2b2b2b;
 }
 
-/* Call to Action Buttons */
-.action-wrapper {
-    margin-top: 15px;
-}
-
+/* Interactive Elements & Gimmicks */
 .cta-button {
     display: inline-block;
     background: #ffb703;
     color: #2b2b2b;
+    font-family: 'Sriracha', cursive;
     font-weight: 800;
     padding: 16px 36px;
     border: 3px solid #2b2b2b;
@@ -240,258 +259,60 @@ body.scrapbook-bg {
     text-decoration: none;
     box-shadow: 6px 6px 0px #2b2b2b;
     transition: all 0.2s ease;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
 }
 
 .cta-button:hover {
     background: #ff3366;
     color: #fff;
-    transform: translate(-3px, -3px);
+    transform: translate(-3px, -3px) rotate(-1deg);
     box-shadow: 9px 9px 0px #2b2b2b;
 }
 
-/* Profile Specific Elements */
-.page-heading {
-    font-family: 'Special Elite', cursive;
-    font-size: 2.6rem;
-    text-align: center;
-    margin-bottom: 35px;
-    color: #3a86ff;
-    text-shadow: 2px 2px 0px #2b2b2b;
-}
-
-.profile-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin-bottom: 25px;
-}
-
-.profile-info-box {
-    padding: 25px;
-    line-height: 1.9;
-    font-size: 1.05rem;
-}
-
-.secret-box {
-    background: #ffccd5;
-    padding: 25px;
-    border: 2px solid #2b2b2b;
-    border-radius: 8px;
-    cursor: pointer !important;
-    transition: background 0.3s, transform 0.2s;
-}
-
-.secret-box:hover {
-    background: #ffb3c1;
-}
-
-.hint-click {
-    font-size: 0.85rem;
-    color: #d90429;
-    font-style: italic;
-    font-weight: normal;
-}
-
-.hidden {
-    display: none;
-    margin-top: 12px;
-    font-style: italic;
-    color: #7209b7;
-    font-weight: 600;
-}
-
-.vibe-tracker {
-    background: #e2ece9;
-    padding: 20px;
-    border: 2px solid #2b2b2b;
-    border-radius: 8px;
+/* Sticker Generator Floating Box */
+.sticker-spawner-box {
     margin-top: 25px;
+    padding: 15px;
+    background: #e2ece9;
+    border: 2px dashed #2b2b2b;
+    border-radius: 12px;
+    text-align: center;
+    font-family: 'Sriracha', cursive;
 }
 
-.vibe-emojis {
-    display: flex;
-    gap: 12px;
-    margin: 12px 0;
-}
-
-.vibe-btn {
-    background: #fff;
+.spawn-btn {
+    background: #4cc9f0;
     border: 2px solid #2b2b2b;
-    padding: 6px 14px;
+    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-family: 'Sriracha', cursive;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px #2b2b2b;
+    cursor: pointer !important;
     transition: 0.2s;
-    box-shadow: 2px 2px 0px #2b2b2b;
+    margin-left: 10px;
 }
-
-.vibe-btn:hover {
-    background: #ff3366;
+.spawn-btn:hover {
+    background: #7209b7;
     color: #fff;
     transform: translateY(-2px);
 }
 
-.draggable-sticker {
-    background: #7209b7;
-    color: #fff;
-    padding: 12px 24px;
-    border: 2px solid #2b2b2b;
-    border-radius: 25px;
-    display: inline-block;
-    margin-top: 25px;
-    box-shadow: 5px 5px 0px #2b2b2b;
-    cursor: grab !important;
-    font-weight: bold;
-}
-
-/* Education Timeline */
-.timeline-container {
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-.timeline-item {
-    background: #fdf0d5;
-    border: 2px solid #2b2b2b;
-    padding: 25px;
-    border-radius: 10px;
-    position: relative;
-    box-shadow: 5px 5px 0px #2b2b2b;
-}
-
-.highlight-edu {
-    background: #cbf3f0;
-}
-
-.badge {
-    background: #ff5964;
-    color: #fff;
-    padding: 5px 14px;
-    border: 2px solid #2b2b2b;
-    border-radius: 12px;
-    display: inline-block;
-    font-weight: bold;
-    margin-bottom: 12px;
-    box-shadow: 2px 2px 0px #2b2b2b;
-}
-
-/* Hobby Grid */
-.hobby-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
-}
-
-.hobby-card {
-    background: #fff;
-    border: 2px solid #2b2b2b;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 5px 5px 0px #2b2b2b;
-    transition: transform 0.2s ease;
-}
-
-.hobby-card:hover {
-    transform: translateY(-5px);
-    background: #ffe5ec;
-}
-
-.hobby-icon {
-    font-size: 3.2rem;
-    display: block;
-    margin-bottom: 12px;
-}
-
-/* Contact Cards */
-.contact-cards-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    margin-bottom: 25px;
-}
-
-.contact-card {
-    background: #f1faee;
-    border: 2px solid #2b2b2b;
-    padding: 25px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 5px 5px 0px #2b2b2b;
-    transition: transform 0.2s ease;
-}
-
-.contact-card span {
-    font-size: 2.8rem;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.contact-info-block {
-    padding: 22px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    line-height: 1.8;
-}
-
-/* Modal Popup */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.65);
-    backdrop-filter: blur(4px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    z-index: 1000;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-content {
-    background: #fff;
-    padding: 35px;
-    width: 420px;
-    position: relative;
-    border: 4px solid #2b2b2b;
-    box-shadow: 12px 12px 0px #ff3366;
-    border-radius: 16px;
-}
-
-.close-modal {
+/* Spawned Sticker Dynamic Elements */
+.floating-spawned-sticker {
     position: absolute;
-    top: 12px; right: 18px;
     font-size: 2.2rem;
-    cursor: pointer !important;
+    pointer-events: none;
+    z-index: 50;
+    animation: spawnAnim 1s forwards ease-out;
 }
 
-.modal-content form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 18px;
-}
-
-.modal-content input, .modal-content textarea {
-    padding: 12px;
-    border: 2px solid #2b2b2b;
-    border-radius: 6px;
-    font-family: 'Prompt', sans-serif;
-    cursor: text !important;
-    background: #fffdf5;
+@keyframes spawnAnim {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.3) rotate(360deg) translateY(-40px); opacity: 0; }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .profile-grid, .hobby-grid, .contact-cards-container {
-        grid-template-columns: 1fr;
-    }
+    .journal-title { font-size: 2.8rem; }
 }
