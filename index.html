@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maximalist Journal - Home</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
 </head>
 <body class="scrapbook-bg">
 
     <!-- Custom Cursor & Sparkles -->
     <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
     <div id="sparkle-container"></div>
+
+    <!-- Floating Background Decor -->
+    <div class="bg-sticker s1">📌</div>
+    <div class="bg-sticker s2">✨</div>
+    <div class="bg-sticker s3">📎</div>
+    <div class="bg-sticker s4">💖</div>
 
     <!-- Navigation Menu -->
     <nav class="journal-nav">
@@ -23,21 +30,24 @@
     </nav>
 
     <!-- Main Content Area -->
-    <main class="page-container active" id="home">
+    <main class="page-container" id="home">
         <div class="journal-cover tilt-card">
             <div class="tape top-tape"></div>
-            <div class="sticker star-sticker">⭐</div>
-            <div class="sticker heart-sticker">💖</div>
+            <div class="tape left-tape"></div>
+            <div class="stamp-badge">⭐ NEW EDT.</div>
             
             <h1 class="journal-title">My Chaos & Dreams</h1>
-            <p class="journal-subtitle">~ Interactive Maximalist Scrapbook Journal ~</p>
+            <p class="journal-subtitle">~ Ultimate Maximalist Scrapbook Journal Experience ~</p>
             
-            <div class="polaroid-frame">
+            <div class="polaroid-frame tilt-card">
+                <div class="tape polaroid-tape"></div>
                 <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=60" alt="Cover Photo">
-                <p class="polaroid-caption">Welcome to my inner world! ✨</p>
+                <p class="polaroid-caption">Welcome to my inner universe! ✨</p>
             </div>
 
-            <a href="profile.html" class="cta-button">เปิดสมุดบันทึกเล่มนี้ 🚀</a>
+            <div class="action-wrapper">
+                <a href="profile.html" class="cta-button pulse-anim">เปิดสมุดบันทึกเล่มนี้ 🚀</a>
+            </div>
         </div>
     </main>
 
