@@ -1,69 +1,43 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximalist Journal - Hobby</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - งานอดิเรก</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="scrapbook-bg">
+<body>
 
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
-    <div id="sparkle-container"></div>
+  <nav class="navbar-container">
+    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="hobby.html" class="active">งานอดิเรก</a></li>
+      <li><a href="contact.html">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <div class="bg-sticker s2">🎮</div>
-    <div class="bg-sticker s3">🎧</div>
-
-    <nav class="journal-nav">
-        <a href="index.html" class="nav-item">🏠 Home</a>
-        <a href="profile.html" class="nav-item">📖 Profile</a>
-        <a href="education.html" class="nav-item">🎓 Education</a>
-        <a href="hobby.html" class="nav-item active">🎨 Hobby</a>
-        <a href="contact.html" class="nav-item">💌 Contact</a>
-    </nav>
-
-    <main class="page-container" id="hobby">
-        <div class="scrapbook-card">
-            <div class="tape corner-tape-1"></div>
-            <h2 class="page-heading">🎨 My Passions & Hobbies 🎨</h2>
-
-            <div class="hobby-grid">
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">🎮</span>
-                    <h3>1. เกม</h3>
-                    <p>ชอบเล่นแนว Open World, RPG และอินดี้เกมสร้างสรรค์ไอเดีย</p>
-                </div>
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">⚽</span>
-                    <h3>2. กีฬา</h3>
-                    <p>วิ่งออกกำลังกายยามเย็น และเล่นแบดมินตันกับเพื่อนๆ</p>
-                </div>
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">🎧</span>
-                    <h3>3. เพลง</h3>
-                    <p>ฟังแนว Lo-Fi, Synthwave และ Indie Pop ตลอดเวลาที่เขียนโค้ด</p>
-                </div>
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">🎬</span>
-                    <h3>4. ภาพยนตร์</h3>
-                    <p>หลงใหลในภาพยนตร์ไซไฟ (Sci-Fi) และแอนิเมชันแฟนตาซีอลังการ</p>
-                </div>
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">💻</span>
-                    <h3>5. เทคโนโลยี</h3>
-                    <p>ติดตาม Gadget ใหม่ๆ ทดลองเขียนโปรแกรมและสร้างลูกเล่นเว็บแปลกๆ</p>
-                </div>
-                <div class="hobby-card tilt-card">
-                    <span class="hobby-icon">📸</span>
-                    <h3>6. ความสนใจอื่นๆ</h3>
-                    <p>ถ่ายรูปฟิล์ม สะสมสติ๊กเกอร์ และแต่งห้องแนว Maximalist</p>
-                </div>
-            </div>
+  <div class="main-container">
+    <div class="scrapbook-card reveal">
+      <div class="washi-tape"></div>
+      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 20px;">🎨 งานอดิเรกและความสามารถ (Hobbies & Gallery)</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; text-align: center;">
+        <div class="polaroid">
+          <img src="images/work-1.jpg" alt="Hobby 1">
+          <p>ชอบเขียนโค้ดและดีไซน์เว็บ 💻</p>
         </div>
-    </main>
+        <div class="polaroid" style="transform: rotate(3deg);">
+          <img src="images/work-2.jpg" alt="Hobby 2">
+          <p>วาดรูปและฟังเพลง 🎧</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
