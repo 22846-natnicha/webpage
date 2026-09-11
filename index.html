@@ -2,55 +2,48 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximalist Journal - Home</title>
+    <title>My Scrapbook Journal - Home</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
 </head>
 <body class="scrapbook-bg">
-
-    <!-- Custom Cursor & Sparkles -->
     <div class="custom-cursor"></div>
     <div class="cursor-follower"></div>
     <div id="sparkle-container"></div>
+    <div class="bg-sticker s1">🌸</div><div class="bg-sticker s2">⭐</div><div class="bg-sticker s3">📌</div><div class="bg-sticker s4">🧸</div>
 
-    <!-- Floating Background Decor -->
-    <div class="bg-sticker s1">📌</div>
-    <div class="bg-sticker s2">✨</div>
-    <div class="bg-sticker s3">📎</div>
-    <div class="bg-sticker s4">💖</div>
-
-    <!-- Navigation Menu -->
     <nav class="journal-nav">
-        <a href="index.html" class="nav-item active">🏠 Home</a>
-        <a href="profile.html" class="nav-item">📖 Profile</a>
-        <a href="education.html" class="nav-item">🎓 Education</a>
-        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
-        <a href="contact.html" class="nav-item">💌 Contact</a>
+        <a href="index.html" class="nav-item active">🏠 หน้าแรก</a>
+        <a href="profile.html" class="nav-item">👤 ประวัติ</a>
+        <a href="education.html" class="nav-item">📚 การศึกษา</a>
+        <a href="hobbies.html" class="nav-item">🎨 งานอดิเรก</a>
+        <a href="gallery.html" class="nav-item">📸 แกลเลอรี</a>
+        <a href="contact.html" class="nav-item">💌 ติดต่อ</a>
     </nav>
 
-    <!-- Main Content Area -->
-    <main class="page-container" id="home">
+    <div class="page-container">
         <div class="journal-cover tilt-card">
             <div class="tape top-tape"></div>
-            <div class="tape left-tape"></div>
-            <div class="stamp-badge">⭐ NEW EDT.</div>
+            <div class="stamp-badge">⭐ VIP EDT.</div>
+            <h1 class="journal-title">My Scrapbook</h1>
+            <p class="journal-subtitle">บันทึกเรื่องราว ความทรงจำ และความน่ารักสุดคิวท์</p>
             
-            <h1 class="journal-title">My Chaos & Dreams</h1>
-            <p class="journal-subtitle">~ Ultimate Maximalist Scrapbook Journal Experience ~</p>
-            
-            <div class="polaroid-frame tilt-card">
+            <div class="polaroid-frame">
                 <div class="tape polaroid-tape"></div>
-                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=60" alt="Cover Photo">
-                <p class="polaroid-caption">Welcome to my inner universe! ✨</p>
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Cover Photo">
+                <div class="polaroid-caption">Memories #2026 ✨</div>
             </div>
 
-            <div class="action-wrapper">
-                <a href="profile.html" class="cta-button pulse-anim">เปิดสมุดบันทึกเล่มนี้ 🚀</a>
+            <div class="sticker-spawner-box paper-note">
+                <span>✨ อยากเสกความน่ารักเพิ่มไหม? </span>
+                <button class="spawn-btn" id="spawnStickerBtn">กดเสกสติ๊กเกอร์! 🎪</button>
+            </div>
+
+            <div style="margin-top: 25px;">
+                <a href="profile.html" class="cta-button">เปิดสมุดอ่านกันเลย! ➔</a>
             </div>
         </div>
-    </main>
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
