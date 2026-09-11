@@ -3,283 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ติดต่อฉัน | My Portfolio</title>
-    <style>
-        /* =========================================
-           1. ตั้งค่าพื้นฐานและพื้นหลังอวกาศ
-           ========================================= */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100vh;
-            background: radial-gradient(circle at center, #0B0B2A 0%, #000000 100%);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        #spaceCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* ให้อยู่หลังสุด */
-        }
-
-        /* =========================================
-           2. Navbar โปร่งแสง (Glassmorphism)
-           ========================================= */
-        .navbar {
-            background: rgba(11, 11, 42, 0.6);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
-            padding: 15px 50px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-shadow: 0 0 10px #0ff;
-        }
-
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            color: #b3e0ff;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: #0ff;
-            text-shadow: 0 0 10px #0ff;
-        }
-
-        /* =========================================
-           3. โครงสร้างเนื้อหาหลัก
-           ========================================= */
-        .container {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .animated-text {
-            font-size: 2.5rem;
-            color: #fff;
-            text-shadow: 0 0 10px #fff, 0 0 20px #0ff, 0 0 30px #0ff;
-            margin-bottom: 10px;
-        }
-
-        /* =========================================
-           4. Card (กล่องเนื้อหาแบบอวกาศ)
-           ========================================= */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(0, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 30px 20px;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-            border-color: rgba(0, 255, 255, 0.6);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        /* =========================================
-           5. ปุ่มต่างๆ (Buttons)
-           ========================================= */
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            border-radius: 25px;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn-outline {
-            border: 1px solid #0ff;
-            color: #0ff;
-        }
-
-        .btn-outline:hover {
-            background: #0ff;
-            color: #000;
-            box-shadow: 0 0 15px #0ff;
-        }
-
-        .btn-primary {
-            background: #8a2be2;
-            color: #fff;
-            border: 1px solid #8a2be2;
-        }
-
-        .btn-primary:hover {
-            background: #9932cc;
-            box-shadow: 0 0 15px #8a2be2;
-        }
-
-        /* =========================================
-           6. Footer และ Animation ปรากฏตัว
-           ========================================= */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 50px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
-        }
-
-        .mt-4 { margin-top: 40px; }
-
-        /* Scroll Animation Classes */
-        .hidden-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .show-on-scroll {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <title>Maximalist Journal - Contact</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="scrapbook-bg">
 
-    <canvas id="spaceCanvas"></canvas>
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+    <div id="sparkle-container"></div>
 
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">MyPortfolio.</a>
-            <ul class="nav-links">
-                <li><a href="index.html">หน้าแรก</a></li>
-                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
-                <li><a href="education.html">การศึกษา</a></li>
-                <li><a href="hobby.html">งานอดิเรก</a></li>
-                <li><a href="contact.html" class="active">ติดต่อ</a></li>
-            </ul>
-        </div>
+    <div class="bg-sticker s1">💌</div>
+    <div class="bg-sticker s4">✨</div>
+
+    <nav class="journal-nav">
+        <a href="index.html" class="nav-item">🏠 Home</a>
+        <a href="profile.html" class="nav-item">📖 Profile</a>
+        <a href="education.html" class="nav-item">🎓 Education</a>
+        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
+        <a href="contact.html" class="nav-item active">💌 Contact</a>
     </nav>
 
-    <main class="container">
-        <div class="section-header hidden-on-scroll">
-            <h2 class="animated-text">ติดต่อฉัน (Contact)</h2>
-            <p>ยินดีที่ได้รู้จัก! สามารถทักทายกันได้ตามช่องทางด้านล่าง 🌌</p>
+    <main class="page-container" id="contact">
+        <div class="scrapbook-card tilt-card">
+            <div class="tape corner-tape-2"></div>
+            <h2 class="page-heading">💌 Let's Connect! 💌</h2>
+
+            <div class="contact-cards-container">
+                <div class="contact-card tilt-card">
+                    <span>📧</span>
+                    <h4>Email Card</h4>
+                    <p>phum.creative@journal.com</p>
+                </div>
+                <div class="contact-card tilt-card">
+                    <span>🌐</span>
+                    <h4>Website Card</h4>
+                    <p>www.maximalist-journal.io</p>
+                </div>
+                <div class="contact-card tilt-card">
+                    <span>💬</span>
+                    <h4>Social Media Card</h4>
+                    <p>IG / X / GitHub: @phum_maximalist</p>
+                </div>
+            </div>
+
+            <div class="contact-info-block paper-note">
+                <h4>📞 Contact Information Block</h4>
+                <p>📍 ที่ตั้ง: อำเภอจอมทอง (ใกล้เคียง ขุนแปะ) จังหวัดเชียงใหม่, ประเทศไทย</p>
+                <p>🕒 เวลาทำการ: พร้อมรับข้อความและพูดคุยตลอด 24 ชั่วโมง!</p>
+            </div>
+
+            <div class="action-wrapper">
+                <button class="cta-button pulse-anim contact-trigger" id="openModal">Send Message / Contact Me 📬</button>
+            </div>
         </div>
-
-        <section class="contact-section">
-            <div class="contact-grid">
-                <div class="card contact-card hidden-on-scroll" style="transition-delay: 100ms;">
-                    <div class="contact-icon pulse-anim">📧</div>
-                    <h3>Email</h3>
-                    <p>[กรอกอีเมล@gmail.com]</p>
-                    <a href="mailto:yourmail@example.com" class="btn btn-outline small-btn">ส่งอีเมลเลย</a>
-                </div>
-
-                <div class="card contact-card hidden-on-scroll" style="transition-delay: 200ms;">
-                    <div class="contact-icon float-anim">📱</div>
-                    <h3>Facebook</h3>
-                    <p>[กรอกชื่อ Facebook]</p>
-                    <a href="#" class="btn btn-outline small-btn">เยี่ยมชมโปรไฟล์</a>
-                </div>
-
-                <div class="card contact-card hidden-on-scroll" style="transition-delay: 300ms;">
-                    <div class="contact-icon">🌐</div>
-                    <h3>Website</h3>
-                    <p>พอร์ตโฟลิโอโครงงาน ม.3</p>
-                    <a href="index.html" class="btn btn-primary shiny-btn small-btn">กลับหน้าแรก</a>
-                </div>
-            </div>
-
-            <div class="card mt-4 text-center hidden-on-scroll" style="transition-delay: 400ms;">
-                <h3 class="animated-text" style="font-size: 1.8rem;">ขอบคุณที่เข้ามารับชมครับ/ค่ะ! ✨</h3>
-                <p>หวังว่าเว็บไซต์นี้จะทำให้รู้จักตัวตนของฉันมากขึ้น (ลองคลิกที่ว่างๆ ดูสิ!)</p>
-            </div>
-        </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 MyPortfolio. ออกแบบโดย [กรอกชื่อ] ชั้น ม.3/[กรอกห้อง]</p>
-    </footer>
+    <!-- Modal Popup -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content tilt-card">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>✨ Send a Love Letter ✨</h3>
+            <form onsubmit="event.preventDefault(); alert('ส่งข้อความเรียบร้อยแล้วจ้า! ขอบคุณที่แวะมาเยือน 💖');">
+                <input type="text" placeholder="ชื่อของคุณ..." required>
+                <input type="email" placeholder="อีเมลของคุณ..." required>
+                <textarea placeholder="พิมพ์ข้อความหาฉันตรงนี้..." rows="4" required></textarea>
+                <button type="submit" class="cta-button">Dispatch Message 🚀</button>
+            </form>
+        </div>
+    </div>
 
-    <script>
-        /* === ระบบดาราศาสตร์ (Space Effect) === */
-        const canvas = document.getElementById('spaceCanvas');
-        const ctx = canvas.getContext('2d');
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        let particles = [];
-        let stars = [];
-
-        // สร้างดาวพื้นหลัง
-        for(let i = 0; i < 200; i++) {
-            stars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                radius: Math.random() * 1.5,
-                alpha: Math.random()
-            });
-        }
-
-        class Particle {
-            constructor(x, y) {
-                this.x = x;
-                this.y = y;
-                this.velocity = { x: (Math.random() - 0.5) * 8, y: (Math.random() - 0.5) * 8 };
-                this.radius = Math.random() * 3 + 1;
-                const colors = ['#00ffff', '#8a2be2', '#ff00ff', '#ffffff', '#4169e1'];
-                this.color = colors[Math.floor(Math.random() * colors.length)];
-                this.alpha = 1;
-                this.decay
+    <script src="script.js"></script>
+</body>
+</html>
