@@ -1,49 +1,55 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <title>My Scrapbook Journal - Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - หน้าแรก (Digital Journal)</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="scrapbook-bg">
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
-    <div id="sparkle-container"></div>
-    <div class="bg-sticker s1">🌸</div><div class="bg-sticker s2">⭐</div><div class="bg-sticker s3">📌</div><div class="bg-sticker s4">🧸</div>
+<body>
 
-    <nav class="journal-nav">
-        <a href="index.html" class="nav-item active">🏠 หน้าแรก</a>
-        <a href="profile.html" class="nav-item">👤 ประวัติ</a>
-        <a href="education.html" class="nav-item">📚 การศึกษา</a>
-        <a href="hobbies.html" class="nav-item">🎨 งานอดิเรก</a>
-        <a href="gallery.html" class="nav-item">📸 แกลเลอรี</a>
-        <a href="contact.html" class="nav-item">💌 ติดต่อ</a>
-    </nav>
+  <!-- Navigation Bar -->
+  <nav class="navbar-container">
+    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">หน้าแรก</a></li>
+      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="hobby.html">งานอดิเรก</a></li>
+      <li><a href="contact.html">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <div class="page-container">
-        <div class="journal-cover tilt-card">
-            <div class="tape top-tape"></div>
-            <div class="stamp-badge">⭐ VIP EDT.</div>
-            <h1 class="journal-title">My Scrapbook</h1>
-            <p class="journal-subtitle">บันทึกเรื่องราว ความทรงจำ และความน่ารักสุดคิวท์</p>
-            
-            <div class="polaroid-frame">
-                <div class="tape polaroid-tape"></div>
-                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80" alt="Cover Photo">
-                <div class="polaroid-caption">Memories #2026 ✨</div>
-            </div>
+  <!-- Floating Background Elements -->
+  <div class="floating-item" style="top: 15%; left: 5%;">✨</div>
+  <div class="floating-item" style="top: 25%; right: 8%;">💖</div>
+  <div class="floating-item" style="bottom: 20%; left: 10%;">⭐</div>
 
-            <div class="sticker-spawner-box paper-note">
-                <span>✨ อยากเสกความน่ารักเพิ่มไหม? </span>
-                <button class="spawn-btn" id="spawnStickerBtn">กดเสกสติ๊กเกอร์! 🎪</button>
-            </div>
-
-            <div style="margin-top: 25px;">
-                <a href="profile.html" class="cta-button">เปิดสมุดอ่านกันเลย! ➔</a>
-            </div>
+  <!-- Main Content -->
+  <div class="main-container">
+    <div class="scrapbook-card reveal" style="text-align: center;">
+      <div class="washi-tape"></div>
+      <h1 style="font-size: 2.8rem; color: var(--soft-brown); margin-bottom: 10px;">Welcome to My Scrapbook World! ✨</h1>
+      <p class="handwritten" style="font-size: 1.4rem; color: #666; margin-bottom: 20px;">
+        "สมุดบันทึกความทรงจำ ผลงาน และเรื่องราวของเด็ก ม.3 คนนี้จ้า~"
+      </p>
+      
+      <div style="margin: 30px 0;">
+        <div class="polaroid" style="display: inline-block;">
+          <img src="images/profile.jpg" alt="Profile Image">
+          <p>ด.ช. / ด.ญ. ตัวอย่าง น่ารักๆ</p>
         </div>
+      </div>
+
+      <p style="font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin: 0 auto 30px auto;">
+        เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นโครงงานวิชาคอมพิวเตอร์ ระดับชั้นมัธยมศึกษาปีที่ 3 โดยรวบรวมประวัติ ผลงาน และความชอบส่วนตัวเอาไว้ในรูปแบบสมุดไดอารี่แฮนด์เมดสุดคิ้วท์!
+      </p>
+
+      <a href="profile.html"><button class="cute-btn">📖 เปิดสมุดอ่านประวัติกันเลย!</button></a>
     </div>
-    <script src="script.js"></script>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
