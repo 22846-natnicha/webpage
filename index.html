@@ -3,217 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Maximalist Scrapbook Journal</title>
-    <!-- Google Fonts: ลายมือและฟอนต์แนวโมเดิร์น -->
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Kanit:wght@300;400;600;800&family=Permanent+Marker&family=Special+Elite&display=swap" rel="stylesheet">
+    <title>Maximalist Journal - Home</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="scrapbook-bg">
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <!-- Custom Cursor & Sparkles -->
+    <div class="custom-cursor"></div>
+    <div id="sparkle-container"></div>
 
-    <!-- Background Sparkles Container -->
-    <div class="sparkles-container"></div>
+    <!-- Navigation Menu -->
+    <nav class="journal-nav">
+        <a href="index.html" class="nav-item active">🏠 Home</a>
+        <a href="profile.html" class="nav-item">📖 Profile</a>
+        <a href="education.html" class="nav-item">🎓 Education</a>
+        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
+        <a href="contact.html" class="nav-item">💌 Contact</a>
+    </nav>
 
-    <!-- Scrapbook Container Wrapper -->
-    <div class="scrapbook-wrapper">
-        
-        <!-- Navigation Menu -->
-        <nav class="scrapbook-nav">
-            <button class="nav-btn active" data-target="page-home">📓 ปกสมุด</button>
-            <button class="nav-btn" data-target="page-profile">✨ โปรไฟล์</button>
-            <button class="nav-btn" data-target="page-education">🎓 การศึกษา</button>
-            <button class="nav-btn" data-target="page-hobby">🎨 งานอดิเรก</button>
-            <button class="nav-btn" data-target="page-contact">💌 ติดต่อ</button>
-        </nav>
+    <!-- Main Content Area -->
+    <main class="page-container active" id="home">
+        <div class="journal-cover tilt-card">
+            <div class="tape top-tape"></div>
+            <div class="sticker star-sticker">⭐</div>
+            <div class="sticker heart-sticker">💖</div>
+            
+            <h1 class="journal-title">My Chaos & Dreams</h1>
+            <p class="journal-subtitle">~ Interactive Maximalist Scrapbook Journal ~</p>
+            
+            <div class="polaroid-frame">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=60" alt="Cover Photo">
+                <p class="polaroid-caption">Welcome to my inner world! ✨</p>
+            </div>
 
-        <!-- Main Content Area (Pages) -->
-        <main class="pages-container">
-
-            <!-- 1. หน้า Index (Home) -->
-            <section id="page-home" class="journal-page active">
-                <div class="tape top-tape"></div>
-                <div class="journal-cover">
-                    <div class="sticker stamp-1">⭐ V.I.P</div>
-                    <div class="sticker stamp-2">✨ 2026</div>
-                    <h1 class="main-title">MY CHAOTIC JOURNAL</h1>
-                    <p class="subtitle">"ยินดีต้อนรับสู่ดินแดนแห่งความทรงจำ สมุดบันทึกที่เต็มไปด้วยเรื่องราว ความฝัน และความบ้าคลั่ง!"</p>
-                    <div class="cta-container">
-                        <button class="btn-sparkle" onclick="switchPage('page-profile')">เปิดอ่านเรื่องราวเล่มนี้เลย! 🚀</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 2. หน้า Profile -->
-            <section id="page-profile" class="journal-page">
-                <div class="tape corner-tape"></div>
-                <h2 class="page-title">🌸 ข้อมูลส่วนตัว (Profile Scrapbook)</h2>
-                
-                <div class="profile-grid">
-                    <div class="scrapbook-card polaroid tilt-card">
-                        <div class="polaroid-frame">
-                            <div class="avatar-placeholder">📸</div>
-                            <p class="polaroid-caption">Me, Myself & I</p>
-                        </div>
-                        <ul class="profile-list">
-                            <li><strong>ชื่อจริง:</strong> ธน ภัทร (ตัวอย่าง)</li>
-                            <li><strong>ชื่อเล่น:</strong> ตะวัน / Tawan</li>
-                            <li><strong>อายุ:</strong> 21 ปี</li>
-                            <li><strong>วันเกิด:</strong> 12 สิงหาคม</li>
-                            <li><strong>จังหวัด:</strong> กรุงเทพมหานคร</li>
-                        </ul>
-                    </div>
-
-                    <div class="profile-extra-column">
-                        <div class="scrapbook-card note-card">
-                            <h3>💭 คำแนะนำตัว</h3>
-                            <p>สวัสดีครับ! ผมเป็นคนชอบความสร้างสรรค์ รักการเรียนรู้สิ่งใหม่ๆ และหลงใหลในงานศิลปะแนว Maximalist ที่จัดจ้านและมีชีวิตชีวา ยินดีที่ได้รู้จักทุกคนนะฮะ!</p>
-                        </div>
-
-                        <!-- Secret Journal Note -->
-                        <div class="scrapbook-card secret-box" onclick="toggleSecret(this)">
-                            <div class="secret-header">🔒 คลิกเพื่อเปิด "Secret Journal Note"</div>
-                            <div class="secret-content">
-                                <p>ความลับสุดยอด: แอบชอบกินชาไทยไข่มุกวันละ 2 แก้ว และมักจะคิดไอเดียเจ๋งๆ ตอนตี 2 เสมอ! 🤫🧋</p>
-                            </div>
-                        </div>
-
-                        <!-- Mood / Vibe Tracker -->
-                        <div class="scrapbook-card vibe-card">
-                            <h3>🌈 Mood / Vibe ประจำวัน</h3>
-                            <div class="vibe-emojis">
-                                <span class="vibe-btn" onclick="selectVibe(this)">🔥 พลังงานล้นเหลือ</span>
-                                <span class="vibe-btn" onclick="selectVibe(this)">🎨 อาร์ตตัวแม่</span>
-                                <span class="vibe-btn" onclick="selectVibe(this)">☕ คาเฟ่ & ชิล</span>
-                                <span class="vibe-btn" onclick="selectVibe(this)">💤 โหมดจำศีล</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Interactive Drag/Click Stickers -->
-                <div class="interactive-stickers">
-                    <span class="draggable-sticker" style="top: 10px; right: 20px;" onclick="bounceSticker(this)">💖 กดจิ้มฉันสิ</span>
-                    <span class="draggable-sticker" style="bottom: 10px; left: 30px;" onclick="bounceSticker(this)">⚡ แรดดดด!</span>
-                </div>
-            </section>
-
-            <!-- 3. หน้า Education -->
-            <section id="page-education" class="journal-page">
-                <div class="tape side-tape"></div>
-                <h2 class="page-title">🎓 เส้นทางประวัติการศึกษา</h2>
-                
-                <div class="timeline-container">
-                    <!-- ประถมศึกษา -->
-                    <div class="timeline-card tilt-card">
-                        <div class="badge-level">ประถมศึกษา</div>
-                        <h3>🏫 โรงเรียนอนุบาลและประถมศึกษา</h3>
-                        <p><strong>ระดับชั้น:</strong> ประถมศึกษาปีที่ 1 - 6</p>
-                        <p><strong>ห้องเรียน:</strong> ห้อง 1 (Gifted Program)</p>
-                        <p><strong>วิชาที่ชอบ:</strong> ศิลปะ, วิชาคอมพิวเตอร์พื้นฐาน</p>
-                    </div>
-
-                    <!-- มัธยมศึกษาตอนต้น -->
-                    <div class="timeline-card tilt-card">
-                        <div class="badge-level">มัธยมศึกษาตอนต้น</div>
-                        <h3>🏫 โรงเรียนมัธยมชื่อดังประจำจังหวัด</h3>
-                        <p><strong>ระดับชั้น:</strong> มัธยมศึกษาปีที่ 1 - 3</p>
-                        <p><strong>ห้องเรียน:</strong> ห้อง 4 (Science-Math)</p>
-                        <p><strong>วิชาที่ชอบ:</strong> คณิตศาสตร์, ดนตรีสากล</p>
-                    </div>
-
-                    <!-- ปัจจุบัน -->
-                    <div class="timeline-card tilt-card current">
-                        <div class="badge-level">ปัจจุบัน</div>
-                        <h3>🏛️ มหาวิทยาลัยเทคโนโลยี / สถาบันศิลปะ</h3>
-                        <p><strong>ระดับชั้น:</strong> ปริญญาตรี ปีที่ 3</p>
-                        <p><strong>ห้องเรียน:</strong> ภาควิชาเทคโนโลยีสื่อสร้างสรรค์</p>
-                        <p><strong>วิชาที่ชอบ:</strong> Interactive Design, Web Animation, Digital Art</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. หน้า Hobby -->
-            <section id="page-hobby" class="journal-page">
-                <h2 class="page-title">🎨 งานอดิเรกและความสนใจ</h2>
-                
-                <div class="hobby-grid">
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">🎮</div>
-                        <h3>เกม (Gaming)</h3>
-                        <p>ชอบเล่นแนว Open-world, RPG และ Indie Game สนุกกับการสำรวจเนื้อเรื่อง</p>
-                    </div>
-
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">⚽</div>
-                        <h3>กีฬา (Sports)</h3>
-                        <p>แบดมินตัน, วิ่งจ๊อกกิ้งยามเย็น และออกกำลังกายสร้างกล้ามเนื้อ</p>
-                    </div>
-
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">🎧</div>
-                        <h3>เพลง (Music)</h3>
-                        <p>ฟังเพลง Lo-Fi, Indie Pop, Synthwave ระหว่างนั่งทำงานเพลินๆ</p>
-                    </div>
-
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">🎬</div>
-                        <h3>ภาพยนตร์ (Movies)</h3>
-                        <p>คลั่งไคล้หนังไซไฟ (Sci-Fi), แอนิเมชัน Studio Ghibli และหนังทริลเลอร์หักมุม</p>
-                    </div>
-
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">🔭</div>
-                        <h3>ดาราศาสตร์ (Astronomy)</h3>
-                        <p>ชอบดูดาว กล้องโทรסקอร์ป และติดตามข่าวสารเกี่ยวกับจักรวาลและหลุมดำ</p>
-                    </div>
-
-                    <div class="hobby-card tilt-card">
-                        <div class="hobby-icon">💡</div>
-                        <h3>ความสนใจอื่นๆ (Others)</h3>
-                        <p>สะสมสติกเกอร์ไดคัท, แต่งห้องแนววินเทจ, และเขียนบล็อกส่วนตัว</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 5. หน้า Contact -->
-            <section id="page-contact" class="journal-page">
-                <div class="tape top-tape"></div>
-                <h2 class="page-title">💌 ช่องทางการติดต่อ</h2>
-                
-                <div class="contact-grid">
-                    <div class="contact-card tilt-card">
-                        <div class="contact-icon">📧</div>
-                        <h3>Email Card</h3>
-                        <p>tawan.journal@spacemail.com</p>
-                    </div>
-
-                    <div class="contact-card tilt-card">
-                        <div class="contact-icon">🌐</div>
-                        <h3>Website Card</h3>
-                        <p>www.tawan-maximalist-scrapbook.me</p>
-                    </div>
-
-                    <div class="contact-card tilt-card">
-                        <div class="contact-icon">📱</div>
-                        <h3>Social Media</h3>
-                        <p>IG / Twitter / TikTok: @TawanScrapbook</p>
-                    </div>
-                </div>
-
-                <div class="contact-info-block scrapbook-card">
-                    <h3>📍 ข้อมูลการติดต่อเพิ่มเติม</h3>
-                    <p>หากมีข้อสงสัย โปรเจกต์ร่วมกัน หรืออยากส่งขนมอร่อยๆ มาให้ สามารถติดต่อได้ผ่านช่องทางด้านบนตลอด 24 ชั่วโมงครับ!</p>
-                    <div class="cta-container">
-                        <button class="btn-sparkle" onclick="alert('ขอบคุณที่แวะมาเยี่ยมชมสมุดบันทึกของผมนะค้าบ! 💌✨')">Send Message / Contact Me</button>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-    </div>
+            <a href="profile.html" class="cta-button">เปิดสมุดบันทึกเล่มนี้ 🚀</a>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
