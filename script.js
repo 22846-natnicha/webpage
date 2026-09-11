@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createSparkles(x, y) {
         const container = document.getElementById('sparkle-container');
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 6; i++) {
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 60 + 15;
+            const distance = Math.random() * 50 + 10;
             const targetX = x + Math.cos(angle) * distance;
             const targetY = y + Math.sin(angle) * distance;
 
@@ -46,27 +46,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sparkle.animate([
                 { transform: 'translate(0, 0) scale(0.4)', opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.6)`, opacity: 0 }
+                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.5)`, opacity: 0 }
             ], {
-                duration: 700,
+                duration: 600,
                 easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
             }).onfinish = () => sparkle.remove();
         }
     }
 
-    // ฟังก์ชันสร้างลูกศรน่ารักๆ พุ่งกระจายตอนคลิก
     function createCuteArrows(x, y) {
         const container = document.getElementById('sparkle-container');
-        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖']; // สัญลักษณ์ลูกศรและหัวใจน่ารักๆ
+        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖'];
         
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 3; i++) {
             const arrow = document.createElement('div');
             arrow.classList.add('click-arrow');
             arrow.textContent = arrowSymbols[Math.floor(Math.random() * arrowSymbols.length)];
             
-            // สุ่มทิศทางการพุ่งออกรอบทิศทาง
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 80 + 30;
+            const distance = Math.random() * 70 + 25;
             const targetX = x + Math.cos(angle) * distance;
             const targetY = y + Math.sin(angle) * distance;
             const randomRotate = Math.random() * 360;
@@ -74,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.style.left = x + 'px';
             arrow.style.top = y + 'px';
             arrow.style.position = 'absolute';
-            arrow.style.fontSize = '1.2rem';
+            arrow.style.fontSize = '1.1rem';
             arrow.style.pointerEvents = 'none';
             arrow.style.zIndex = '9999';
             
@@ -82,15 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             arrow.animate([
                 { transform: `translate(0, 0) scale(0.5) rotate(0deg)`, opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.2) rotate(${randomRotate}deg)`, opacity: 0 }
+                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.1) rotate(${randomRotate}deg)`, opacity: 0 }
             ], {
-                duration: 800,
+                duration: 700,
                 easing: 'cubic-bezier(0.1, 1, 0.3, 1)'
             }).onfinish = () => arrow.remove();
         }
     }
 
-    // 3. 3D Tilt Effect on Cards
+    // 3. Smooth 3D Tilt Effect on Cards (เอียงตามเมาส์แบบนุ่มนวล ไม่สั่น)
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -101,10 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            const rotateX = -((y - centerY) / 12);
-            const rotateY = (x - centerX) / 12;
+            // ปรับองศาให้นุ่มนวล ไม่กระตุกหรือสั่น
+            const rotateX = -((y - centerY) / 18);
+            const rotateY = (x - centerX) / 18;
 
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.01)`;
         });
 
         card.addEventListener('mouseleave', () => {
