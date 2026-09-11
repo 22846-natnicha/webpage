@@ -1,78 +1,43 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximalist Journal - Contact</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - ติดต่อ</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="scrapbook-bg">
+<body>
 
-    <div class="custom-cursor"></div>
-    <div class="cursor-follower"></div>
-    <div id="sparkle-container"></div>
+  <nav class="navbar-container">
+    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
+    <button class="hamburger" id="hamburger">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">หน้าแรก</a></li>
+      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+      <li><a href="education.html">การศึกษา</a></li>
+      <li><a href="hobby.html">งานอดิเรก</a></li>
+      <li><a href="contact.html" class="active">ติดต่อ</a></li>
+    </ul>
+  </nav>
 
-    <div class="bg-sticker s1">💌</div>
-    <div class="bg-sticker s4">✨</div>
+  <div class="main-container">
+    <div class="scrapbook-card reveal" style="text-align: center;">
+      <div class="washi-tape"></div>
+      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 15px;">💌 ช่องทางการติดต่อ (Contact Me)</h2>
+      <p class="handwritten" style="font-size: 1.3rem; color: #666; margin-bottom: 25px;">
+        "แวะมาทักทายพูดคุย หรือส่งข้อความหาได้เสมอนะคะ/ครับ!"
+      </p>
 
-    <nav class="journal-nav">
-        <a href="index.html" class="nav-item">🏠 Home</a>
-        <a href="profile.html" class="nav-item">📖 Profile</a>
-        <a href="education.html" class="nav-item">🎓 Education</a>
-        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
-        <a href="contact.html" class="nav-item active">💌 Contact</a>
-    </nav>
+      <div style="font-size: 1.2rem; line-height: 2; margin-bottom: 30px;">
+        <p>📧 <strong>Email:</strong> student@school.ac.th</p>
+        <p>📱 <strong>Instagram:</strong> @my_cute_journal</p>
+        <p>🏫 <strong>โรงเรียน:</strong> โรงเรียนมัธยมศึกษาของเรา</p>
+      </div>
 
-    <main class="page-container" id="contact">
-        <div class="scrapbook-card tilt-card">
-            <div class="tape corner-tape-2"></div>
-            <h2 class="page-heading">💌 Let's Connect! 💌</h2>
-
-            <div class="contact-cards-container">
-                <div class="contact-card tilt-card">
-                    <span>📧</span>
-                    <h4>Email Card</h4>
-                    <p>phum.creative@journal.com</p>
-                </div>
-                <div class="contact-card tilt-card">
-                    <span>🌐</span>
-                    <h4>Website Card</h4>
-                    <p>www.maximalist-journal.io</p>
-                </div>
-                <div class="contact-card tilt-card">
-                    <span>💬</span>
-                    <h4>Social Media Card</h4>
-                    <p>IG / X / GitHub: @phum_maximalist</p>
-                </div>
-            </div>
-
-            <div class="contact-info-block paper-note">
-                <h4>📞 Contact Information Block</h4>
-                <p>📍 ที่ตั้ง: อำเภอจอมทอง (ใกล้เคียง ขุนแปะ) จังหวัดเชียงใหม่, ประเทศไทย</p>
-                <p>🕒 เวลาทำการ: พร้อมรับข้อความและพูดคุยตลอด 24 ชั่วโมง!</p>
-            </div>
-
-            <div class="action-wrapper">
-                <button class="cta-button pulse-anim contact-trigger" id="openModal">Send Message / Contact Me 📬</button>
-            </div>
-        </div>
-    </main>
-
-    <!-- Modal Popup -->
-    <div class="modal-overlay" id="contactModal">
-        <div class="modal-content tilt-card">
-            <span class="close-modal" id="closeModal">&times;</span>
-            <h3>✨ Send a Love Letter ✨</h3>
-            <form onsubmit="event.preventDefault(); alert('ส่งข้อความเรียบร้อยแล้วจ้า! ขอบคุณที่แวะมาเยือน 💖');">
-                <input type="text" placeholder="ชื่อของคุณ..." required>
-                <input type="email" placeholder="อีเมลของคุณ..." required>
-                <textarea placeholder="พิมพ์ข้อความหาฉันตรงนี้..." rows="4" required></textarea>
-                <button type="submit" class="cta-button">Dispatch Message 🚀</button>
-            </form>
-        </div>
+      <button class="cute-btn" onclick="alert('ขอบคุณที่แวะมาเยี่ยมชมสมุด Portfolio นะคะ! ✨')">💬 ส่งข้อความทักทาย</button>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
