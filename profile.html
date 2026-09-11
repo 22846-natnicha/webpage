@@ -2,69 +2,49 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maximalist Journal - Profile</title>
+    <title>My Profile - Scrapbook</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Prompt:wght@400;600;800&family=Special+Elite&family=Sriracha&display=swap" rel="stylesheet">
 </head>
 <body class="scrapbook-bg">
-
     <div class="custom-cursor"></div>
     <div class="cursor-follower"></div>
     <div id="sparkle-container"></div>
-
-    <div class="bg-sticker s2">🎨</div>
-    <div class="bg-sticker s3">🚀</div>
+    <div class="bg-sticker s1">📌</div><div class="bg-sticker s2">💖</div><div class="bg-sticker s3">🍀</div><div class="bg-sticker s4">☕</div>
 
     <nav class="journal-nav">
-        <a href="index.html" class="nav-item">🏠 Home</a>
-        <a href="profile.html" class="nav-item active">📖 Profile</a>
-        <a href="education.html" class="nav-item">🎓 Education</a>
-        <a href="hobby.html" class="nav-item">🎨 Hobby</a>
-        <a href="contact.html" class="nav-item">💌 Contact</a>
+        <a href="index.html" class="nav-item">🏠 หน้าแรก</a>
+        <a href="profile.html" class="nav-item active">👤 ประวัติ</a>
+        <a href="education.html" class="nav-item">📚 การศึกษา</a>
+        <a href="hobbies.html" class="nav-item">🎨 งานอดิเรก</a>
+        <a href="gallery.html" class="nav-item">📸 แกลเลอรี</a>
+        <a href="contact.html" class="nav-item">💌 ติดต่อ</a>
     </nav>
 
-    <main class="page-container" id="profile">
+    <div class="page-container">
         <div class="scrapbook-card tilt-card">
             <div class="tape corner-tape-1"></div>
             <div class="tape corner-tape-2"></div>
-            <div class="sticker-badge">🌟 VIP PROFILE</div>
-            
-            <h2 class="page-heading">✨ Personal Scrapbook Dossier ✨</h2>
+            <h2 class="page-heading">👤 ประวัติส่วนตัว (Profile)</h2>
             
             <div class="profile-grid">
                 <div class="profile-info-box paper-note">
-                    <p><strong>1. ชื่อจริง:</strong> นาย กรวิชญ์ นามสมมติ</p>
-                    <p><strong>2. ชื่อเล่น:</strong> ภูมิ / Phum</p>
-                    <p><strong>3. อายุ:</strong> 21 ปี</p>
-                    <p><strong>4. วันเกิด:</strong> 15 สิงหาคม 2004</p>
-                    <p><strong>5. จังหวัด:</strong> เชียงใหม่ (Khuang Pao)</p>
-                    <p><strong>6. คำแนะนำตัว:</strong> "ยินดีต้อนรับสู่โลกที่เต็มไปด้วยสีสัน ครีเอทีฟ และความบ้าบอแบบสร้างสรรค์!"</p>
+                    <p><b>ชื่อ-นามสกุล:</b> เด็กหญิง/เด็กชาย ความสุข สดใส</p>
+                    <p><b>ชื่อเล่น:</b> แฮปปี้</p>
+                    <p><b>วันเกิด:</b> 1 มกราคม 2000</p>
+                    <p><b>คติประจำใจ:</b> ยิ้มเข้าไว้ โลกสดใสแน่นอน! ✨</p>
                 </div>
-
-                <!-- Secret Journal Note -->
-                <div class="secret-box paper-note" id="secretToggle">
-                    <h3>🔒 Secret Journal Note <span class="hint-click">(คลิกเพื่อเปิด)</span></h3>
-                    <p class="secret-content hidden">"ความลับสุดยอด: ฉันแอบกินพุดดิ้งในตู้เย็นตอนตี 3 และชอบฟังเพลงโลฟายคลอตอนเขียนโค้ดเสมอ!"</p>
+                <div class="profile-info-box paper-note" style="background:#fff0f3;">
+                    <p><b>อาหารโปรด:</b> ชาไข่มุก, เค้กช็อกโกแลต 🍰</p>
+                    <p><b>สีที่ชอบ:</b> สีเหลืองพาสเทล และชมพูฟรุ้งฟริ้ง</p>
+                    <p><b>สัตว์เลี้ยง:</b> น้องแมวส้มจอมกวน 🐈</p>
                 </div>
             </div>
-
-            <!-- Mood / Vibe Tracker -->
-            <div class="vibe-tracker paper-note">
-                <h4>🎨 Mood / Vibe Tracker ประจำวัน:</h4>
-                <div class="vibe-emojis">
-                    <span class="vibe-btn" data-vibe="🚀 Energetic">🚀 พลังงานล้นเหลือ</span>
-                    <span class="vibe-btn" data-vibe="🎨 Creative">🎨 ไอเดียพรั่งพรู</span>
-                    <span class="vibe-btn" data-vibe="💤 Sleepy">💤 ง่วงนอนจัง</span>
-                </div>
-                <p id="currentVibe">Vibe ปัจจุบัน: <span>🚀 Energetic</span></p>
+            <div style="text-align: center;">
+                <a href="education.html" class="cta-button">ไปหน้าการศึกษาต่อ ➔</a>
             </div>
-
-            <!-- Drag Interactive Sticker -->
-            <div class="draggable-sticker" id="dragSticker">💥 DRAG ME AROUND!</div>
         </div>
-    </main>
-
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
