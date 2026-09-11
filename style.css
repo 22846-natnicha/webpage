@@ -1,101 +1,431 @@
-/* ========================================
-   Snoopy Decorations (Space Theme Glow)
-   ======================================== */
-.snoopy-deco {
-    position: absolute;
-    z-index: 5;
-    pointer-events: none; /* เพื่อไม่ให้เผลอคลิกโดนรูป */
-    /* เปลี่ยนจากเงาดำธรรมดา เป็นแสงเรืองแสงนีออนสีฟ้าให้เข้ากับอวกาศ */
-    filter: drop-shadow(0 0 12px rgba(0, 255, 255, 0.8));
+/* --- Global Reset & Variables --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none !important; /* ใช้ Custom Cursor */
 }
 
-/* สนูปปี้นอนบน Hero Section */
-.snoopy-hero {
-    top: -55px;
-    left: 10%;
-    width: 110px;
-    /* รวมการหมุนและการลอยตัวไว้ด้วยกัน */
-    animation: float-tilt 4s ease-in-out infinite; 
+:root {
+    --bg-color: #ffeb3b;
+    --journal-bg: #fffdf0;
+    --primary-color: #ff3366;
+    --secondary-color: #00e5ff;
+    --accent-color: #7928ca;
+    --text-color: #222222;
+    --border-color: #111111;
+    --tape-color: rgba(255, 204, 0, 0.6);
 }
 
-/* สนูปปี้เกาะการ์ด */
-.snoopy-card {
-    top: -40px;
-    right: -20px;
-    width: 90px;
-    z-index: 20;
-    animation: float-normal 4s ease-in-out infinite 1s;
+body {
+    background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(#111 15%, transparent 16%),
+        radial-gradient(#111 15%, transparent 16%);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    font-family: 'Kanit', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
 }
 
-/* สนูปปี้โผล่จาก Footer */
-.snoopy-footer {
-    bottom: 0;
-    right: 5%;
-    width: 100px;
-    animation: float-normal 4s ease-in-out infinite 0.5s;
-}
-
-/* ========================================
-   Floating Space Elements (ดาว, ยานอวกาศ)
-   ======================================== */
-.floating-deco {
+/* --- Custom Cursor --- */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
     position: fixed;
-    z-index: 0;
-    opacity: 0.8;
     pointer-events: none;
-    user-select: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+.cursor-outline {
+    width: 35px;
+    height: 35px;
+    border: 2px dashed var(--border-color);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.15s ease-out, width 0.2s, height 0.2s;
+}
+
+/* --- Sparkle Particle Effect --- */
+.sparkle {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-color);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    pointer-events: none;
+    animation: sparkleAnim 0.8s forwards linear;
+    z-index: 9997;
+}
+
+@keyframes sparkleAnim {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    100% { transform: scale(1.5) rotate(180deg); opacity: 0; }
+}
+
+/* --- Scrapbook Wrapper Layout --- */
+.scrapbook-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--journal-bg);
+    border: 4px solid var(--border-color);
+    box-shadow: 12px 12px 0px var(--border-color);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+/* --- Navigation Menu --- */
+.scrapbook-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #ffe600;
+    padding: 15px;
+    border-bottom: 4px solid var(--border-color);
+}
+
+.nav-btn {
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    background: #fff;
+    border: 3px solid var(--border-color);
+    padding: 8px 18px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background: var(--primary-color);
+    color: #fff;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px var(--border-color);
+}
+
+.nav-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+
+/* --- Pages & Smooth Transition --- */
+.pages-container {
+    position: relative;
+    min-height: 600px;
+}
+
+.journal-page {
+    display: none;
+    padding: 40px;
+    animation: fadeInPage 0.5s ease-in-out;
+}
+
+.journal-page.active {
+    display: block;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Sticky Tapes Decor --- */
+.tape {
+    position: absolute;
+    width: 120px;
+    height: 30px;
+    background: rgba(255, 235, 59, 0.7);
+    border: 1px dashed rgba(0,0,0,0.3);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+.top-tape { top: -15px; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+.corner-tape { top: -10px; right: 20px; transform: rotate(15deg); }
+.side-tape { top: 10px; left: -20px; transform: rotate(-45deg); }
+
+/* --- Scrapbook Cards & Shared Styles --- */
+.scrapbook-card {
+    background: #fff;
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.page-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 2.2rem;
+    color: var(--border-color);
+    margin-bottom: 25px;
+    text-shadow: 3px 3px 0px var(--secondary-color);
+}
+
+/* --- 1. Home Page --- */
+.journal-cover {
+    text-align: center;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.main-title {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3.5rem;
+    color: var(--border-color);
+    text-shadow: 5px 5px 0px var(--primary-color), 10px 10px 0px var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+.sticker {
+    position: absolute;
+    background: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    padding: 5px 12px;
+    font-weight: 800;
+    transform: rotate(-10deg);
+    box-shadow: 3px 3px 0px var(--border-color);
+}
+.stamp-1 { top: 20px; left: 10%; background: #ff3366; color: #fff; }
+.stamp-2 { bottom: 40px; right: 10%; background: #00e5ff; transform: rotate(12deg); }
+
+.btn-sparkle {
+    font-family: 'Kanit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    background: var(--accent-color);
+    color: #fff;
+    border: 3px solid var(--border-color);
+    padding: 12px 30px;
+    border-radius: 50px;
+    box-shadow: 5px 5px 0px var(--border-color);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-sparkle:hover {
+    background: var(--primary-color);
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px var(--border-color);
+}
+
+/* --- 2. Profile Page --- */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 25px 15px;
+    transform: rotate(-2deg);
+}
+
+.polaroid-frame {
+    background: #f0f0f0;
+    border: 2px solid #ccc;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.avatar-placeholder {
+    font-size: 4rem;
+}
+
+.polaroid-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.profile-list {
+    list-style: none;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.profile-extra-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.note-card {
+    background: #ffffcc;
+    transform: rotate(1.5deg);
+}
+
+.secret-box {
+    background: #ffe6f2;
+    cursor: pointer;
+    border: 3px dashed var(--primary-color);
+}
+
+.secret-content {
+    display: none;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #999;
+    font-style: italic;
+    color: var(--accent-color);
+}
+
+.vibe-card {
+    background: #e6ffff;
+}
+
+.vibe-emojis {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.vibe-btn {
+    background: #fff;
+    border: 2px solid var(--border-color);
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px var(--border-color);
+    transition: 0.1s;
+}
+
+.vibe-btn.selected {
+    background: var(--primary-color);
+    color: white;
+}
+
+.interactive-stickers {
+    position: relative;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.draggable-sticker {
+    position: absolute;
+    background: #ffcc00;
+    border: 2px solid var(--border-color);
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 3px 3px 0px var(--border-color);
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+/* --- 3. Education Page --- */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-card {
+    background: #fff;
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    padding: 20px;
+    position: relative;
+    border-radius: 8px;
+}
+
+.timeline-card.current {
+    background: #e1f5fe;
+    border-color: var(--accent-color);
+}
+
+.badge-level {
+    display: inline-block;
+    background: var(--secondary-color);
+    border: 2px solid var(--border-color);
+    padding: 2px 10px;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 0px var(--border-color);
+}
+
+/* --- 4. Hobby Page --- */
+.hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.hobby-card {
+    background: #fff;
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.hobby-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    background: #fff0f5;
+}
+
+.hobby-icon {
     font-size: 2.5rem;
-    /* เพิ่มแสงเรืองแสงให้อีโมจิ */
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    margin-bottom: 10px;
 }
 
-/* ปรับคลาสให้ตรงกับ HTML ธีมอวกาศ */
-.planet-1 { top: 15%; left: 5%; font-size: 3.5rem; animation: drift 20s linear infinite alternate; }
-.ufo-1 { top: 10%; right: 10%; font-size: 3rem; animation: drift 15s linear infinite alternate-reverse; }
-.star-1 { bottom: 25%; left: 15%; font-size: 2rem; animation: twinkle 3s ease-in-out infinite; }
-.comet-1 { top: 40%; right: 5%; font-size: 2.5rem; animation: shoot 6s linear infinite; }
-
-/* ========================================
-   Animations สำหรับธีมอวกาศ
-   ======================================== */
-/* แอนิเมชันลอยตัวแบบเอียงๆ (สำหรับสนูปปี้นอน) */
-@keyframes float-tilt {
-    0% { transform: translateY(0px) rotate(-10deg); }
-    50% { transform: translateY(-15px) rotate(-15deg); }
-    100% { transform: translateY(0px) rotate(-10deg); }
+/* --- 5. Contact Page --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
-/* แอนิเมชันลอยตัวขึ้นลงธรรมดา */
-@keyframes float-normal {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
+.contact-card {
+    background: #fff;
+    border: 3px solid var(--border-color);
+    box-shadow: 6px 6px 0px var(--border-color);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
 }
 
-/* แอนิเมชันลอยเคว้งในอวกาศ */
-@keyframes drift {
-    0% { transform: translateX(0) translateY(0); }
-    100% { transform: translateX(50px) translateY(20px); }
+.contact-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
 }
 
-/* แอนิเมชันดาวกะพริบเรืองแสง */
-@keyframes twinkle {
-    0%, 100% { opacity: 0.3; transform: scale(0.8); text-shadow: 0 0 5px #fff; }
-    50% { opacity: 1; transform: scale(1.2); text-shadow: 0 0 20px #0ff, 0 0 30px #8a2be2; }
+.contact-info-block {
+    background: #f3e5f5;
+    text-align: center;
 }
 
-/* แอนิเมชันดาวตกวิ่งพาดผ่านจอ */
-@keyframes shoot {
-    0% { transform: translate(0, 0) rotate(-45deg); opacity: 0; }
-    10% { opacity: 1; }
-    20% { transform: translate(-150px, 150px) rotate(-45deg); opacity: 0; }
-    100% { opacity: 0; }
-}
-
-/* จัดการมือถือเพื่อไม่ให้รกเกินไป */
-@media screen and (max-width: 768px) {
-    .snoopy-hero { top: -40px; left: 0; width: 90px; }
-    .floating-deco { opacity: 0.4; font-size: 2rem; }
-    .planet-1 { top: 10%; }
-    .ufo-1 { display: none; /* ซ่อน UFO บนมือถือกันรก */ }
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .main-title {
+        font-size: 2.5rem;
+    }
 }
