@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     renderCursor();
 
-    // 2. Multi-Particle Sparkle & Cute Arrows Effect on Click
+    // 2. Click Effects: Sparkles & Cute Arrows
     document.addEventListener('click', (e) => {
         createSparkles(e.clientX, e.clientY);
         createCuteArrows(e.clientX, e.clientY);
@@ -30,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createSparkles(x, y) {
         const container = document.getElementById('sparkle-container');
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 7; i++) {
             const sparkle = document.createElement('div');
             sparkle.classList.add('sparkle');
             
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 50 + 10;
+            const distance = Math.random() * 55 + 12;
             const targetX = x + Math.cos(angle) * distance;
             const targetY = y + Math.sin(angle) * distance;
 
@@ -46,9 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             sparkle.animate([
                 { transform: 'translate(0, 0) scale(0.4)', opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.5)`, opacity: 0 }
+                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.6)`, opacity: 0 }
             ], {
-                duration: 600,
+                duration: 650,
                 easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
             }).onfinish = () => sparkle.remove();
         }
@@ -56,15 +56,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createCuteArrows(x, y) {
         const container = document.getElementById('sparkle-container');
-        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖'];
+        const arrowSymbols = ['➔', '➤', '💘', '✨', '👉', '💖', '⭐', '🍀'];
         
         for (let i = 0; i < 3; i++) {
             const arrow = document.createElement('div');
-            arrow.classList.add('click-arrow');
             arrow.textContent = arrowSymbols[Math.floor(Math.random() * arrowSymbols.length)];
             
             const angle = Math.random() * Math.PI * 2;
-            const distance = Math.random() * 70 + 25;
+            const distance = Math.random() * 75 + 25;
             const targetX = x + Math.cos(angle) * distance;
             const targetY = y + Math.sin(angle) * distance;
             const randomRotate = Math.random() * 360;
@@ -72,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arrow.style.left = x + 'px';
             arrow.style.top = y + 'px';
             arrow.style.position = 'absolute';
-            arrow.style.fontSize = '1.1rem';
+            arrow.style.fontSize = '1.2rem';
             arrow.style.pointerEvents = 'none';
             arrow.style.zIndex = '9999';
             
@@ -80,15 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             arrow.animate([
                 { transform: `translate(0, 0) scale(0.5) rotate(0deg)`, opacity: 1 },
-                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.1) rotate(${randomRotate}deg)`, opacity: 0 }
+                { transform: `translate(${targetX - x}px, ${targetY - y}px) scale(1.2) rotate(${randomRotate}deg)`, opacity: 0 }
             ], {
-                duration: 700,
+                duration: 750,
                 easing: 'cubic-bezier(0.1, 1, 0.3, 1)'
             }).onfinish = () => arrow.remove();
         }
     }
 
-    // 3. Smooth 3D Tilt Effect on Cards (เอียงตามเมาส์แบบนุ่มนวล ไม่สั่น)
+    // 3. 3D Tilt Effect on Cards
     const tiltCards = document.querySelectorAll('.tilt-card');
     tiltCards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
             
-            // ปรับองศาให้นุ่มนวล ไม่กระตุกหรือสั่น
             const rotateX = -((y - centerY) / 18);
             const rotateY = (x - centerX) / 18;
 
@@ -111,69 +109,42 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Secret Journal Note Toggle
+    // 4. Gimmick: Sticker Spawner Button (กดแล้วเสกสติ๊กเกอร์พุ่งขึ้นจอ)
+    const spawnBtn = document.getElementById('spawnStickerBtn');
+    if (spawnBtn) {
+        spawnBtn.addEventListener('click', (e) => {
+            const rect = spawnBtn.getBoundingClientRect();
+            const stickers = ['🦄', '🌈', '🍩', '🎨', '🚀', '💖', '🍕', '⚡', '🧸'];
+            const randomSticker = stickers[Math.floor(Math.random() * stickers.length)];
+
+            const spawned = document.createElement('div');
+            spawned.classList.add('floating-spawned-sticker');
+            spawned.textContent = randomSticker;
+            spawned.style.left = (rect.left + rect.width / 2) + 'px';
+            spawned.style.top = rect.top + 'px';
+
+            document.body.appendChild(spawned);
+            setTimeout(() => spawned.remove(), 1000);
+        });
+    }
+
+    // 5. Stamp Badge Interactive Gimmick
+    const stampBadge = document.querySelector('.stamp-badge');
+    if (stampBadge) {
+        const stamps = ['⭐ VIP EDT.', '🔥 HOT PICK', '💖 APPROVED', '✨ RARE ITEM'];
+        stampBadge.addEventListener('click', () => {
+            const currentText = stampBadge.textContent;
+            let nextIndex = (stamps.indexOf(currentText) + 1) % stamps.length;
+            stampBadge.textContent = stamps[nextIndex];
+        });
+    }
+
+    // 6. Secret Journal Note Toggle
     const secretToggle = document.getElementById('secretToggle');
     if (secretToggle) {
         secretToggle.addEventListener('click', () => {
             const content = secretToggle.querySelector('.secret-content');
             content.classList.toggle('hidden');
-        });
-    }
-
-    // 5. Mood / Vibe Tracker Interactive
-    const vibeBtns = document.querySelectorAll('.vibe-btn');
-    const currentVibe = document.getElementById('currentVibe');
-    if (vibeBtns.length > 0) {
-        vibeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const vibeText = btn.getAttribute('data-vibe');
-                currentVibe.querySelector('span').textContent = vibeText;
-            });
-        });
-    }
-
-    // 6. Interactive Drag Sticker
-    const dragSticker = document.getElementById('dragSticker');
-    if (dragSticker) {
-        let isDragging = false;
-        let startX, startY;
-
-        dragSticker.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX - dragSticker.offsetLeft;
-            startY = e.clientY - dragSticker.offsetTop;
-            dragSticker.style.cursor = 'grabbing';
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            dragSticker.style.position = 'absolute';
-            dragSticker.style.left = (e.clientX - startX) + 'px';
-            dragSticker.style.top = (e.clientY - startY) + 'px';
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            if (dragSticker) dragSticker.style.cursor = 'grab';
-        });
-    }
-
-    // 7. Contact Modal Toggle
-    const openModalBtn = document.getElementById('openModal');
-    const closeModalBtn = document.getElementById('closeModal');
-    const contactModal = document.getElementById('contactModal');
-
-    if (openModalBtn && closeModalBtn && contactModal) {
-        openModalBtn.addEventListener('click', () => {
-            contactModal.classList.add('active');
-        });
-        closeModalBtn.addEventListener('click', () => {
-            contactModal.classList.remove('active');
-        });
-        window.addEventListener('click', (e) => {
-            if (e.target === contactModal) {
-                contactModal.classList.remove('active');
-            }
         });
     }
 });
