@@ -1,43 +1,68 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - ติดต่อ</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal | Contact</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bg-paper-texture"></div>
+    <div class="bg-soft-gradient"></div>
 
-  <nav class="navbar-container">
-    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
-    <button class="hamburger" id="hamburger">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">หน้าแรก</a></li>
-      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="hobby.html">งานอดิเรก</a></li>
-      <li><a href="contact.html" class="active">ติดต่อ</a></li>
-    </ul>
-  </nav>
+    <header class="navbar-wrapper">
+        <nav class="scrapbook-nav">
+            <div class="washi-tape tape-nav-top"></div>
+            <div class="nav-container">
+                <a href="index.html" class="logo">My<span>Journal</span> 📔</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                    <li><a href="education.html">การศึกษา</a></li>
+                    <li><a href="hobby.html">งานอดิเรก</a></li>
+                    <li><a href="contact.html" class="active">ติดต่อ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-  <div class="main-container">
-    <div class="scrapbook-card reveal" style="text-align: center;">
-      <div class="washi-tape"></div>
-      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 15px;">💌 ช่องทางการติดต่อ (Contact Me)</h2>
-      <p class="handwritten" style="font-size: 1.3rem; color: #666; margin-bottom: 25px;">
-        "แวะมาทักทายพูดคุย หรือส่งข้อความหาได้เสมอนะคะ/ครับ!"
-      </p>
+    <main class="container">
+        <div class="page-title-box">
+            <h1 class="greeting">💌 Chapter 4: Get in Touch</h1>
+            <p class="handwritten">"ส่งข้อความหรือติดตามช่องทางโซเชียลมีเดียของฉันได้ที่นี่"</p>
+        </div>
 
-      <div style="font-size: 1.2rem; line-height: 2; margin-bottom: 30px;">
-        <p>📧 <strong>Email:</strong> student@school.ac.th</p>
-        <p>📱 <strong>Instagram:</strong> @my_cute_journal</p>
-        <p>🏫 <strong>โรงเรียน:</strong> โรงเรียนมัธยมศึกษาของเรา</p>
-      </div>
+        <section class="grid-2col">
+            <article class="paper-card">
+                <div class="washi-tape tape-corner-left"></div>
+                <h2 class="section-title">📮 ส่งข้อความถึงฉัน</h2>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('ขอบคุณสำหรับข้อความ!');">
+                    <div class="form-group">
+                        <label for="name">ชื่อของคุณ:</label>
+                        <input type="text" id="name" placeholder="พิมพ์ชื่อที่นี่..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ข้อความ:</label>
+                        <textarea id="message" rows="4" placeholder="พิมพ์ข้อความที่ต้องการส่ง..." required></textarea>
+                    </div>
+                    <button type="submit" class="journal-btn primary-btn">ส่งข้อความ 💌</button>
+                </form>
+            </article>
 
-      <button class="cute-btn" onclick="alert('ขอบคุณที่แวะมาเยี่ยมชมสมุด Portfolio นะคะ! ✨')">💬 ส่งข้อความทักทาย</button>
-    </div>
-  </div>
+            <article class="paper-card">
+                <div class="washi-tape tape-top-center"></div>
+                <h2 class="section-title">🌐 Social Media</h2>
+                <ul class="info-journal-list">
+                    <li><strong>Instagram:</strong> @myjournal.student</li>
+                    <li><strong>Facebook:</strong> Student Portfolio M.3</li>
+                    <li><strong>Email:</strong> student@example.com</li>
+                    <li><strong>School:</strong> โรงเรียนตัวอย่างวิทยา</li>
+                </ul>
+            </article>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
