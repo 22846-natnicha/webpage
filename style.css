@@ -1,275 +1,299 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap');
-
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
 :root {
-  --sage-green: #A3B18A;
-  --cream: #FDFBF7;
-  --light-pink: #FFD1DC;
-  --sky-blue: #D0E1FD;
-  --mustard: #FFE156;
-  --lavender: #E4C1F9;
-  --soft-brown: #8D6E63;
-  --dark-text: #4A4A4A;
-  --paper-texture: #f9f6f0;
+    /* Colors - Pastel Palette */
+    --sage-green: #a3b18a;
+    --white: #ffffff;
+    --cream: #fcfaf8;
+    --light-pink: #fad2e1;
+    --sky-blue: #bde0fe;
+    --mustard-yellow: #fefae0;
+    --light-lavender: #eaddff;
+    --soft-brown: #d4a373;
+    --text-main: #4a4a4a;
+    
+    /* Typography */
+    --font-heading: 'Itim', cursive;
+    --font-handwritten: 'Kalam', cursive;
+    --font-body: 'Mitr', sans-serif;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  background-color: var(--cream);
-  background-image: 
-    radial-gradient(var(--sky-blue) 1px, transparent 1px),
-    radial-gradient(var(--light-pink) 1px, var(--cream) 1px);
-  background-size: 40px 40px;
-  background-position: 0 0, 20px 20px;
-  color: var(--dark-text);
-  font-family: 'Mitr', sans-serif;
-  overflow-x: hidden;
-  position: relative;
-  /* ซ่อน Cursor ปกติบน Desktop เมื่อใช้ Custom Cursor */
-  cursor: default; 
+    font-family: var(--font-body);
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Itim', cursive;
+/* =========================================
+   2. BACKGROUND LAYERS
+   ========================================= */
+.bg-layer-1, .bg-layer-2, .bg-layer-3 {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
 }
 
-.handwritten {
-  font-family: 'Kalam', cursive;
+/* Layer 1: Paper Texture (จุด Grid อ่อนๆ) */
+.paper-texture {
+    background-color: var(--cream);
+    background-image: radial-gradient(var(--soft-brown) 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    opacity: 0.15;
 }
 
-/* --- CUSTOM APPLE CURSOR --- */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 28px;
-  height: 28px;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s ease;
+/* Layer 2: Soft Gradient Animation */
+.soft-gradient {
+    background: linear-gradient(45deg, var(--sky-blue), var(--light-pink), var(--mustard-yellow), var(--light-lavender));
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    opacity: 0.3;
+    z-index: -2;
 }
 
-.cursor-particle {
-  position: fixed;
-  pointer-events: none;
-  font-size: 14px;
-  z-index: 9998;
-  animation: fadeOutParticle 0.8s forwards ease-out;
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-@keyframes fadeOutParticle {
-  0% { opacity: 1; transform: translate(0, 0) scale(1) rotate(0deg); }
-  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.5) rotate(45deg); }
+/* Layer 3: Floating Doodles */
+.doodle {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
 }
 
-/* --- NAVIGATION BAR --- */
-.navbar-container {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 900px;
-  background: #fff;
-  border: 2px dashed var(--soft-brown);
-  border-radius: 12px;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-  z-index: 1000;
-  background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(200,200,200,0.05) 10px, rgba(200,200,200,0.05) 20px);
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
 }
 
-.nav-logo {
-  font-family: 'Itim', cursive;
-  font-size: 1.4rem;
-  color: var(--soft-brown);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 5px;
+/* =========================================
+   3. TYPOGRAPHY & TEXT
+   ========================================= */
+h1, h2, h3 { font-family: var(--font-heading); }
+.handwritten { font-family: var(--font-handwritten); font-size: 1.2rem; color: var(--soft-brown); }
+.highlight-text {
+    background: linear-gradient(120deg, var(--mustard-yellow) 0%, var(--mustard-yellow) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 40%;
+    background-position: 0 80%;
+    display: inline-block;
+    margin-bottom: 15px;
 }
+
+/* =========================================
+   4. NAVIGATION (SCRAPBOOK STYLE)
+   ========================================= */
+.scrapbook-nav {
+    position: sticky;
+    top: 20px;
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 2px 4px 15px rgba(0,0,0,0.05);
+    z-index: 100;
+    padding: 15px 30px;
+    transform: rotate(-0.5deg); /* เอียงนิดๆ ให้ดูเป็นกระดาษ */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--sage-green);
+}
+
+.logo span { color: var(--text-main); }
 
 .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 15px;
+    list-style: none;
+    display: flex;
+    gap: 20px;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--dark-text);
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 5px 12px;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  position: relative;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+    padding: 5px 10px;
+    transition: 0.3s;
+    position: relative;
 }
 
-.nav-links a:hover, .nav-links a.active {
-  background-color: var(--light-pink);
-  transform: translateY(-2px) rotate(-2deg);
+/* Hover Effect แบบ Washi Tape highlight */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 2px; left: 0; width: 100%; height: 8px;
+    background-color: var(--light-pink);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
 }
 
-.hamburger {
-  display: none;
-  font-size: 1.5rem;
-  background: none;
-  border: none;
-  cursor: pointer;
+.nav-links a:hover::after, .nav-links a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
-/* --- LAYOUT & SCRAPBOOK CONTAINERS --- */
-.main-container {
-  max-width: 1000px;
-  margin: 120px auto 60px auto;
-  padding: 20px;
-}
-
-.scrapbook-card {
-  background: #ffffff;
-  border: 2px solid #e0dcd0;
-  border-radius: 4px;
-  padding: 30px;
-  margin-bottom: 40px;
-  position: relative;
-  box-shadow: 3px 3px 15px rgba(0,0,0,0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.scrapbook-card:hover {
-  transform: translateY(-6px) rotate(0.5deg);
-  box-shadow: 6px 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Washi Tape Effect */
+/* =========================================
+   5. DECORATION ELEMENTS (TAPE, CLIP, STICKER)
+   ========================================= */
 .washi-tape {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 25px;
-  background-color: rgba(255, 209, 220, 0.7);
-  border-left: 2px dashed #fff;
-  border-right: 2px dashed #fff;
-  z-index: 10;
+    position: absolute;
+    height: 25px;
+    background: rgba(163, 177, 138, 0.5); /* Sage green อ่อนๆ */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    backdrop-filter: blur(2px);
+    z-index: 10;
 }
 
-/* --- POLAROID PHOTO SYSTEM --- */
+.tape-top { width: 120px; top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg); background: rgba(250, 210, 225, 0.7); }
+.tape-corner { width: 80px; top: -10px; left: -20px; transform: rotate(-45deg); background: rgba(189, 224, 254, 0.7); }
+.tape-top-center { width: 100px; top: -12px; left: 50%; transform: translateX(-50%) rotate(3deg); }
+.tape-mini { width: 50px; top: -8px; left: 50%; transform: translateX(-50%) rotate(-3deg); background: rgba(254, 250, 224, 0.9); }
+
+.sticker {
+    position: absolute;
+    font-size: 2.5rem;
+    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.15));
+    transition: 0.3s;
+}
+.sticker:hover { transform: scale(1.2) rotate(15deg); }
+.sticker-star { top: -15px; right: -15px; }
+.sticker-heart { bottom: -10px; left: -20px; }
+
+/* =========================================
+   6. LAYOUT & COMPONENTS
+   ========================================= */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-top: 50px;
+}
+
+/* Paper Card (Note) */
+.paper-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 3px 5px 20px rgba(0,0,0,0.06);
+    position: relative;
+    border: 1px solid #f0f0f0;
+}
+
+.paper-card h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--sage-green); }
+.paper-card .intro { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
+.paper-card .note { margin-bottom: 30px; }
+
+/* Polaroid */
 .polaroid {
-  background: #fff;
-  padding: 12px 12px 35px 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-  transform: rotate(-3deg);
-  transition: all 0.3s ease;
-  display: inline-block;
-  position: relative;
+    background: var(--white);
+    padding: 15px 15px 40px 15px;
+    box-shadow: 2px 8px 25px rgba(0,0,0,0.1);
+    transform: rotate(3deg);
+    position: relative;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 0 auto;
+    max-width: 400px;
 }
 
 .polaroid:hover {
-  transform: rotate(0deg) scale(1.03);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.18);
-  z-index: 5;
+    transform: rotate(0deg) scale(1.02);
+    z-index: 5;
 }
 
-.polaroid img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border: 1px solid #eee;
+.img-placeholder img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #eee;
 }
 
-.polaroid p {
-  text-align: center;
-  font-family: 'Kalam', cursive;
-  margin-top: 8px;
-  font-size: 1.1rem;
-  color: var(--soft-brown);
+.caption {
+    font-family: var(--font-handwritten);
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.3rem;
+    color: var(--text-main);
 }
 
-/* --- BUTTONS --- */
+/* Button */
 .cute-btn {
-  background-color: var(--sage-green);
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Itim', cursive;
-  font-size: 1.1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  box-shadow: 0 4px 0 #798c5e;
-  transition: all 0.2s ease;
-  position: relative;
-  overflow: hidden;
+    display: inline-block;
+    padding: 10px 25px;
+    background: var(--sage-green);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 25px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(163, 177, 138, 0.4);
 }
 
 .cute-btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 0 #798c5e;
-  background-color: #b5c79a;
+    background: var(--soft-brown);
+    transform: translateY(-3px);
 }
 
-.cute-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0 #798c5e;
+/* Music Player Widget */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 15px 20px;
+    transform: rotate(-2deg);
+    z-index: 100;
 }
 
-/* --- FLOATING DECORATIONS --- */
-.floating-item {
-  position: fixed;
-  pointer-events: none;
-  animation: floating 6s ease-in-out infinite;
-  z-index: 1;
-  font-size: 1.5rem;
-  opacity: 0.6;
+.music-btn {
+    background: none; border: none;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: var(--text-main);
 }
 
-@keyframes floating {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-/* --- SCROLL REVEAL ANIMATIONS --- */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* --- RESPONSIVE MOBILE --- */
+/* =========================================
+   7. RESPONSIVE DESIGN (UI/UX)
+   ========================================= */
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    background: var(--cream);
-    border: 2px dashed var(--soft-brown);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  }
-  .nav-links.open {
-    display: flex;
-  }
-  .hamburger {
-    display: block;
-  }
+    .hero-section {
+        grid-template-columns: 1fr; /* ปรับเป็น 1 คอลัมน์บนมือถือ */
+    }
+    
+    .nav-container { flex-direction: column; gap: 15px; }
+    .nav-links { flex-wrap: wrap; justify-content: center; }
+    
+    .paper-card { padding: 30px 20px; }
+    .music-player { bottom: 10px; left: 10px; transform: scale(0.9); }
 }
