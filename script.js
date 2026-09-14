@@ -1,78 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- 1. HAMBURGER MENU TOGGLE ---
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
+    // 1. Music Player Control
+    const bgMusic = document.getElementById("bgMusic");
+    const playBtn = document.getElementById("playBtn");
+    let isPlaying = false;
 
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
-      navLinks.classList.toggle("open");
+    playBtn.addEventListener("click", () => {
+        if (isPlaying) {
+            bgMusic.pause();
+            playBtn.innerHTML = "🎵 Play BGM";
+            // ลบ effect น่ารักๆ เวลากดหยุด
+            playBtn.style.color = "var(--text-main)";
+        } else {
+            bgMusic.play();
+            playBtn.innerHTML = "🎶 Playing...";
+            // เปลี่ยนสีปุ่มตอนเพลงเล่น
+            playBtn.style.color = "var(--sage-green)";
+        }
+        isPlaying = !isPlaying;
     });
 
-    // ปิดเมนูอัตโนมัติเมื่อคลิกเลือกลิงก์
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-      });
+    // 2. Random Rotation สำหรับ Polaroids ทุกครั้งที่โหลดหน้าเว็บ
+    // ให้ความรู้สึกเหมือนวางรูปไม่ตั้งใจ (Handmade)
+    const polaroids = document.querySelectorAll('.polaroid');
+    polaroids.forEach(p => {
+        const randomRotate = Math.floor(Math.random() * 6) - 3; // -3 ถึง 3 องศา
+        p.style.transform = `rotate(${randomRotate}deg)`;
+        
+        // เมื่อเอาเมาส์ออก ให้กลับไปองศาแบบ Random (ทับ CSS เดิม)
+        p.addEventListener('mouseleave', () => {
+            p.style.transform = `rotate(${randomRotate}deg)`;
+        });
     });
-  }
-
-  // --- 2. CUSTOM APPLE CURSOR & PARTICLES ---
-  const isMobile = window.innerWidth <= 768;
-  if (!isMobile) {
-    const cursor = document.createElement("div");
-    cursor.classList.add("custom-cursor");
-    cursor.innerHTML = "🍎";
-    document.body.appendChild(cursor);
-
-    let mouseX = 0;
-    let mouseY = 0;
-
-    window.addEventListener("mousemove", (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursor.style.left = `${mouseX}px`;
-      cursor.style.top = `${mouseY}px`;
-
-      // สร้าง Particle จำนวนจำกัดเมื่อขยับเมาส์
-      if (Math.random() < 0.2) {
-        createParticle(mouseX, mouseY);
-      }
-    });
-
-    function createParticle(x, y) {
-      const particle = document.createElement("div");
-      particle.classList.add("cursor-particle");
-      
-      const symbols = ["✨", "💖", "⭐", "🍃", "🌸"];
-      particle.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
-      
-      const dx = (Math.random() - 0.5) * 50;
-      const dy = (Math.random() - 0.5) * 50;
-      particle.style.setProperty('--dx', `${dx}px`);
-      particle.style.setProperty('--dy', `${dy}px`);
-
-      particle.style.left = `${x}px`;
-      particle.style.top = `${y}px`;
-
-      document.body.appendChild(particle);
-
-      setTimeout(() => {
-        particle.remove();
-      }, 800);
-    }
-  }
-
-  // --- 3. SCROLL REVEAL (INTERSECTION OBSERVER) ---
-  const reveals = document.querySelectorAll(".reveal");
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  }, { threshold: 0.15 });
-
-  reveals.forEach(reveal => {
-    observer.observe(reveal);
-  });
 });
