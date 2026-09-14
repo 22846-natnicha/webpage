@@ -1,46 +1,62 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - การศึกษา</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal | Education</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="bg-paper-texture"></div>
+    <div class="bg-soft-gradient"></div>
 
-  <nav class="navbar-container">
-    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
-    <button class="hamburger" id="hamburger">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">หน้าแรก</a></li>
-      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
-      <li><a href="education.html" class="active">การศึกษา</a></li>
-      <li><a href="hobby.html">งานอดิเรก</a></li>
-      <li><a href="contact.html">ติดต่อ</a></li>
-    </ul>
-  </nav>
+    <header class="navbar-wrapper">
+        <nav class="scrapbook-nav">
+            <div class="washi-tape tape-nav-top"></div>
+            <div class="nav-container">
+                <a href="index.html" class="logo">My<span>Journal</span> 📔</a>
+                <ul class="nav-links">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                    <li><a href="education.html" class="active">การศึกษา</a></li>
+                    <li><a href="hobby.html">งานอดิเรก</a></li>
+                    <li><a href="contact.html">ติดต่อ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-  <div class="main-container">
-    <div class="scrapbook-card reveal">
-      <div class="washi-tape"></div>
-      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 20px;">🎓 ประวัติการศึกษา (Education Timeline)</h2>
-      
-      <div style="border-left: 3px dashed var(--soft-brown); padding-left: 20px; margin-left: 10px;">
-        <div style="margin-bottom: 25px;" class="reveal">
-          <span class="handwritten" style="font-size: 1.4rem; color: var(--sage-green);">📚 กำลังศึกษาอยู่ (ม.3)</span>
-          <h3 style="font-size: 1.3rem;">โรงเรียน... (ระดับชั้นมัธยมศึกษาตอนต้น)</h3>
-          <p style="color: #666;">เน้นวิชาการคอมพิวเตอร์และเทคโนโลยี เกรดเฉลี่ยสะสม 3.XX</p>
+    <main class="container">
+        <div class="page-title-box">
+            <h1 class="greeting">🎓 Chapter 2: Education Journey</h1>
+            <p class="handwritten">"เส้นทางการเรียนรู้ตลอดช่วงมัธยมศึกษา"</p>
         </div>
 
-        <div style="margin-bottom: 25px;" class="reveal">
-          <span class="handwritten" style="font-size: 1.4rem; color: var(--sky-blue);">🎒 จบการศึกษา (ประถมศึกษา)</span>
-          <h3 style="font-size: 1.3rem;">โรงเรียน... (ระดับประถมศึกษา)</h3>
-          <p style="color: #666;">ผ่านประสบการณ์ทำกิจกรรมโรงเรียนและประกวดวาดภาพ</p>
-        </div>
-      </div>
-    </div>
-  </div>
+        <section class="timeline-container">
+            <div class="timeline-item paper-card">
+                <div class="washi-tape tape-corner-left"></div>
+                <span class="timeline-year">2024 - ปัจจุบัน</span>
+                <h2 class="section-title">มัธยมศึกษาปีที่ 3</h2>
+                <p class="intro-text">เน้นศึกษาวิชาการออกแบบเว็บไซต์ โครงงานคอมพิวเตอร์ และเตรียมตัวสอบเข้าศึกษาต่อในระดับมัธยมปลาย</p>
+            </div>
 
-  <script src="script.js"></script>
+            <div class="timeline-item paper-card">
+                <div class="washi-tape tape-top-center"></div>
+                <span class="timeline-year">2023</span>
+                <h2 class="section-title">มัธยมศึกษาปีที่ 2</h2>
+                <p class="intro-text">เข้าร่วมกิจกรรมชุมนุมคอมพิวเตอร์ ได้เรียนรู้การแต่งภาพ การตัดต่อวิดีโอ และการทำงานกลุ่ม</p>
+            </div>
+
+            <div class="timeline-item paper-card">
+                <div class="washi-tape tape-corner-left"></div>
+                <span class="timeline-year">2022</span>
+                <h2 class="section-title">มัธยมศึกษาปีที่ 1</h2>
+                <p class="intro-text">เริ่มต้นชีวิตนักเรียนมัธยม ปรับตัวกับการเรียนวิชาใหม่ๆ และเข้าร่วมกิจกรรมกีฬาชี้นำประจำปีของโรงเรียน</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
