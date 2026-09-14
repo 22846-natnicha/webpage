@@ -1,34 +1,61 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Music Player Control
-    const bgMusic = document.getElementById("bgMusic");
-    const playBtn = document.getElementById("playBtn");
-    let isPlaying = false;
+/* =========================================
+   8. PROFILE PAGE STYLES
+   ========================================= */
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
 
-    playBtn.addEventListener("click", () => {
-        if (isPlaying) {
-            bgMusic.pause();
-            playBtn.innerHTML = "🎵 Play BGM";
-            // ลบ effect น่ารักๆ เวลากดหยุด
-            playBtn.style.color = "var(--text-main)";
-        } else {
-            bgMusic.play();
-            playBtn.innerHTML = "🎶 Playing...";
-            // เปลี่ยนสีปุ่มตอนเพลงเล่น
-            playBtn.style.color = "var(--sage-green)";
-        }
-        isPlaying = !isPlaying;
-    });
+.profile-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
 
-    // 2. Random Rotation สำหรับ Polaroids ทุกครั้งที่โหลดหน้าเว็บ
-    // ให้ความรู้สึกเหมือนวางรูปไม่ตั้งใจ (Handmade)
-    const polaroids = document.querySelectorAll('.polaroid');
-    polaroids.forEach(p => {
-        const randomRotate = Math.floor(Math.random() * 6) - 3; // -3 ถึง 3 องศา
-        p.style.transform = `rotate(${randomRotate}deg)`;
-        
-        // เมื่อเอาเมาส์ออก ให้กลับไปองศาแบบ Random (ทับ CSS เดิม)
-        p.addEventListener('mouseleave', () => {
-            p.style.transform = `rotate(${randomRotate}deg)`;
-        });
-    });
-});
+.info-list {
+    list-style: none;
+    line-height: 2.2;
+    font-size: 1.1rem;
+}
+
+.info-list li {
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+}
+
+.info-list strong {
+    color: var(--sage-green);
+    margin-right: 10px;
+}
+
+.skill-item {
+    margin-bottom: 15px;
+}
+
+.skill-name {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 12px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: var(--mustard-yellow); /* สีเริ่มต้น */
+    border-radius: 10px;
+    transition: width 1s ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .profile-section {
+        grid-template-columns: 1fr;
+    }
+}
