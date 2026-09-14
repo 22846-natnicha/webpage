@@ -1,55 +1,77 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - หน้าแรก (Digital Journal)</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Journal | Portfolio</title>
+    <!-- Google Fonts ตามที่กำหนด -->
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Navigation Bar -->
-  <nav class="navbar-container">
-    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
-    <button class="hamburger" id="hamburger">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="active">หน้าแรก</a></li>
-      <li><a href="profile.html">ประวัติส่วนตัว</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="hobby.html">งานอดิเรก</a></li>
-      <li><a href="contact.html">ติดต่อ</a></li>
-    </ul>
-  </nav>
-
-  <!-- Floating Background Elements -->
-  <div class="floating-item" style="top: 15%; left: 5%;">✨</div>
-  <div class="floating-item" style="top: 25%; right: 8%;">💖</div>
-  <div class="floating-item" style="bottom: 20%; left: 10%;">⭐</div>
-
-  <!-- Main Content -->
-  <div class="main-container">
-    <div class="scrapbook-card reveal" style="text-align: center;">
-      <div class="washi-tape"></div>
-      <h1 style="font-size: 2.8rem; color: var(--soft-brown); margin-bottom: 10px;">Welcome to My Scrapbook World! ✨</h1>
-      <p class="handwritten" style="font-size: 1.4rem; color: #666; margin-bottom: 20px;">
-        "สมุดบันทึกความทรงจำ ผลงาน และเรื่องราวของเด็ก ม.3 คนนี้จ้า~"
-      </p>
-      
-      <div style="margin: 30px 0;">
-        <div class="polaroid" style="display: inline-block;">
-          <img src="images/profile.jpg" alt="Profile Image">
-          <p>ด.ช. / ด.ญ. ตัวอย่าง น่ารักๆ</p>
-        </div>
-      </div>
-
-      <p style="font-size: 1.1rem; line-height: 1.8; max-width: 600px; margin: 0 auto 30px auto;">
-        เว็บไซต์นี้จัดทำขึ้นเพื่อเป็นโครงงานวิชาคอมพิวเตอร์ ระดับชั้นมัธยมศึกษาปีที่ 3 โดยรวบรวมประวัติ ผลงาน และความชอบส่วนตัวเอาไว้ในรูปแบบสมุดไดอารี่แฮนด์เมดสุดคิ้วท์!
-      </p>
-
-      <a href="profile.html"><button class="cute-btn">📖 เปิดสมุดอ่านประวัติกันเลย!</button></a>
+    <!-- Background Layers -->
+    <div class="bg-layer-1 paper-texture"></div>
+    <div class="bg-layer-2 soft-gradient"></div>
+    <div class="bg-layer-3 decorations">
+        <span class="doodle" style="top: 10%; left: 5%;">✨</span>
+        <span class="doodle" style="top: 20%; right: 10%;">💖</span>
+        <span class="doodle" style="bottom: 15%; left: 15%;">🌸</span>
+        <span class="doodle" style="bottom: 30%; right: 5%;">📝</span>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Navigation -->
+    <nav class="scrapbook-nav">
+        <div class="washi-tape tape-top"></div>
+        <div class="nav-container">
+            <h1 class="logo">My<span>Journal</span> 📔</h1>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">หน้าแรก</a></li>
+                <li><a href="profile.html">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <section class="hero-section">
+            <!-- ซ้าย: ข้อมูลส่วนตัว (Paper Note) -->
+            <div class="hero-content paper-card">
+                <div class="washi-tape tape-corner"></div>
+                <div class="paper-clip"></div>
+                <h2 class="greeting">สวัสดี! 👋 ฉันชื่อ...</h2>
+                <h3 class="highlight-text">นักเรียนชั้นมัธยมศึกษาปีที่ 3</h3>
+                <p class="intro">ยินดีต้อนรับสู่พื้นที่ส่วนตัวของฉัน! ที่นี่รวบรวมเรื่องราว ผลงาน และสิ่งที่ฉันหลงใหล ลองเปิดดูสิคะ/ครับ แล้วคุณจะรู้จักฉันมากขึ้น</p>
+                <p class="handwritten note">"Dream big, work hard, stay focused & surround yourself with good people." 🎨</p>
+                
+                <a href="profile.html" class="cute-btn">อ่านประวัติของฉัน ➔</a>
+            </div>
+
+            <!-- ขวา: รูปโปรไฟล์ (Polaroid) -->
+            <div class="hero-image polaroid">
+                <div class="washi-tape tape-top-center"></div>
+                <div class="img-placeholder">
+                    <!-- ใช้ Placeholder ไปก่อน ถ้ามีรูปให้เปลี่ยน src -->
+                    <img src="images/profile.jpg" alt="รูปโปรไฟล์ของฉัน" onerror="this.src='https://placehold.co/400x400/fcfaf8/a3b18a?text=My+Photo'">
+                </div>
+                <p class="caption">Me in 2026 📸</p>
+                <span class="sticker sticker-star">⭐</span>
+                <span class="sticker sticker-heart">💖</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Music Player (Mini Widget) -->
+    <div class="music-player paper-card">
+        <div class="washi-tape tape-mini"></div>
+        <button id="playBtn" class="music-btn">🎵 Play BGM</button>
+        <audio id="bgMusic" loop>
+            <source src="music/music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
