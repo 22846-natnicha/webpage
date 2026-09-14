@@ -4,24 +4,254 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Journal | Portfolio</title>
-    <!-- Google Fonts ตามที่กำหนด -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* =========================================
+           1. RESET & VARIABLES
+           ========================================= */
+        :root {
+            --sage-green: #93A682;
+            --soft-pink: #F7C6D0;
+            --sky-blue: #B3D8E8;
+            --cream-bg: #FAF7F2;
+            --card-white: #FFFFFF;
+            --text-dark: #4A4A4A;
+            --soft-brown: #C39B75;
+            
+            --font-heading: 'Itim', cursive;
+            --font-handwritten: 'Kalam', cursive;
+            --font-body: 'Mitr', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--cream-bg);
+            background-image: radial-gradient(var(--soft-brown) 0.6px, transparent 0.6px);
+            background-size: 24px 24px;
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding-bottom: 60px;
+        }
+
+        /* =========================================
+           2. NAVIGATION (เมนูด้านบน)
+           ========================================= */
+        .scrapbook-nav {
+            max-width: 900px;
+            margin: 25px auto;
+            padding: 12px 30px;
+            background: var(--card-white);
+            border: 2px solid #EAE5DC;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.6rem;
+            color: var(--sage-green);
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: var(--soft-pink);
+            color: #5A2A35;
+            font-weight: 500;
+        }
+
+        /* =========================================
+           3. HERO SECTION & CARDS (กรอบและเนื้อหา)
+           ========================================= */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        /* กรอบสมุดกระดาษ (Paper Card) */
+        .paper-card {
+            background: var(--card-white);
+            border: 2px dashed var(--sage-green);
+            border-radius: 24px;
+            padding: 35px;
+            position: relative;
+            box-shadow: 4px 8px 20px rgba(0,0,0,0.04);
+        }
+
+        /* สติกเกอร์เทปติดมุมกรอบ */
+        .washi-tape {
+            position: absolute;
+            width: 90px;
+            height: 22px;
+            background: rgba(247, 198, 208, 0.7);
+            top: -10px;
+            left: 30px;
+            transform: rotate(-3deg);
+            border-radius: 2px;
+        }
+
+        .greeting {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--sage-green);
+            margin-bottom: 5px;
+        }
+
+        .highlight-text {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            display: inline-block;
+            background: #FEF3C7;
+            padding: 2px 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .intro {
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .handwritten {
+            font-family: var(--font-handwritten);
+            font-size: 1.1rem;
+            color: var(--soft-brown);
+            margin-bottom: 25px;
+        }
+
+        /* ปุ่มกดน่ารักๆ */
+        .cute-btn {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--sage-green);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(147, 166, 130, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .cute-btn:hover {
+            transform: translateY(-2deg);
+            background: #7F936E;
+        }
+
+        /* กรอบรูปโพลารอยด์ */
+        .polaroid {
+            background: var(--card-white);
+            padding: 16px 16px 30px 16px;
+            border-radius: 16px;
+            border: 2px solid #EAE5DC;
+            box-shadow: 4px 10px 25px rgba(0,0,0,0.06);
+            transform: rotate(2deg);
+            position: relative;
+            text-align: center;
+        }
+
+        .polaroid img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .caption {
+            font-family: var(--font-handwritten);
+            font-size: 1.2rem;
+            color: var(--text-dark);
+        }
+
+        .sticker {
+            position: absolute;
+            font-size: 1.8rem;
+        }
+        .sticker-star { top: -12px; right: -10px; }
+        .sticker-heart { bottom: -10px; left: -10px; }
+
+        /* Widget เล่นเพลง */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--card-white);
+            border: 1px solid #EAE5DC;
+            padding: 8px 16px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Responsive บนมือถือ */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .scrapbook-nav {
+                border-radius: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Background Layers -->
-    <div class="bg-layer-1 paper-texture"></div>
-    <div class="bg-layer-2 soft-gradient"></div>
-    <div class="bg-layer-3 decorations">
-        <span class="doodle" style="top: 10%; left: 5%;">✨</span>
-        <span class="doodle" style="top: 20%; right: 10%;">💖</span>
-        <span class="doodle" style="bottom: 15%; left: 15%;">🌸</span>
-        <span class="doodle" style="bottom: 30%; right: 5%;">📝</span>
-    </div>
 
     <!-- Navigation -->
     <nav class="scrapbook-nav">
-        <div class="washi-tape tape-top"></div>
         <div class="nav-container">
             <h1 class="logo">My<span>Journal</span> 📔</h1>
             <ul class="nav-links">
@@ -37,25 +267,20 @@
     <!-- Main Content -->
     <main class="container">
         <section class="hero-section">
-            <!-- ซ้าย: ข้อมูลส่วนตัว (Paper Note) -->
-            <div class="hero-content paper-card">
-                <div class="washi-tape tape-corner"></div>
-                <div class="paper-clip"></div>
+            <!-- ซ้าย: ข้อมูลส่วนตัว (Paper Note Card) -->
+            <div class="paper-card">
+                <div class="washi-tape"></div>
                 <h2 class="greeting">สวัสดี! 👋 ฉันชื่อ...</h2>
-                <h3 class="highlight-text">นักเรียนชั้นมัธยมศึกษาปีที่ 3</h3>
+                <div class="highlight-text">นักเรียนชั้นมัธยมศึกษาปีที่ 3</div>
                 <p class="intro">ยินดีต้อนรับสู่พื้นที่ส่วนตัวของฉัน! ที่นี่รวบรวมเรื่องราว ผลงาน และสิ่งที่ฉันหลงใหล ลองเปิดดูสิคะ/ครับ แล้วคุณจะรู้จักฉันมากขึ้น</p>
-                <p class="handwritten note">"Dream big, work hard, stay focused & surround yourself with good people." 🎨</p>
+                <p class="handwritten">"Dream big, work hard, stay focused & surround yourself with good people." 🎨</p>
                 
                 <a href="profile.html" class="cute-btn">อ่านประวัติของฉัน ➔</a>
             </div>
 
-            <!-- ขวา: รูปโปรไฟล์ (Polaroid) -->
-            <div class="hero-image polaroid">
-                <div class="washi-tape tape-top-center"></div>
-                <div class="img-placeholder">
-                    <!-- ใช้ Placeholder ไปก่อน ถ้ามีรูปให้เปลี่ยน src -->
-                    <img src="images/profile.jpg" alt="รูปโปรไฟล์ของฉัน" onerror="this.src='https://placehold.co/400x400/fcfaf8/a3b18a?text=My+Photo'">
-                </div>
+            <!-- ขวา: รูปโปรไฟล์ (Polaroid Frame) -->
+            <div class="polaroid">
+                <img src="https://placehold.co/400x400/F0EAE1/93A682?text=My+Photo" alt="รูปโปรไฟล์ของฉัน">
                 <p class="caption">Me in 2026 📸</p>
                 <span class="sticker sticker-star">⭐</span>
                 <span class="sticker sticker-heart">💖</span>
@@ -63,15 +288,31 @@
         </section>
     </main>
 
-    <!-- Music Player (Mini Widget) -->
-    <div class="music-player paper-card">
-        <div class="washi-tape tape-mini"></div>
+    <!-- Music Player Widget -->
+    <div class="music-player">
         <button id="playBtn" class="music-btn">🎵 Play BGM</button>
         <audio id="bgMusic" loop>
             <source src="music/music.mp3" type="audio/mpeg">
         </audio>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const bgMusic = document.getElementById("bgMusic");
+            const playBtn = document.getElementById("playBtn");
+            let isPlaying = false;
+
+            playBtn.addEventListener("click", () => {
+                if (isPlaying) {
+                    bgMusic.pause();
+                    playBtn.innerHTML = "🎵 Play BGM";
+                } else {
+                    bgMusic.play();
+                    playBtn.innerHTML = "🎶 Playing...";
+                }
+                isPlaying = !isPlaying;
+            });
+        });
+    </script>
 </body>
 </html>
