@@ -1,51 +1,99 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - ประวัติส่วนตัว</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | My Journal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <nav class="navbar-container">
-    <a href="index.html" class="nav-logo">🍎 My Journal Portfolio</a>
-    <button class="hamburger" id="hamburger">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html">หน้าแรก</a></li>
-      <li><a href="profile.html" class="active">ประวัติส่วนตัว</a></li>
-      <li><a href="education.html">การศึกษา</a></li>
-      <li><a href="hobby.html">งานอดิเรก</a></li>
-      <li><a href="contact.html">ติดต่อ</a></li>
-    </ul>
-  </nav>
-
-  <div class="main-container">
-    <div class="scrapbook-card reveal">
-      <div class="washi-tape"></div>
-      <h2 style="font-size: 2.2rem; color: var(--soft-brown); margin-bottom: 15px;">📌 ประวัติส่วนตัว (About Me)</h2>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: center;">
-        <div>
-          <div class="polaroid">
-            <img src="images/profile.jpg" alt="My Photo">
-            <p>Me, Myself & I 🌸</p>
-          </div>
-        </div>
-        <div>
-          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">ชื่อ-นามสกุล:</h3>
-          <p style="font-size: 1.2rem; margin-bottom: 10px;">เด็กชาย/เด็กหญิง ชื่อจริง นามสกุล (ชื่อเล่น)</p>
-          
-          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">วันเดือนปีเกิด:</h3>
-          <p style="font-size: 1.2rem; margin-bottom: 10px;">1 มกราคม พ.ศ. 2554 (อายุ 15 ปี)</p>
-
-          <h3 class="handwritten" style="font-size: 1.8rem; color: #555;">คติประจำใจ:</h3>
-          <p style="font-size: 1.2rem; color: #777;">"ทำวันนี้ให้ดีที่สุด เหมือนพรุ่งนี้ไม่มีจริง ฮ่าๆๆ"</p>
-        </div>
-      </div>
+    <!-- Background Layers (เหมือนหน้า index) -->
+    <div class="bg-layer-1 paper-texture"></div>
+    <div class="bg-layer-2 soft-gradient"></div>
+    <div class="bg-layer-3 decorations">
+        <span class="doodle" style="top: 15%; left: 8%;">☁️</span>
+        <span class="doodle" style="top: 25%; right: 12%;">✏️</span>
+        <span class="doodle" style="bottom: 20%; left: 10%;">🎨</span>
+        <span class="doodle" style="bottom: 10%; right: 8%;">✨</span>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Navigation (ย้าย active มาที่ ประวัติส่วนตัว) -->
+    <nav class="scrapbook-nav">
+        <div class="washi-tape tape-top"></div>
+        <div class="nav-container">
+            <h1 class="logo">My<span>Journal</span> 📔</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">หน้าแรก</a></li>
+                <li><a href="profile.html" class="active">ประวัติส่วนตัว</a></li>
+                <li><a href="education.html">การศึกษา</a></li>
+                <li><a href="hobby.html">งานอดิเรก</a></li>
+                <li><a href="contact.html">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <div class="page-header">
+            <h2 class="highlight-text" style="font-size: 2.5rem;">📖 Chapter 1: About Me</h2>
+            <p class="handwritten">"ทำความรู้จักกันให้มากขึ้นอีกนิด..."</p>
+        </div>
+
+        <section class="profile-section">
+            <!-- ซ้าย: ข้อมูลพื้นฐาน (Sticky Note / Paper Card) -->
+            <div class="paper-card info-card">
+                <div class="washi-tape tape-corner"></div>
+                <h3 style="color: var(--soft-brown); margin-bottom: 20px;">📌 ข้อมูลส่วนตัว</h3>
+                <ul class="info-list">
+                    <li><strong>ชื่อ-นามสกุล:</strong> [ใส่ชื่อจริงของคุณ]</li>
+                    <li><strong>ชื่อเล่น:</strong> [ใส่ชื่อเล่น]</li>
+                    <li><strong>อายุ:</strong> 15 ปี</li>
+                    <li><strong>วันเกิด:</strong> [ใส่วันเกิด]</li>
+                    <li><strong>แผนการเรียน/ความสนใจ:</strong> วิทย์-คณิต / ศิลป์-ภาษา / คอมพิวเตอร์</li>
+                    <li><strong>นิสัยส่วนตัว:</strong> ร่าเริง ชอบเรียนรู้สิ่งใหม่ๆ เข้ากับคนง่าย</li>
+                </ul>
+                <div class="paper-clip" style="top: -15px; right: 20px;"></div>
+            </div>
+
+            <!-- ขวา: ความสามารถ (Scrapbook Elements) -->
+            <div class="skills-container">
+                <div class="paper-card" style="transform: rotate(1deg);">
+                    <div class="washi-tape tape-top-center"></div>
+                    <h3 style="color: var(--sage-green); margin-bottom: 20px;">🎯 ทักษะ & ความสามารถ</h3>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Computer (Word, PPT, Canva)</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 85%;"></div></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Language (English)</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 70%; background: var(--light-pink);"></div></div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">Art & Design / ตัดต่อวิดีโอ</span>
+                        <div class="skill-bar"><div class="skill-level" style="width: 75%; background: var(--sky-blue);"></div></div>
+                    </div>
+                </div>
+
+                <!-- รูปโพลารอยด์เล็กๆ เสริม -->
+                <div class="polaroid mini-polaroid" style="margin-top: 20px; transform: rotate(-3deg); max-width: 200px;">
+                    <div class="washi-tape tape-mini"></div>
+                    <img src="https://placehold.co/200x200/fcfaf8/d4a373?text=My+Hobby" alt="งานอดิเรก" style="width: 100%;">
+                    <p class="caption" style="font-size: 1rem;">Me time ☕</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Music Player (คงไว้เพื่อให้เพลงเล่นต่อเนื่องถ้าทำ SPA หรือเพื่อความสวยงาม) -->
+    <div class="music-player paper-card">
+        <div class="washi-tape tape-mini"></div>
+        <button id="playBtn" class="music-btn">🎵 Play BGM</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
