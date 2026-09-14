@@ -1,299 +1,34 @@
-/* =========================================
-   1. VARIABLES & RESET
-   ========================================= */
-:root {
-    /* Colors - Pastel Palette */
-    --sage-green: #a3b18a;
-    --white: #ffffff;
-    --cream: #fcfaf8;
-    --light-pink: #fad2e1;
-    --sky-blue: #bde0fe;
-    --mustard-yellow: #fefae0;
-    --light-lavender: #eaddff;
-    --soft-brown: #d4a373;
-    --text-main: #4a4a4a;
-    
-    /* Typography */
-    --font-heading: 'Itim', cursive;
-    --font-handwritten: 'Kalam', cursive;
-    --font-body: 'Mitr', sans-serif;
-}
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Music Player Control
+    const bgMusic = document.getElementById("bgMusic");
+    const playBtn = document.getElementById("playBtn");
+    let isPlaying = false;
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    playBtn.addEventListener("click", () => {
+        if (isPlaying) {
+            bgMusic.pause();
+            playBtn.innerHTML = "🎵 Play BGM";
+            // ลบ effect น่ารักๆ เวลากดหยุด
+            playBtn.style.color = "var(--text-main)";
+        } else {
+            bgMusic.play();
+            playBtn.innerHTML = "🎶 Playing...";
+            // เปลี่ยนสีปุ่มตอนเพลงเล่น
+            playBtn.style.color = "var(--sage-green)";
+        }
+        isPlaying = !isPlaying;
+    });
 
-body {
-    font-family: var(--font-body);
-    color: var(--text-main);
-    overflow-x: hidden;
-    position: relative;
-    min-height: 100vh;
-}
-
-/* =========================================
-   2. BACKGROUND LAYERS
-   ========================================= */
-.bg-layer-1, .bg-layer-2, .bg-layer-3 {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Layer 1: Paper Texture (จุด Grid อ่อนๆ) */
-.paper-texture {
-    background-color: var(--cream);
-    background-image: radial-gradient(var(--soft-brown) 0.5px, transparent 0.5px);
-    background-size: 20px 20px;
-    opacity: 0.15;
-}
-
-/* Layer 2: Soft Gradient Animation */
-.soft-gradient {
-    background: linear-gradient(45deg, var(--sky-blue), var(--light-pink), var(--mustard-yellow), var(--light-lavender));
-    background-size: 400% 400%;
-    animation: gradientMove 15s ease infinite;
-    opacity: 0.3;
-    z-index: -2;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* Layer 3: Floating Doodles */
-.doodle {
-    position: absolute;
-    font-size: 2rem;
-    opacity: 0.6;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-15px) rotate(10deg); }
-}
-
-/* =========================================
-   3. TYPOGRAPHY & TEXT
-   ========================================= */
-h1, h2, h3 { font-family: var(--font-heading); }
-.handwritten { font-family: var(--font-handwritten); font-size: 1.2rem; color: var(--soft-brown); }
-.highlight-text {
-    background: linear-gradient(120deg, var(--mustard-yellow) 0%, var(--mustard-yellow) 100%);
-    background-repeat: no-repeat;
-    background-size: 100% 40%;
-    background-position: 0 80%;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-/* =========================================
-   4. NAVIGATION (SCRAPBOOK STYLE)
-   ========================================= */
-.scrapbook-nav {
-    position: sticky;
-    top: 20px;
-    width: 90%;
-    max-width: 1000px;
-    margin: 20px auto;
-    background: var(--white);
-    border-radius: 10px;
-    box-shadow: 2px 4px 15px rgba(0,0,0,0.05);
-    z-index: 100;
-    padding: 15px 30px;
-    transform: rotate(-0.5deg); /* เอียงนิดๆ ให้ดูเป็นกระดาษ */
-    border: 1px solid rgba(0,0,0,0.05);
-}
-
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    font-size: 1.8rem;
-    color: var(--sage-green);
-}
-
-.logo span { color: var(--text-main); }
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 500;
-    padding: 5px 10px;
-    transition: 0.3s;
-    position: relative;
-}
-
-/* Hover Effect แบบ Washi Tape highlight */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: 2px; left: 0; width: 100%; height: 8px;
-    background-color: var(--light-pink);
-    z-index: -1;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.3s ease;
-}
-
-.nav-links a:hover::after, .nav-links a.active::after {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* =========================================
-   5. DECORATION ELEMENTS (TAPE, CLIP, STICKER)
-   ========================================= */
-.washi-tape {
-    position: absolute;
-    height: 25px;
-    background: rgba(163, 177, 138, 0.5); /* Sage green อ่อนๆ */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    backdrop-filter: blur(2px);
-    z-index: 10;
-}
-
-.tape-top { width: 120px; top: -10px; left: 50%; transform: translateX(-50%) rotate(-2deg); background: rgba(250, 210, 225, 0.7); }
-.tape-corner { width: 80px; top: -10px; left: -20px; transform: rotate(-45deg); background: rgba(189, 224, 254, 0.7); }
-.tape-top-center { width: 100px; top: -12px; left: 50%; transform: translateX(-50%) rotate(3deg); }
-.tape-mini { width: 50px; top: -8px; left: 50%; transform: translateX(-50%) rotate(-3deg); background: rgba(254, 250, 224, 0.9); }
-
-.sticker {
-    position: absolute;
-    font-size: 2.5rem;
-    filter: drop-shadow(2px 4px 2px rgba(0,0,0,0.15));
-    transition: 0.3s;
-}
-.sticker:hover { transform: scale(1.2) rotate(15deg); }
-.sticker-star { top: -15px; right: -15px; }
-.sticker-heart { bottom: -10px; left: -20px; }
-
-/* =========================================
-   6. LAYOUT & COMPONENTS
-   ========================================= */
-.container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.hero-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-top: 50px;
-}
-
-/* Paper Card (Note) */
-.paper-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 3px 5px 20px rgba(0,0,0,0.06);
-    position: relative;
-    border: 1px solid #f0f0f0;
-}
-
-.paper-card h2 { font-size: 2.5rem; margin-bottom: 10px; color: var(--sage-green); }
-.paper-card .intro { font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px; }
-.paper-card .note { margin-bottom: 30px; }
-
-/* Polaroid */
-.polaroid {
-    background: var(--white);
-    padding: 15px 15px 40px 15px;
-    box-shadow: 2px 8px 25px rgba(0,0,0,0.1);
-    transform: rotate(3deg);
-    position: relative;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    margin: 0 auto;
-    max-width: 400px;
-}
-
-.polaroid:hover {
-    transform: rotate(0deg) scale(1.02);
-    z-index: 5;
-}
-
-.img-placeholder img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 1px solid #eee;
-}
-
-.caption {
-    font-family: var(--font-handwritten);
-    text-align: center;
-    margin-top: 15px;
-    font-size: 1.3rem;
-    color: var(--text-main);
-}
-
-/* Button */
-.cute-btn {
-    display: inline-block;
-    padding: 10px 25px;
-    background: var(--sage-green);
-    color: var(--white);
-    text-decoration: none;
-    border-radius: 25px;
-    font-family: var(--font-body);
-    font-weight: 500;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(163, 177, 138, 0.4);
-}
-
-.cute-btn:hover {
-    background: var(--soft-brown);
-    transform: translateY(-3px);
-}
-
-/* Music Player Widget */
-.music-player {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 15px 20px;
-    transform: rotate(-2deg);
-    z-index: 100;
-}
-
-.music-btn {
-    background: none; border: none;
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    cursor: pointer;
-    color: var(--text-main);
-}
-
-/* =========================================
-   7. RESPONSIVE DESIGN (UI/UX)
-   ========================================= */
-@media (max-width: 768px) {
-    .hero-section {
-        grid-template-columns: 1fr; /* ปรับเป็น 1 คอลัมน์บนมือถือ */
-    }
-    
-    .nav-container { flex-direction: column; gap: 15px; }
-    .nav-links { flex-wrap: wrap; justify-content: center; }
-    
-    .paper-card { padding: 30px 20px; }
-    .music-player { bottom: 10px; left: 10px; transform: scale(0.9); }
-}
+    // 2. Random Rotation สำหรับ Polaroids ทุกครั้งที่โหลดหน้าเว็บ
+    // ให้ความรู้สึกเหมือนวางรูปไม่ตั้งใจ (Handmade)
+    const polaroids = document.querySelectorAll('.polaroid');
+    polaroids.forEach(p => {
+        const randomRotate = Math.floor(Math.random() * 6) - 3; // -3 ถึง 3 องศา
+        p.style.transform = `rotate(${randomRotate}deg)`;
+        
+        // เมื่อเอาเมาส์ออก ให้กลับไปองศาแบบ Random (ทับ CSS เดิม)
+        p.addEventListener('mouseleave', () => {
+            p.style.transform = `rotate(${randomRotate}deg)`;
+        });
+    });
+});
