@@ -1,461 +1,784 @@
-from pathlib import Path
-
-original = Path("/mnt/data/ข้อความที่วาง (1).txt").read_text(encoding="utf-8")
-
-# ใช้ CSS เดิมเป็นฐาน แล้วเพิ่ม override สำหรับดีไซน์ใหม่
-extra_css = r"""
 /* =========================================================
-   🌸 PINK SCRAPBOOK UPGRADE
+   🌷 SCRAPBOOK DREAMY PORTFOLIO
+   Cute • Pastel • Animated • Handmade • Magical
    ========================================================= */
 
-:root{
-    --pink-main:#FF3D78;
-    --pink-deep:#D81B60;
-    --pink-soft:#FFD1DF;
-    --pink-pale:#FFF0F5;
-    --pink-glow:rgba(255,61,120,.45);
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Kalam:wght@400;700&family=Mitr:wght@300;400;500;600&display=swap');
+
+
+/* =========================================================
+   🎨 VARIABLES
+   ========================================================= */
+
+:root {
+    --sage-green: #63A94A;
+    --sage-dark: #3F7A2D;
+    --sage-light: #BFE8A8;
+
+    --white: #FFFFFF;
+    --cream: #FAF7F2;
+    --cream-dark: #F0E9DE;
+
+    --light-pink: #FF3D78;
+    --pink-dark: #D81B60;
+    --pink-light: #FFB3C7;
+
+    --sky-blue: #5CC8F2;
+    --blue-dark: #168CC4;
+    --blue-light: #C9F1FF;
+
+    --mustard-yellow: #FFC928;
+    --yellow-light: #FFF0A3;
+
+    --light-lavender: #D4B5FF;
+    --purple-dark: #8B5CC7;
+
+    --soft-brown: #C48750;
+    --brown-dark: #704524;
+
+    --text-dark: #3A3A3A;
+    --text-muted: #666666;
+
+    --shadow-soft:
+        0 10px 30px rgba(75, 70, 60, 0.08);
+
+    --shadow-card:
+        0 15px 40px rgba(80, 70, 60, 0.12);
+
+    --shadow-polaroid:
+        5px 15px 35px rgba(0, 0, 0, 0.12);
+
+    --shadow-glow:
+        0 0 30px rgba(255, 61, 120, 0.72);
+
+    --transition-smooth:
+        all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    --font-heading: 'Itim', cursive;
+    --font-handwritten: 'Kalam', cursive;
+    --font-body: 'Mitr', sans-serif;
 }
 
-body{
+
+/* =========================================================
+   🧹 RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ✨ SELECTION
+   ========================================================= */
+
+::selection {
+    background: var(--light-pink);
+    color: #5A2A35;
+}
+
+
+/* =========================================================
+   🌈 ANIMATED BACKGROUND
+   ========================================================= */
+
+.bg-paper-texture {
+    position: fixed;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+
+    background-image:
+        radial-gradient(
+            rgba(196, 135, 80, 0.55) 0.7px,
+            transparent 0.7px
+        );
+
+    background-size: 25px 25px;
+
+    opacity: 0.22;
+    animation: paperMove 20s linear infinite;
+}
+
+@keyframes paperMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 50px 50px;
+    }
+}
+
+
+.bg-soft-gradient {
+    position: fixed;
+    inset: 0;
+    z-index: -6;
+    pointer-events: none;
+
     background:
-        radial-gradient(circle at 8% 18%, rgba(92,200,242,.30), transparent 26%),
-        radial-gradient(circle at 88% 12%, rgba(255,61,120,.28), transparent 25%),
-        radial-gradient(circle at 78% 82%, rgba(212,181,255,.28), transparent 28%),
-        linear-gradient(135deg,#FFF4E8,#FFF0F5 45%,#F5FBEF 75%,#F7EEFF);
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(92, 200, 242, 0.72),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 15%,
+            rgba(255, 61, 120, 0.88),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(212, 181, 255, 0.72),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #FFF4E8,
+            #FFF0F5,
+            #F1FFE9,
+            #F7EEFF
+        );
+
+    background-size: 150% 150%;
+    animation: dreamyBackground 18s ease-in-out infinite alternate;
 }
 
-.scrapbook-nav{
-    border:2px solid #FFD0DE;
+@keyframes dreamyBackground {
+    0% {
+        background-position: 0% 20%;
+    }
+
+    50% {
+        background-position: 100% 70%;
+    }
+
+    100% {
+        background-position: 20% 100%;
+    }
+}
+
+
+/* =========================================================
+   ☁️ BACKGROUND DECORATIONS
+   ========================================================= */
+
+.bg-decorations {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.floating-doodle {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.65;
+
+    filter:
+        drop-shadow(2px 5px 5px rgba(0, 0, 0, 0.08));
+
+    animation:
+        floatAnimation 5s ease-in-out infinite alternate,
+        doodleRotate 7s ease-in-out infinite;
+}
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-18px) rotate(6deg);
+    }
+
+    100% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+}
+
+@keyframes doodleRotate {
+    0%, 100% {
+        filter:
+            drop-shadow(2px 5px 5px rgba(0,0,0,.08));
+    }
+
+    50% {
+        filter:
+            drop-shadow(0 0 12px rgba(255,61,120,.82));
+    }
+}
+
+
+/* =========================================================
+   ✨ SPARKLE PARTICLES
+   ========================================================= */
+
+.bg-decorations::before,
+.bg-decorations::after {
+    content: "✦   ˚   ✧      ♡      ✦   ˚";
+    position: absolute;
+
+    width: 100%;
+    color: rgba(255, 255, 255, 0.9);
+
+    font-family: var(--font-heading);
+    font-size: 25px;
+    letter-spacing: 25px;
+
+    animation: sparkleFloat 9s linear infinite;
+}
+
+.bg-decorations::before {
+    top: 20%;
+    left: -10%;
+}
+
+.bg-decorations::after {
+    top: 70%;
+    left: 10%;
+    animation-delay: -4s;
+}
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateX(-10%) translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(35%) translateY(-30px);
+    }
+
+    80% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateX(100%) translateY(20px);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================================
+   🧭 NAVBAR
+   ========================================================= */
+
+.navbar-wrapper {
+    position: sticky;
+    top: 15px;
+    z-index: 100;
+
+    padding: 0 20px;
+
+    animation: navAppear 0.9s ease both;
+}
+
+@keyframes navAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scrapbook-nav {
+    max-width: 960px;
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.96),
+            rgba(255,250,247,.96)
+        );
+
+    border: 2px solid #EAE5DC;
+    border-radius: 50px;
+
+    padding: 13px 28px;
+
     box-shadow:
-        0 14px 35px rgba(216,27,96,.14),
-        0 0 0 6px rgba(255,255,255,.55),
-        0 0 28px rgba(255,61,120,.12);
+        0 12px 35px rgba(75,70,60,.09),
+        0 0 0 5px rgba(255,255,255,.35);
+
+    position: relative;
+
+    transform: rotate(-0.4deg);
+
+    backdrop-filter: blur(12px);
+
+    transition: var(--transition-smooth);
+}
+
+.scrapbook-nav:hover {
+    transform:
+        rotate(0deg)
+        translateY(-2px);
+
+    box-shadow:
+        0 18px 45px rgba(75,70,60,.14),
+        0 0 30px rgba(255,61,120,.48);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* =========================================================
+   🌿 LOGO
+   ========================================================= */
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+
+    color: var(--sage-green);
+
+    text-decoration: none;
+
+    position: relative;
+
+    transition: var(--transition-smooth);
+}
+
+.logo span {
+    color: var(--text-dark);
+}
+
+.logo:hover {
+    transform: rotate(-3deg) scale(1.06);
+    text-shadow:
+        3px 3px 0 rgba(247,198,208,.5);
+}
+
+.logo::after {
+    content: "♡";
+
+    position: absolute;
+    right: -18px;
+    top: -8px;
+
+    color: var(--pink-dark);
+    font-size: 14px;
+
+    animation: tinyHeart 1.8s ease-in-out infinite;
+}
+
+@keyframes tinyHeart {
+    0%, 100% {
+        transform: translateY(0) rotate(-10deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(10deg);
+    }
+}
+
+
+/* =========================================================
+   🔗 NAV LINKS
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+
+    font-size: .95rem;
+
+    padding: 7px 16px;
+
+    border-radius: 20px;
+
+    position: relative;
+
+    transition: var(--transition-smooth);
+}
+
+.nav-links a::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 3px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--pink-dark);
+
+    border-radius: 10px;
+
+    transform: translateX(-50%);
+
+    transition: width .3s ease;
+}
+
+.nav-links a:hover::before,
+.nav-links a.active::before {
+    width: 45%;
 }
 
 .nav-links a:hover,
-.nav-links a.active{
-    background:linear-gradient(135deg,#FFE0EA,#FF9FBC);
-    color:#9E1748;
-    box-shadow:0 7px 20px rgba(255,61,120,.32);
-}
-
-.hero-section{
-    gap:42px;
-}
-
-.paper-card{
-    position:relative;
+.nav-links a.active {
     background:
-        radial-gradient(circle at 15% 15%, rgba(255,61,120,.10), transparent 24%),
-        linear-gradient(135deg,rgba(255,250,252,.99),rgba(255,224,235,.96));
-    border:2px dashed var(--pink-main);
+        linear-gradient(
+            135deg,
+            var(--pink-light),
+            var(--light-pink)
+        );
+
+    color: #5A2A35;
+
+    font-weight: 500;
+
+    transform: translateY(-2px) rotate(-1deg);
+
     box-shadow:
-        0 18px 42px rgba(216,27,96,.14),
-        0 0 0 7px rgba(255,255,255,.58),
-        0 0 32px rgba(255,61,120,.12);
-    transform:rotate(-.7deg);
-    overflow:visible;
+        0 5px 15px rgba(255,61,120,.68);
 }
 
-.paper-card:hover{
-    transform:rotate(0deg) translateY(-5px);
-    box-shadow:
-        0 24px 52px rgba(216,27,96,.20),
-        0 0 35px rgba(255,61,120,.20);
-}
 
-.paper-card::after{
-    content:"♡  ✦  ♡";
-    position:absolute;
-    right:22px;
-    bottom:-17px;
-    padding:5px 13px;
-    border-radius:18px;
-    background:#FF5A8B;
-    color:white;
-    font-family:var(--font-heading);
-    box-shadow:0 8px 18px rgba(216,27,96,.28);
-    transform:rotate(3deg);
-}
+/* =========================================================
+   🎀 WASHI TAPE
+   ========================================================= */
 
-.photo-card{
-    position:relative;
-    padding:18px 18px 30px;
-    background:#fff;
-    border-radius:8px;
-    box-shadow:
-        8px 15px 32px rgba(80,60,70,.16),
-        0 0 0 5px rgba(255,255,255,.55);
-    transform:rotate(2deg);
-}
+.washi-tape {
+    position: absolute;
 
-.photo-card::before{
-    content:"";
-    position:absolute;
-    width:105px;
-    height:24px;
-    top:-13px;
-    left:50%;
-    transform:translateX(-50%) rotate(-2deg);
-    background:rgba(255,127,163,.92);
-    box-shadow:0 3px 8px rgba(216,27,96,.14);
-}
+    height: 22px;
 
-.photo-placeholder{
-    min-height:330px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:3px;
     background:
-        linear-gradient(135deg,rgba(255,61,120,.16),rgba(255,209,223,.75)),
-        repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0 8px,transparent 8px 16px);
-    color:#D81B60;
-    font-family:var(--font-heading);
-    font-size:2.6rem;
+        repeating-linear-gradient(
+            90deg,
+            rgba(255,255,255,.12) 0px,
+            rgba(255,255,255,.12) 3px,
+            transparent 3px,
+            transparent 8px
+        ),
+        rgba(255,61,120,.98);
+
+    box-shadow:
+        0 2px 7px rgba(0,0,0,.07);
+
+    backdrop-filter: blur(2px);
+
+    z-index: 10;
+
+    border-radius: 2px;
+
+    pointer-events: none;
 }
 
-.photo-caption{
-    margin-top:12px;
-    text-align:center;
-    font-family:var(--font-handwritten);
-    color:#7A5360;
-    font-size:1.1rem;
+.tape-nav-top {
+    width: 100px;
+    top: -10px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-1deg);
+
+    background:
+        rgba(99,169,74,.82);
 }
 
-.story-grid{
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:25px;
-    margin-top:42px;
+.tape-corner-left {
+    width: 85px;
+    top: -10px;
+    left: -15px;
+
+    transform: rotate(-35deg);
+
+    background:
+        rgba(92,200,242,.90);
 }
 
-.story-card{
-    position:relative;
-    padding:28px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#fff,#FFF0F5);
-    border:2px solid #FFB3C7;
-    box-shadow:0 14px 32px rgba(216,27,96,.10);
+.tape-top-center {
+    width: 110px;
+    top: -12px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(2deg);
+
+    background:
+        rgba(255,201,40,.92);
 }
 
-.story-card:nth-child(2){
-    transform:rotate(1deg);
-    background:linear-gradient(135deg,#fff,#EEF9FF);
-    border-color:#8EDCFA;
+.tape-mini {
+    width: 55px;
+    top: -8px;
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    background:
+        rgba(212,181,255,.92);
 }
 
-.story-card:nth-child(3){
-    transform:rotate(-1deg);
-    background:linear-gradient(135deg,#fff,#F5EDFF);
-    border-color:#D4B5FF;
+
+/* =========================================================
+   📎 PAPER CLIP
+   ========================================================= */
+
+.paper-clip {
+    position: absolute;
+
+    top: -15px;
+    right: 30px;
+
+    font-size: 1.8rem;
+
+    transform: rotate(15deg);
+
+    animation:
+        paperClipMove 3s ease-in-out infinite;
 }
 
-.story-card:nth-child(4){
-    transform:rotate(.7deg);
-    background:linear-gradient(135deg,#fff,#FFF7D8);
-    border-color:#FFD85A;
+@keyframes paperClipMove {
+    0%, 100% {
+        transform: rotate(15deg);
+    }
+
+    50% {
+        transform:
+            rotate(20deg)
+            translateY(-4px);
+    }
 }
 
-.story-card h3{
-    margin-bottom:10px;
-    color:var(--pink-deep);
-    font-family:var(--font-heading);
-    font-size:1.55rem;
+
+/* =========================================================
+   ⭐ STICKERS
+   ========================================================= */
+
+.sticker {
+    position: absolute;
+
+    font-size: 2rem;
+
+    filter:
+        drop-shadow(
+            2px 5px 4px rgba(0,0,0,.12)
+        );
+
+    transition: var(--transition-smooth);
+
+    animation:
+        stickerFloat 4s ease-in-out infinite;
 }
 
-.story-card p{
-    color:#555;
-    line-height:1.9;
+.sticker:hover {
+    transform:
+        scale(1.3)
+        rotate(12deg);
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(255,61,120,1)
+        );
 }
 
-.story-card ul{
-    padding-left:22px;
-    line-height:2;
+.sticker-star {
+    top: -15px;
+    right: -12px;
 }
 
-.timeline{
-    margin-top:42px;
-    padding:30px;
-    border-radius:25px;
-    background:rgba(255,255,255,.82);
-    border:2px dashed #FF7FA3;
-    box-shadow:0 15px 35px rgba(216,27,96,.10);
+.sticker-heart {
+    bottom: -12px;
+    left: -12px;
 }
 
-.timeline h2,
-.section-heading{
-    text-align:center;
-    font-family:var(--font-heading);
-    color:#D81B60;
-    font-size:2rem;
-    margin-bottom:20px;
+@keyframes stickerFloat {
+    0%, 100% {
+        transform: rotate(-4deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(5deg) translateY(-7px);
+    }
 }
 
-.timeline-item{
-    display:grid;
-    grid-template-columns:110px 1fr;
-    gap:18px;
-    padding:16px 0;
-    border-bottom:1px dashed #FFC0D1;
+
+/* =========================================================
+   📦 MAIN CONTAINER
+   ========================================================= */
+
+.container {
+    max-width: 960px;
+
+    margin: 55px auto;
+
+    padding: 0 20px;
+
+    animation:
+        pageAppear .9s ease both;
 }
 
-.timeline-item:last-child{border-bottom:0}
-.timeline-year{
-    font-weight:600;
-    color:#E83E72;
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.quote-box{
-    margin-top:35px;
-    padding:28px;
-    text-align:center;
-    border-radius:25px;
-    background:linear-gradient(135deg,#FF4D84,#FF91AE);
-    color:white;
-    box-shadow:0 16px 34px rgba(216,27,96,.24);
+
+/* =========================================================
+   📝 PAGE TITLE
+   ========================================================= */
+
+.page-title-box {
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    position: relative;
 }
 
-.quote-box p{
-    font-family:var(--font-handwritten);
-    font-size:1.45rem;
-    line-height:1.8;
+.page-title-box::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 20%;
+    top: 0;
+
+    color: var(--mustard-yellow);
+
+    font-size: 24px;
+
+    animation: sparkle 2s ease-in-out infinite;
 }
 
-.bgm-button{
-    position:fixed;
-    right:24px;
-    bottom:24px;
-    z-index:200;
-    border:2px solid #FF3D78;
-    border-radius:999px;
-    padding:11px 18px;
-    background:linear-gradient(135deg,#FF3D78,#FF86A8);
-    color:white;
-    font-family:var(--font-body);
-    font-weight:600;
-    box-shadow:0 10px 25px rgba(216,27,96,.28);
-    cursor:pointer;
+.page-title-box::after {
+    content: "♡";
+
+    position: absolute;
+
+    right: 20%;
+    bottom: 0;
+
+    color: var(--light-pink);
+
+    font-size: 25px;
+
+    animation: sparkle 2.5s ease-in-out infinite reverse;
 }
 
-@media (max-width:760px){
-    .story-grid{grid-template-columns:1fr}
-    .hero-section{grid-template-columns:1fr}
-    .timeline-item{grid-template-columns:1fr;gap:4px}
-    .photo-placeholder{min-height:260px}
+@keyframes sparkle {
+    0%, 100% {
+        transform:
+            scale(.8)
+            rotate(0deg);
+
+        opacity: .5;
+    }
+
+    50% {
+        transform:
+            scale(1.3)
+            rotate(20deg);
+
+        opacity: 1;
+    }
 }
-"""
 
-html = f"""<!DOCTYPE html>
-<html lang="th">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyJournal — My Scrapbook</title>
-<style>
-{original}
-{extra_css}
-</style>
-</head>
 
-<body>
+/* =========================================================
+   🧩 GRID
+   ========================================================= */
 
-<div class="bg-soft-gradient"></div>
-<div class="bg-paper-texture"></div>
+.hero-section,
+.grid-2col {
+    display: grid;
 
-<div class="bg-decorations" aria-hidden="true">
-    <div class="floating-doodle" style="top:7%;left:4%;">✨</div>
-    <div class="floating-doodle" style="top:20%;right:4%;">💖</div>
-    <div class="floating-doodle" style="top:58%;left:24%;">🌷</div>
-    <div class="floating-doodle" style="top:78%;right:7%;">🎨</div>
-    <div class="floating-doodle" style="top:90%;left:10%;">🌿</div>
-</div>
+    grid-template-columns:
+        1.2fr .8fr;
 
-<div class="navbar-wrapper">
-    <nav class="scrapbook-nav">
-        <div class="nav-container">
-            <a class="logo" href="#">My<span>Journal</span> 📓</a>
-            <ul class="nav-links">
-                <li><a class="active" href="#home">หน้าแรก</a></li>
-                <li><a href="#about">ประวัติส่วนตัว</a></li>
-                <li><a href="#education">การศึกษา</a></li>
-                <li><a href="#work">งานอดิเรก</a></li>
-                <li><a href="#contact">ติดต่อ</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
+    gap: 35px;
 
-<main class="container" id="home">
+    align-items: start;
+}
 
-    <section class="page-title-box">
-        <h1 style="font-family:var(--font-heading);font-size:2.8rem;color:#D81B60;">
-            My Little Scrapbook 💗
-        </h1>
-        <p style="font-family:var(--font-handwritten);font-size:1.25rem;">
-            เรื่องราวเล็ก ๆ ของฉัน ความฝัน และสิ่งที่อยากจดจำ
-        </p>
-    </section>
+.gallery-grid {
+    display: grid;
 
-    <section class="hero-section">
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(260px, 1fr)
+        );
 
-        <article class="paper-card">
-            <div class="washi-tape tape-corner-left"></div>
-            <div class="washi-tape tape-top-center"></div>
+    gap: 30px;
+}
 
-            <p style="color:#D81B60;font-weight:600;letter-spacing:.5px;">
-                WELCOME TO MY SPACE ✦
-            </p>
 
-            <h2 style="font-family:var(--font-heading);font-size:2.2rem;margin:12px 0;color:#333;">
-                สวัสดี! 👋 ยินดีต้อนรับเข้าสู่<br>
-                <span style="color:#FF3D78;">Journal ของฉัน</span>
-            </h2>
+/* =========================================================
+   📄 PAPER CARD
+   ========================================================= */
 
-            <h3 style="font-size:1.35rem;margin-bottom:8px;">
-                นักเรียนชั้นมัธยมศึกษาปีที่ 3 📚
-            </h3>
+.paper-card {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,245,249,.98),
+            rgba(255,224,235,.98)
+        );
 
-            <p>
-                เว็บไซต์นี้เป็นพื้นที่เล็ก ๆ ที่รวบรวมเรื่องราว การเรียนรู้
-                ผลงาน ความสนใจ และความทรงจำที่ฉันอยากเก็บเอาไว้
-                เหมือนสมุดบันทึกเล่มโปรดที่ค่อย ๆ เติมเรื่องราวลงไปทีละหน้า
-            </p>
+    border:
+        2px dashed
+        var(--pink-dark);
 
-            <p style="margin-top:12px;">
-                ในแต่ละวันฉันได้เรียนรู้สิ่งใหม่ ๆ ทั้งจากห้องเรียน
-                จากการลองทำด้วยตัวเอง และจากประสบการณ์รอบตัว
-                ทุกความผิดพลาดเป็นโอกาสให้ฉันได้พัฒนาตัวเอง
-                และทุกความสำเร็จเล็ก ๆ ก็เป็นกำลังใจให้ก้าวต่อไป
-            </p>
+    border-radius: 24px;
 
-            <p style="margin-top:12px;">
-                ฉันเชื่อว่า <strong>“Dream big, work hard, stay focused &amp; surround yourself with good people.”</strong>
-                เพราะความฝันที่ดีจะมีความหมายมากขึ้นเมื่อเราเริ่มลงมือทำจริง
-            </p>
-
-            <a href="#about" style="display:inline-block;margin-top:15px;color:#D81B60;font-weight:600;">
-                ทำความรู้จักกันเพิ่ม → 💕
-            </a>
-        </article>
-
-        <div class="photo-card">
-            <div class="photo-placeholder">
-                <span>My Photo 📸</span>
-            </div>
-            <p class="photo-caption">Me in 2026 — เก็บช่วงเวลานี้ไว้ในความทรงจำ ♡</p>
-        </div>
-
-    </section>
-
-    <section id="about" style="margin-top:55px;">
-        <h2 class="section-heading">🌷 About Me — เรื่องราวของฉัน</h2>
-
-        <div class="story-grid">
-            <article class="story-card">
-                <h3>💗 ตัวฉันในวันนี้</h3>
-                <p>
-                    ฉันเป็นคนที่ชอบเรียนรู้เรื่องใหม่ ๆ และอยากพัฒนาตัวเองอยู่เสมอ
-                    บางวันอาจมีเรื่องที่ทำไม่สำเร็จอย่างที่ตั้งใจ
-                    แต่ฉันพยายามมองทุกอย่างเป็นประสบการณ์
-                    แล้วนำสิ่งที่ได้เรียนรู้ไปใช้ในครั้งต่อไป
-                </p>
-            </article>
-
-            <article class="story-card" id="education">
-                <h3>📚 การเรียน</h3>
-                <p>
-                    การเรียนสำหรับฉันไม่ได้มีแค่คะแนน แต่ยังเป็นการฝึกคิด
-                    ฝึกแก้ปัญหา ฝึกความรับผิดชอบ และรู้จักทำงานร่วมกับคนอื่น
-                    วิชาที่เรียนแต่ละวิชาช่วยเปิดมุมมองใหม่ ๆ
-                    และทำให้ฉันรู้ว่าตัวเองสนใจอะไรเพิ่มขึ้นเรื่อย ๆ
-                </p>
-            </article>
-
-            <article class="story-card" id="work">
-                <h3>🎨 สิ่งที่ฉันสนใจ</h3>
-                <ul>
-                    <li>การออกแบบและตกแต่งเว็บไซต์</li>
-                    <li>การสร้างผลงานที่มีความคิดสร้างสรรค์</li>
-                    <li>การเรียนรู้เทคโนโลยีใหม่ ๆ</li>
-                    <li>การเก็บภาพและความทรงจำในช่วงเวลาสำคัญ</li>
-                    <li>การลองทำสิ่งใหม่เพื่อค้นหาสิ่งที่ตัวเองชอบ</li>
-                </ul>
-            </article>
-
-            <article class="story-card">
-                <h3>🌟 เป้าหมายของฉัน</h3>
-                <p>
-                    ฉันอยากค่อย ๆ พัฒนาทักษะของตัวเองให้ดีขึ้น
-                    กล้าที่จะลองสิ่งใหม่ ๆ และสร้างผลงานที่สามารถมองย้อนกลับมาแล้ว
-                    รู้สึกภูมิใจว่า “นี่คือสิ่งที่ฉันตั้งใจทำด้วยตัวเอง”
-                    ไม่จำเป็นต้องสมบูรณ์แบบตั้งแต่ครั้งแรก ขอแค่ไม่หยุดเรียนรู้ก็พอ
-                </p>
-            </article>
-        </div>
-    </section>
-
-    <section class="timeline">
-        <h2>📖 My Little Timeline</h2>
-
-        <div class="timeline-item">
-            <div class="timeline-year">ตอนนี้</div>
-            <div>
-                <strong>กำลังเรียนรู้และค้นหาตัวเอง</strong><br>
-                ตั้งใจเรียน เก็บประสบการณ์ และลองทำโปรเจกต์ใหม่ ๆ
-                เพื่อค้นหาสิ่งที่ตัวเองชอบมากขึ้น
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">ช่วงที่ผ่านมา</div>
-            <div>
-                <strong>เริ่มสนใจการสร้างผลงาน</strong><br>
-                จากการลองออกแบบและรวบรวมผลงาน ทำให้ค้นพบว่าการสร้างสิ่งต่าง ๆ
-                ด้วยตัวเองเป็นเรื่องที่สนุกและทำให้ได้เรียนรู้มากกว่าที่คิด
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-year">ต่อไป</div>
-            <div>
-                <strong>อยากพัฒนาตัวเองให้เก่งขึ้น</strong><br>
-                อยากเรียนรู้ทักษะใหม่ ๆ เพิ่มขึ้น สร้างผลงานที่ดีขึ้น
-                และเก็บเรื่องราวระหว่างทางเอาไว้เป็นความทรงจำ
-            </div>
-        </div>
-    </section>
-
-    <section class="quote-box">
-        <p>
-            “ไม่ต้องรีบเก่งที่สุด ขอแค่วันนี้เก่งกว่าเมื่อวานนิดหนึ่งก็พอ” 🌸
-        </p>
-        <p style="font-family:var(--font-body);font-size:.95rem;margin-top:8px;">
-            ทุกก้าวเล็ก ๆ ของเราก็มีความหมาย
-        </p>
-    </section>
-
-    <section id="contact" class="story-card" style="margin-top:42px;text-align:center;">
-        <h3>💌 Contact / ฝากข้อความถึงฉัน</h3>
-        <p>
-            ขอบคุณที่แวะเข้ามาอ่าน Journal เล็ก ๆ ของฉัน
-            หวังว่าหน้านี้จะทำให้คุณได้รู้จักฉันมากขึ้นอีกนิด
-            และถ้ามีโอกาส ฉันอยากนำผลงานและเรื่องราวใหม่ ๆ มาเติมในสมุดเล่มนี้เรื่อย ๆ
-        </p>
-        <p style="margin-top:12px;color:#D81B60;">
-            See you on the next page! ♡
-        </p>
-    </section>
-
-</main>
-
-<button class="bgm-button" type="button">🎵 Play BGM</button>
-
-</body>
-</html>
-"""
-
-out = Path("/mnt/data/MyJournal_pink_scrapbook_complete.html")
-out.write_text(html, encoding="utf-8")
-
-print(out)
+    padding: 35px;
