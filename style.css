@@ -19,9 +19,9 @@
     --cream: #FAF7F2;
     --cream-dark: #F0E9DE;
 
-    --light-pink: #FF7FA3;
-    --pink-dark: #E83E72;
-    --pink-light: #FFD0DE;
+    --light-pink: #FF3D78;
+    --pink-dark: #D81B60;
+    --pink-light: #FFB3C7;
 
     --sky-blue: #5CC8F2;
     --blue-dark: #168CC4;
@@ -49,7 +49,7 @@
         5px 15px 35px rgba(0, 0, 0, 0.12);
 
     --shadow-glow:
-        0 0 25px rgba(255, 127, 163, 0.72);
+        0 0 30px rgba(255, 61, 120, 0.72);
 
     --transition-smooth:
         all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -143,7 +143,7 @@ body {
 
         radial-gradient(
             circle at 85% 15%,
-            rgba(255, 127, 163, 0.72),
+            rgba(255, 61, 120, 0.88),
             transparent 30%
         ),
 
@@ -227,7 +227,7 @@ body {
 
     50% {
         filter:
-            drop-shadow(0 0 12px rgba(255,127,163,.65));
+            drop-shadow(0 0 12px rgba(255,61,120,.82));
     }
 }
 
@@ -349,7 +349,7 @@ body {
 
     box-shadow:
         0 18px 45px rgba(75,70,60,.14),
-        0 0 30px rgba(255,127,163,.30);
+        0 0 30px rgba(255,61,120,.48);
 }
 
 .nav-container {
@@ -476,7 +476,7 @@ body {
     transform: translateY(-2px) rotate(-1deg);
 
     box-shadow:
-        0 5px 15px rgba(255,127,163,.50);
+        0 5px 15px rgba(255,61,120,.68);
 }
 
 
@@ -497,7 +497,7 @@ body {
             transparent 3px,
             transparent 8px
         ),
-        rgba(255,127,163,.90);
+        rgba(255,61,120,.98);
 
     box-shadow:
         0 2px 7px rgba(0,0,0,.07);
@@ -620,7 +620,7 @@ body {
 
     filter:
         drop-shadow(
-            0 0 12px rgba(255,127,163,.95)
+            0 0 12px rgba(255,61,120,1)
         );
 }
 
@@ -771,13 +771,13 @@ body {
     background:
         linear-gradient(
             135deg,
-            rgba(255,255,255,.98),
-            rgba(255,252,248,.98)
+            rgba(255,245,249,.98),
+            rgba(255,224,235,.98)
         );
 
     border:
         2px dashed
-        var(--sage-green);
+        var(--pink-dark);
 
     border-radius: 24px;
 
