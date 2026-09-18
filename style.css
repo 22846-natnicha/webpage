@@ -11,30 +11,30 @@
    ========================================================= */
 
 :root {
-    --sage-green: #93A682;
-    --sage-dark: #718460;
-    --sage-light: #C9D7BE;
+    --sage-green: #63A94A;
+    --sage-dark: #3F7A2D;
+    --sage-light: #BFE8A8;
 
     --white: #FFFFFF;
     --cream: #FAF7F2;
     --cream-dark: #F0E9DE;
 
-    --light-pink: #F7C6D0;
-    --pink-dark: #D8899A;
-    --pink-light: #FFE6EB;
+    --light-pink: #FF7FA3;
+    --pink-dark: #E83E72;
+    --pink-light: #FFD0DE;
 
-    --sky-blue: #B3D8E8;
-    --blue-dark: #78B8D2;
-    --blue-light: #E2F4FA;
+    --sky-blue: #5CC8F2;
+    --blue-dark: #168CC4;
+    --blue-light: #C9F1FF;
 
-    --mustard-yellow: #F4D35E;
-    --yellow-light: #FFF3B8;
+    --mustard-yellow: #FFC928;
+    --yellow-light: #FFF0A3;
 
-    --light-lavender: #E2D4F0;
-    --purple-dark: #A98BC4;
+    --light-lavender: #D4B5FF;
+    --purple-dark: #8B5CC7;
 
-    --soft-brown: #C39B75;
-    --brown-dark: #8E6748;
+    --soft-brown: #C48750;
+    --brown-dark: #704524;
 
     --text-dark: #3A3A3A;
     --text-muted: #666666;
@@ -49,7 +49,7 @@
         5px 15px 35px rgba(0, 0, 0, 0.12);
 
     --shadow-glow:
-        0 0 25px rgba(247, 198, 208, 0.55);
+        0 0 25px rgba(255, 127, 163, 0.72);
 
     --transition-smooth:
         all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -107,7 +107,7 @@ body {
 
     background-image:
         radial-gradient(
-            rgba(195, 155, 117, 0.45) 0.7px,
+            rgba(196, 135, 80, 0.55) 0.7px,
             transparent 0.7px
         );
 
@@ -137,28 +137,28 @@ body {
     background:
         radial-gradient(
             circle at 10% 20%,
-            rgba(179, 216, 232, 0.55),
+            rgba(92, 200, 242, 0.72),
             transparent 30%
         ),
 
         radial-gradient(
             circle at 85% 15%,
-            rgba(247, 198, 208, 0.55),
+            rgba(255, 127, 163, 0.72),
             transparent 30%
         ),
 
         radial-gradient(
             circle at 70% 80%,
-            rgba(226, 212, 240, 0.55),
+            rgba(212, 181, 255, 0.72),
             transparent 30%
         ),
 
         linear-gradient(
             135deg,
-            #F9F4EC,
-            #FFF9F7,
-            #F5FAF4,
-            #FAF4FC
+            #FFF4E8,
+            #FFF0F5,
+            #F1FFE9,
+            #F7EEFF
         );
 
     background-size: 150% 150%;
@@ -227,7 +227,7 @@ body {
 
     50% {
         filter:
-            drop-shadow(0 0 12px rgba(247,198,208,.45));
+            drop-shadow(0 0 12px rgba(255,127,163,.65));
     }
 }
 
@@ -349,7 +349,7 @@ body {
 
     box-shadow:
         0 18px 45px rgba(75,70,60,.14),
-        0 0 30px rgba(247,198,208,.15);
+        0 0 30px rgba(255,127,163,.30);
 }
 
 .nav-container {
@@ -476,7 +476,7 @@ body {
     transform: translateY(-2px) rotate(-1deg);
 
     box-shadow:
-        0 5px 15px rgba(247,198,208,.35);
+        0 5px 15px rgba(255,127,163,.50);
 }
 
 
@@ -497,7 +497,7 @@ body {
             transparent 3px,
             transparent 8px
         ),
-        rgba(247,198,208,.75);
+        rgba(255,127,163,.90);
 
     box-shadow:
         0 2px 7px rgba(0,0,0,.07);
@@ -521,7 +521,7 @@ body {
         rotate(-1deg);
 
     background:
-        rgba(147,166,130,.6);
+        rgba(99,169,74,.82);
 }
 
 .tape-corner-left {
@@ -532,7 +532,7 @@ body {
     transform: rotate(-35deg);
 
     background:
-        rgba(179,216,232,.8);
+        rgba(92,200,242,.90);
 }
 
 .tape-top-center {
@@ -545,7 +545,7 @@ body {
         rotate(2deg);
 
     background:
-        rgba(244,211,94,.8);
+        rgba(255,201,40,.92);
 }
 
 .tape-mini {
@@ -558,7 +558,7 @@ body {
         rotate(-2deg);
 
     background:
-        rgba(226,212,240,.8);
+        rgba(212,181,255,.92);
 }
 
 
@@ -620,7 +620,7 @@ body {
 
     filter:
         drop-shadow(
-            0 0 12px rgba(247,198,208,.8)
+            0 0 12px rgba(255,127,163,.95)
         );
 }
 
