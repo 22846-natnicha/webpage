@@ -1,83 +1,18 @@
-/* =================================
-   ✨ SPARKLE MOUSE EFFECT
-   ================================= */
+.panel {
+    padding: 30px;
+    background: rgba(255,255,255,.9);
 
-.mouse-sparkle,
-.click-sparkle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 99999;
+    border: 2px solid #ffb3c7;
+    border-radius: 26px;
 
-    font-family: Arial, sans-serif;
-    color: #ff6fa5;
+    box-shadow: var(--shadow);
 
-    text-shadow:
-        0 0 5px #ffffff,
-        0 0 10px #ffb6d2,
-        0 0 18px #ff6fa5;
+    transform-style: preserve-3d;
+    transition: transform .15s ease,
+                box-shadow .3s ease;
 
-    animation: sparkleFloat .7s ease-out forwards;
+    will-change: transform;
 }
-
-/* ดาวตามเมาส์ */
-.mouse-sparkle {
-    animation-duration: .65s;
-}
-
-/* ดาวตอนคลิก */
-.click-sparkle {
-    color: #ff4f87;
-
-    text-shadow:
-        0 0 5px white,
-        0 0 12px #ffb3d0,
-        0 0 25px #ff4f87;
-
-    animation: clickSparkle .8s ease-out forwards;
-}
-
-
-/* ✨ ดาวค่อย ๆ หาย */
-@keyframes sparkleFloat {
-
-    0% {
-        opacity: 0;
-        transform: scale(.2) rotate(0deg);
-    }
-
-    30% {
-        opacity: 1;
-        transform: scale(1.2) rotate(45deg);
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            scale(.2)
-            rotate(120deg)
-            translateY(-18px);
-    }
-}
-
-
-/* 💫 คลิกแล้วดาวกระจาย */
-@keyframes clickSparkle {
-
-    0% {
-        opacity: 0;
-        transform: scale(.2) rotate(0deg);
-    }
-
-    25% {
-        opacity: 1;
-        transform: scale(1.4) rotate(45deg);
-    }
-
-    100% {
-        opacity: 0;
-        transform:
-            scale(.2)
-            rotate(180deg)
-            translateY(-30px);
-    }
-}
+transform-style: preserve-3d;
+transition: transform .15s ease, box-shadow .3s ease;
+will-change: transform;
