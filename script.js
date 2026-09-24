@@ -1,63 +1,76 @@
 // ================================
-// 🌸 Cute Mouse Sticker Effect
+// ✨ Sparkle Mouse Effect
 // ================================
 
-const stickers = ["🌸", "💗", "✨", "🎀", "🧸", "🌷", "⭐", "🍓"];
+const sparkles = ["✦", "✧", "⋆", "✶", "✷", "✨", "★"];
+
+let lastSparkleTime = 0;
 
 // -------------------------------
-// 🖱️ คลิกเมาส์ = สติกเกอร์เด้ง
+// 🖱️ คลิกเมาส์ = ดาวกระจาย
 // -------------------------------
 document.addEventListener("click", (event) => {
-  const sticker = document.createElement("span");
 
-  sticker.className = "click-sticker";
-  sticker.textContent =
-    stickers[Math.floor(Math.random() * stickers.length)];
+  for (let i = 0; i < 8; i++) {
 
-  sticker.style.left = `${event.clientX}px`;
-  sticker.style.top = `${event.clientY}px`;
+    const sparkle = document.createElement("span");
 
-  document.body.appendChild(sticker);
+    sparkle.className = "click-sparkle";
+    sparkle.textContent =
+      sparkles[Math.floor(Math.random() * sparkles.length)];
 
-  setTimeout(() => {
-    sticker.remove();
-  }, 900);
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 20 + Math.random() * 45;
+
+    sparkle.style.left =
+      `${event.clientX + Math.cos(angle) * distance}px`;
+
+    sparkle.style.top =
+      `${event.clientY + Math.sin(angle) * distance}px`;
+
+    sparkle.style.fontSize =
+      `${10 + Math.random() * 14}px`;
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 800);
+  }
 });
 
 
 // -------------------------------
-// 🐰 เลื่อนเมาส์ = สติกเกอร์ตามเมาส์
+// ✨ เลื่อนเมาส์ = ประกายดาวตามทาง
 // -------------------------------
-let mouseX = 0;
-let mouseY = 0;
-
 document.addEventListener("mousemove", (event) => {
-  mouseX = event.clientX;
-  mouseY = event.clientY;
-});
 
-let lastStickerTime = 0;
-
-document.addEventListener("mousemove", (event) => {
   const now = Date.now();
 
-  // ไม่ให้สร้างเยอะเกินไป
-  if (now - lastStickerTime < 180) return;
+  // ลดจำนวนดาวไม่ให้เยอะเกินไป
+  if (now - lastSparkleTime < 80) return;
 
-  lastStickerTime = now;
+  lastSparkleTime = now;
 
-  const sticker = document.createElement("span");
+  const sparkle = document.createElement("span");
 
-  sticker.className = "mouse-sticker";
-  sticker.textContent =
-    stickers[Math.floor(Math.random() * stickers.length)];
+  sparkle.className = "mouse-sparkle";
 
-  sticker.style.left = `${event.clientX + 10}px`;
-  sticker.style.top = `${event.clientY + 10}px`;
+  sparkle.textContent =
+    sparkles[Math.floor(Math.random() * sparkles.length)];
 
-  document.body.appendChild(sticker);
+  sparkle.style.left =
+    `${event.clientX + (Math.random() * 12 - 6)}px`;
+
+  sparkle.style.top =
+    `${event.clientY + (Math.random() * 12 - 6)}px`;
+
+  sparkle.style.fontSize =
+    `${8 + Math.random() * 12}px`;
+
+  document.body.appendChild(sparkle);
 
   setTimeout(() => {
-    sticker.remove();
-  }, 700);
+    sparkle.remove();
+  }, 650);
 });
