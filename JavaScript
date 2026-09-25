@@ -108,4 +108,3 @@ cards.forEach(card => {
 });
 
 </script>
-ใส่เพลงตรงไหน
