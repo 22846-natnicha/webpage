@@ -1,7 +1,8 @@
 <!-- 🎵 BGM -->
 <audio id="bgMusic" loop>
-    <source src="Hum%20-%20%E0%B8%A3%E0%B8%AD%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%95%E0%B8%A3%E0%B8%87%E0%B8%99%E0%B8%B5%E0%B9%89%20%20(%E0%B8%9E.%E0%B8%A8.2547)%E3%80%8EMULTI%20SUB%E3%80%8F.mp3" type="audio/mpeg">
+    <source src="./Hum%20-%20%E0%B8%A3%E0%B8%AD%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%95%E0%B8%A3%E0%B8%87%E0%B8%99%E0%B8%B5%E0%B9%89%20%20(%E0%B8%9E.%E0%B8%A8.2547)%E3%80%8EMULTI%20SUB%E3%80%8F.mp3" type="audio/mpeg">
 </audio>
+
 
 <script>
 
@@ -14,21 +15,45 @@ function playMusic() {
     const music = document.getElementById("bgMusic");
     const button = document.querySelector(".bgm");
 
+    if (!music) {
+        alert("ไม่พบตัวเล่นเพลง");
+        return;
+    }
+
     if (music.paused) {
 
-        music.play();
+        music.play()
+            .then(() => {
 
-        button.innerHTML = "⏸️ Pause BGM";
+                if (button) {
+                    button.innerHTML = "⏸️ Pause BGM";
+                }
+
+            })
+            .catch((error) => {
+
+                console.log("เปิดเพลงไม่ได้:", error);
+
+                alert(
+                    "เปิดเพลงไม่ได้ 😭\n\n" +
+                    "กรุณาตรวจสอบว่าไฟล์เพลงอยู่ใน GitHub " +
+                    "โฟลเดอร์เดียวกับ index.html"
+                );
+
+            });
 
     } else {
 
         music.pause();
 
-        button.innerHTML = "🎵 Play BGM";
+        if (button) {
+            button.innerHTML = "🎵 Play BGM";
+        }
 
     }
 
 }
+
 
 // =====================================================
 // ✨ 3D CARD EFFECT
@@ -59,6 +84,7 @@ document.querySelectorAll(".panel").forEach(card => {
 
     });
 
+
     card.addEventListener("mouseleave", () => {
 
         card.style.transform = `
@@ -72,6 +98,7 @@ document.querySelectorAll(".panel").forEach(card => {
     });
 
 });
+
 
 // =====================================================
 // 💗 CARD SCROLL ANIMATION
@@ -100,6 +127,7 @@ const observer = new IntersectionObserver(
         threshold: 0.1
     }
 );
+
 
 cards.forEach(card => {
 
