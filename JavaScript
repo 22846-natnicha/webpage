@@ -4,6 +4,12 @@
 </audio>
 
 
+<!-- 🎵 MUSIC BUTTON -->
+<button class="bgm" onclick="playMusic()">
+    🎵 Play BGM
+</button>
+
+
 <script>
 
 // =====================================================
@@ -25,9 +31,7 @@ function playMusic() {
         music.play()
             .then(() => {
 
-                if (button) {
-                    button.innerHTML = "⏸️ Pause BGM";
-                }
+                button.innerHTML = "⏸️ Pause BGM";
 
             })
             .catch((error) => {
@@ -46,9 +50,7 @@ function playMusic() {
 
         music.pause();
 
-        if (button) {
-            button.innerHTML = "🎵 Play BGM";
-        }
+        button.innerHTML = "🎵 Play BGM";
 
     }
 
