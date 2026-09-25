@@ -1,4 +1,40 @@
-// ✨ 3D Card Effect
+<!-- 🎵 BGM -->
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// =====================================================
+// 🎵 MUSIC PLAYER
+// =====================================================
+
+function playMusic() {
+
+    const music = document.getElementById("bgMusic");
+    const button = document.querySelector(".bgm");
+
+    if (music.paused) {
+
+        music.play();
+
+        button.innerHTML = "⏸️ Pause BGM";
+
+    } else {
+
+        music.pause();
+
+        button.innerHTML = "🎵 Play BGM";
+
+    }
+
+}
+
+
+// =====================================================
+// ✨ 3D CARD EFFECT
+// =====================================================
+
 document.querySelectorAll(".panel").forEach(card => {
 
     card.addEventListener("mousemove", (e) => {
@@ -8,8 +44,11 @@ document.querySelectorAll(".panel").forEach(card => {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        const rotateY = (x - rect.width / 2) / 18;
-        const rotateX = -(y - rect.height / 2) / 18;
+        const rotateY =
+            (x - rect.width / 2) / 18;
+
+        const rotateX =
+            -(y - rect.height / 2) / 18;
 
         card.style.transform = `
             perspective(900px)
@@ -18,16 +57,58 @@ document.querySelectorAll(".panel").forEach(card => {
             translateY(-6px)
             scale(1.02)
         `;
+
     });
+
 
     card.addEventListener("mouseleave", () => {
 
         card.style.transform = `
+            perspective(900px)
             rotateX(0deg)
             rotateY(0deg)
             translateY(0)
             scale(1)
         `;
+
     });
 
 });
+
+
+// =====================================================
+// 💗 CARD SCROLL ANIMATION
+// =====================================================
+
+const cards = document.querySelectorAll(".card");
+
+const observer = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.style.opacity = "1";
+
+                entry.target.style.transform =
+                    "translateY(0) rotate(0deg)";
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.1
+    }
+);
+
+
+cards.forEach(card => {
+
+    observer.observe(card);
+
+});
+
+</script>
